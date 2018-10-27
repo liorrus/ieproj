@@ -30,4 +30,19 @@ def simpleCon():
     finally:
         connection.close()
 
-simpleCon()
+def test1():
+    connection = pymysql.connect(host='35.225.130.71',
+                                user='root',
+                                password='ShushTush2018',
+                                db='ANNA',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+    with connection.cursor() as cursor:
+            # Read a single record
+            sql = "SELECT `PDES`, `UNIT` FROM `PARTS` WHERE `PDES`=%s"
+            cursor.execute(sql, ('מפיות',))
+            result = cursor.fetchone()
+            print(result)
+
+test1()
+        
