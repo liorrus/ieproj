@@ -29,9 +29,10 @@ class Product(models.Model):
     pdes = models.CharField(max_length=48) # description 
     price = models.IntegerField(default=0) # price of product
     prep = models.FloatField(default=0.0) # time for preperation
+    slug = models.SlugField(max_length=40)
 
     def __str__(self):
-        return self.pdes
+        return self.pdes + " " + str(self.price) + " " + str(self.id)
 
 class Unit(models.Model): 
     unit_des = models.CharField(max_length=13) # kg, m, box, etc     

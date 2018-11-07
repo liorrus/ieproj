@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 
-from .models import Choice, Question
+from .models import Choice, Question, Product
 
 
 class IndexView(generic.ListView):
@@ -24,7 +24,17 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+class ProductView(generic.ListView):
+    #model = Product
+    context_object_name = 'all_products'
+    template_name ='polls/product.html'
+    def get_queryset(self):
+        return Product.objects.all()
 
+class ProductOneView(generic.DetailView):
+    model = Product
+    template_name = 'polls/product_one.html'
+    slug_url_kwarg = 'slug'
 
 
 def vote(request, question_id):
