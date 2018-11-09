@@ -12,6 +12,6 @@ urlpatterns = [
     path('<slug:slug>/products/', views.ProductOneView.as_view(), name='product'),
     path('<slug:slug>/parts/', views.PartOneView.as_view(), name='part'),
     path('parts', views.PartView.as_view(), name='parts'),
-    path('<slug:slug>/suppliers/', views.PartOneView.as_view(), name='supplier'),
-    path('suppliers', views.PartView.as_view(), name='suppliers'),
+    path('<slug:slug>/suppliers/', views.SupplierOneView.as_view(), name='supplier'),
+    path('suppliers', views.SupplierView.as_view(), name='suppliers'),
 ]
