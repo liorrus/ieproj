@@ -28,7 +28,7 @@ class ResultsView(generic.DetailView):
 class ProductView(generic.ListView):
     #model = Product
     context_object_name = 'all_generics'
-    template_name ='polls/product.html'
+    template_name ='polls/generic_list.html'
     def get_queryset(self):
         return Product.objects.all()
 

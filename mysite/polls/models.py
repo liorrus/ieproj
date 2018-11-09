@@ -68,19 +68,23 @@ class Supplier(models.Model):
     slug = models.SlugField(max_length=200)
     def __str__(self):
         return self.name + " " + str(adress) + " " + str(tel) + " " + str(mail)
-"""
+
 class SupPrice(models.Model):
     supplier = models.ForeignKey(Supplier,null=False, on_delete=models.CASCADE) #supplier name
-    part = models.ForeignKey(Parts, null=False, on_delete=models.CASCADE)
-    price=models.FloatField(max_length=200)
+    part = models.ForeignKey(Part, null=False, on_delete=models.CASCADE)
+    price= models.FloatField(max_length=200)
+    slug = models.SlugField(max_length=248) 
     class Meta:
         unique_together = (("supplier", "part"),)  # used for double column primary key
-
+    def __str__(self):
+        return str(self.name) + " " + str(part) + " " + str(price) 
+"""
 class Costumer(models.Model):
     fname = models.CharField(max_length=200, null=False) #costumer first name
-    lname= models.CharField(max_length=200, null=False)#costumer last name
+    lname = models.CharField(max_length=200, null=False)#costumer last name
     mail = models.EmailField(max_length=200,null=False) # costumer mail
-    gender= models.CharField(max_length=1, null=False)
+    gender = models.CharField(max_length=1, null=False)
+    
 
 class OrderStatus(models.Model):
     ordstatus=models.IntegerField(max_length=2, null=False) #open, ready, close
