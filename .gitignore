@@ -1,0 +1,6 @@
+# Byte-compiled / optimized / DLL files
+mysite/__pycache__/
+*.py[cod]
+*$py.class
+
+
