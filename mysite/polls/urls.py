@@ -10,4 +10,8 @@ urlpatterns = [
     path('<int:question_id>/vote/', views.vote, name='vote'),
     path('products', views.ProductView.as_view(), name='products'),
     path('<slug:slug>/products/', views.ProductOneView.as_view(), name='product'),
+    path('<slug:slug>/parts/', views.PartOneView.as_view(), name='part'),
+    path('parts', views.PartView.as_view(), name='parts'),
+    path('<slug:slug>/suppliers/', views.PartOneView.as_view(), name='supplier'),
+    path('suppliers', views.PartView.as_view(), name='suppliers'),
 ]

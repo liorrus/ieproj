@@ -2,8 +2,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
+from .models import *
 
-from .models import Choice, Question, Product
+#from .models import all  # Choice, Question, Product, Part, Unit
 
 
 class IndexView(generic.ListView):
@@ -26,7 +27,7 @@ class ResultsView(generic.DetailView):
 
 class ProductView(generic.ListView):
     #model = Product
-    context_object_name = 'all_products'
+    context_object_name = 'all_generics'
     template_name ='polls/product.html'
     def get_queryset(self):
         return Product.objects.all()
@@ -35,6 +36,40 @@ class ProductOneView(generic.DetailView):
     model = Product
     template_name = 'polls/product_one.html'
     slug_url_kwarg = 'slug'
+
+class PartOneView(generic.DetailView):
+    model = Part
+    template_name = 'polls/part_one.html'
+    slug_url_kwarg = 'slug'
+
+class PartView(generic.ListView):
+    context_object_name = 'all_generics'
+    template_name ='polls/generic_list.html'
+    def get_queryset(self):
+        return Part.objects.all()
+
+class SupplierOneView(generic.DetailView):
+    model = Supplier
+    template_name = 'polls/part_one.html'
+    slug_url_kwarg = 'slug'
+
+class SupplierView(generic.ListView):
+    context_object_name = 'all_generics'
+    template_name ='polls/generic_list.html'
+    def get_queryset(self):
+        return Supplier.objects.all()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def vote(request, question_id):
@@ -54,4 +89,5 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
     
