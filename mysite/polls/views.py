@@ -1,11 +1,57 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth import authenticate, login
 from django.urls import reverse
 from django.views import generic
+from django.views.generic import View
 from .models import *
+from .forms import UserForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login as django_login_view
+from django.views.generic import FormView
+
+from django.http import HttpResponse
+
+#from here
+class UserFormView(View):
+    form_class=UserForm
+    template_name='polls/registration_form.html'
+    #display blank form
+    def get(self,request):
+        form=self.form_class(None)
+        return render(request, self.template_name, {'form':form})
+
+
+    #process from data
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid():
+            user=form.save(commit=False)
+            #cleaned (normalized) data
+            username= form.cleaned_data['username']
+            password= form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+            # return user objects if details are correct
+            user=authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request,user)
+                    return  redirect('polls:index')
+        return render(request, self.template_name, {'form':form})
+
+class LoginView(FormView):
+    form_class = AuthenticationForm
+    template_name = 'polls/login.html'
+
+    def form_valid(self, form):
+        usuario = form.get_user()
+
+        django_login_view(self.request, usuario)
+        return super(LoginView, self).form_valid(form)
 
 #from .models import all  # Choice, Question, Product, Part, Unit
-
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -14,7 +60,6 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         return Question.objects.order_by('-pub_date')[:5]
-
 
 class DetailView(generic.DetailView):
     model = Question
@@ -91,4 +136,4 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
     #asdfaslk!! hiush ##
-    #try9"
+    #try8

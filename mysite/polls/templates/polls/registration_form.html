@@ -1,55 +1,56 @@
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
 
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
 
 {% block content %}
-  <center><h1>Shushtush Home Page</h1></center>
-  <center><p> <em>Welcome to Shushtush Home Page!</em></p></center>
+  <h2>Create a new Account</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
 {% endblock %}
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <title>Flickr Photobrowser</title>
-        <body>
-            <img src="images/salad.jpg"  width="100" height="80">
-        </body>
         <style>
-
         html, body {
             height: 100%;
         }
-
         * {
-            margin: 5;
+            margin: 10;
             padding: 7;
         }
         #wrap {
             min-height:100%;
         }
-             h1 {
+             h2 {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:60px;
+            font-size:45px;
             margin-top: 20px;
             color: #1f1f47;
             margin-bottom: 10px;
         }
-            p{
-                font-size:30px;
+            p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:15px;
             margin-top: 20px;
             color: #1f1f47;
             margin-bottom: 10px;
-            }
-
+        }
         </style>
     </head>
 </html>
-

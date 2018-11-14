@@ -1,6 +1,6 @@
 
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 import datetime
 
@@ -77,24 +77,23 @@ class SupPrice(models.Model):
     class Meta:
         unique_together = (("supplier", "part"),)  # used for double column primary key
     def __str__(self):
-        return str(self.name) + " " + str(part) + " " + str(price) 
+        return str(self.supplier) + " " + str(part) + " " + str(price)
 """
 class Costumer(models.Model):
     fname = models.CharField(max_length=200, null=False) #costumer first name
-    lname = models.CharField(max_length=200, null=False)#costumer last name
+    lname= models.CharField(max_length=200, null=False)#costumer last name
     mail = models.EmailField(max_length=200,null=False) # costumer mail
-    gender = models.CharField(max_length=1, null=False)
-    
+    gender= models.CharField(max_length=1, null=False)
 
 class OrderStatus(models.Model):
-    ordstatus=models.IntegerField(max_length=2, null=False) #open, ready, close
+    ordstatus=models.IntegerField(null=False) #open, ready, close
 
 class Orders(models.Model):
     costumer = models.ForeignKey(Costumer, null=False, on_delete=models.CASCADE) #costumer ID
-    orderDate=models.models.DateTimeField(default=datetime.now, blank=True) #the date of order creation
+    orderDate=models.DateTimeField(default=datetime.now, blank=True) #the date of order creation
     orderStatus=models.ForeignKey(OrderStatus,null=False,on_delete=models.CASCADE) #status of order
     remarks=models.CharField(max_length=300)  #remarks of the order
-    ifSupplied=models.IntegerField(max_length=1, null=False)
+    ifSupplied=models.IntegerField(null=False)
 
 class OrderItems(models.Model):
     product=models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
@@ -104,8 +103,8 @@ class OrderItems(models.Model):
     extra3=models.CharField(max_length=200)#extra3 if have
     extra4=models.CharField(max_length=200)#extra4 if have
     extra5=models.CharField(max_length=200)#extra5 if have
-    quant=models.IntegerField(max_length=200)
-    orderStatus=models.ForeignKey(Orders,max_length=1)
+    quant=models.IntegerField()
+    ifReady=models.IntegerField(null=False)
     class Meta:
         unique_together = (("product", "order"),)  # used for double column primary key
 
@@ -119,6 +118,7 @@ class POrderItems(models.Model):
     porder=models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
     part=models.ForeignKey(Parts, null=False,on_delete=models.CASCADE) #product ID
     quant=models.FloatField(max_length=200)
+    class Meta:
+        unique_together = (("part", "porder"),)  # used for double column primary key
 """
-
 
