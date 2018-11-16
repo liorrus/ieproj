@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 import datetime
 from django.contrib.auth.models import User
-
+from django.conf import settings
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -78,7 +78,7 @@ class SupPrice(models.Model):
         return str(self.supplier) + " " + str(part) + " " + str(price)
 
 class Order(models.Model):
-    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE) #costumer ID
+    user = models.ForeignKey(User, on_delete=models.CASCADE) #costumer ID
     orderDate = models.DateTimeField(auto_now_add=True) #the date of order creation
     ORDER_STATUS = (
         ('W', 'WAITING'),
