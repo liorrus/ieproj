@@ -11,8 +11,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login as django_login_view
 from django.views.generic import FormView
 from django.contrib import auth
-
-
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import decorators
+from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 
 #from here
@@ -110,6 +112,23 @@ class SupplierView(generic.ListView):
     template_name ='polls/generic_list.html'
     def get_queryset(self):
         return Supplier.objects.all()
+
+class OrderView(generic.ListView):
+    context_object_name = 'all_generics'
+    template_name ='polls/generic_list.html'
+    def get_queryset(self):
+        return Order.objects.all()
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+
+class OrderCreate(LoginRequiredMixin, CreateView): #LoginRequiredMixin
+    model = Order
+    fields = ['user', 'remarks']
+    template_name = 'polls/generice_form.html'
+
+
 
 
 

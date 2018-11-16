@@ -20,4 +20,6 @@ urlpatterns = [
     path('parts', views.PartView.as_view(), name='parts'),
     path('<slug:slug>/suppliers/', views.SupplierOneView.as_view(), name='supplier'),
     path('suppliers', views.SupplierView.as_view(), name='suppliers'),
+    path('orders', views.OrderView.as_view(), name='orders'),
+    path('create/order', views.OrderCreate.as_view(), name='order_create'),
 ]

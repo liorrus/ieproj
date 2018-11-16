@@ -77,37 +77,49 @@ class SupPrice(models.Model):
     def __str__(self):
         return str(self.supplier) + " " + str(part) + " " + str(price)
 
-class Orders(models.Model):
+class Order(models.Model):
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE) #costumer ID
-    orderDate=models.DateTimeField(default=datetime.now, blank=True) #the date of order creation
-    orderStatus=models.ForeignKey(OrderStatus,null=False,on_delete=models.CASCADE) #status of order
-    remarks=models.CharField(max_length=300)  #remarks of the order
-    ifSupplied=models.BooleanField(default=False)
+    orderDate = models.DateTimeField(auto_now_add=True) #the date of order creation
+    ORDER_STATUS = (
+        ('W', 'WAITING'),
+        ('R', 'READY'),
+        ('T', 'TAKE'),
+    )
+    orderStatus = models.CharField(max_length=1, choices=ORDER_STATUS, default='WAITING') 
+    remarks = models.CharField(max_length=300)  #remarks of the order
+    ifSupplied = models.BooleanField(default=False)
 
-class OrderItems(models.Model):
-    product=models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
-    order=models.ForeignKey(Orders, null=False,on_delete=models.CASCADE) #order ID
-    extra1=models.CharField(max_length=200)#extra1 if have
-    extra2=models.CharField(max_length=200)#extra2 if have
-    extra3=models.CharField(max_length=200)#extra3 if have
-    extra4=models.CharField(max_length=200)#extra4 if have
-    extra5=models.CharField(max_length=200)#extra5 if have
-    quant=models.IntegerField()
-    ifReady=models.IntegerField(null=False)
+    def __str__(self):
+        return str(self.user) + " " +str(self.orderDate) +" " + str(self.remarks) + " " +str(self.orderStatus) + " " + str(self.ifSupplied)
+
+class OrderItem(models.Model):
+    product = models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
+    order = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #order ID
+    extra1 = models.CharField(max_length=200)#extra1 if have
+    extra2 = models.CharField(max_length=200)#extra2 if have
+    extra3 = models.CharField(max_length=200)#extra3 if have
+    extra4 = models.CharField(max_length=200)#extra4 if have
+    extra5 = models.CharField(max_length=200)#extra5 if have
+    quant = models.IntegerField()
+    ifReady = models.IntegerField(null=False)
     class Meta:
         unique_together = (("product", "order"),)  # used for double column primary key
 
-class POrders(models.Model):
-    supplier=models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
-    orderStatus=models.ForeignKey(Orders, null=False,on_delete=models.CASCADE) #product ID
-    porderDate=models.DateField() #date of order
+class POrder(models.Model):
+    supplier = models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
+    orderStatus = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #product ID
+    porderDate = models.DateField() #date of order
     ifSupplied=models.CharField(max_length=1)#if order cames
 
-class POrderItems(models.Model):
-    porder=models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
-    part=models.ForeignKey(Parts, null=False,on_delete=models.CASCADE) #product ID
-    quant=models.FloatField(max_length=200)
+class POrderItem(models.Model):
+    porder = models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
+    part = models.ForeignKey(Part, null=False,on_delete=models.CASCADE) #product ID
+    quant = models.FloatField(max_length=200)
     class Meta:
         unique_together = (("part", "porder"),)  # used for double column primary key
-"""
 
+from django.contrib.auth.models import User
+
+def get_first_name(self):
+    return str(self.username)
+User.add_to_class("__str__", get_first_name)

@@ -1,10 +1,15 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Question, Product, Part, PartsInProduct, Supplier
+from .models import *
 
 admin.site.register(Question)
 admin.site.register(Product)
 admin.site.register(Part)
 admin.site.register(PartsInProduct)
 admin.site.register(Supplier)
+admin.site.register(SupPrice)
+#admin.site.register(Order)
+#admin.site.register(Supplier)
+#admin.site.register(Supplier)
+#admin.site.register(Supplier)
