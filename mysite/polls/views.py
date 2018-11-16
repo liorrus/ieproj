@@ -10,6 +10,8 @@ from .forms import UserForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login as django_login_view
 from django.views.generic import FormView
+from django.contrib import auth
+
 
 from django.http import HttpResponse
 
@@ -49,9 +51,14 @@ class LoginView(FormView):
         usuario = form.get_user()
 
         django_login_view(self.request, usuario)
-        return super(LoginView, self).form_valid(form)
+        return redirect('polls:index')
+
+        #return super(LoginView, self).form_valid(form)
 
 #from .models import all  # Choice, Question, Product, Part, Unit
+def logout(request):
+    auth.logout(request)
+    return render(request,'polls/logout.html')
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'

@@ -13,14 +13,14 @@
 
 {% block content %}
   <center><h1>Shushtush Home Page</h1></center>
-  <center><p> <em>Welcome to Shushtush Home Page!</em></p></center>
+  <center><p> <em>Welcome to Shushtush Home Page, {{ user.username }}!</em></p></center>
+  <p><a href="{% url 'polls:login' %}">logout</a></p>
 {% endblock %}
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <title>Flickr Photobrowser</title>
         <body>
-            <img src="images/salad.jpg"  width="100" height="80">
+            <img src="{% static 'images/tost.jpg' %}"  width="100" height="80">
         </body>
         <style>
 

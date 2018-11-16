@@ -9,6 +9,7 @@ urlpatterns = [
 
     path('', views.IndexView.as_view(), name='index'),
     re_path(r'^login/$', LoginView.as_view(), name='login'),
+    re_path(r'^logout/$', views.logout, name='logout'),
     re_path(r'^register/$', views.UserFormView.as_view(), name='register'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
