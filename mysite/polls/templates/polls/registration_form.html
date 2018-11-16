@@ -3,8 +3,10 @@
 
 
 {% block content %}
-  <h2>Create a new Account</h2>
-
+        <div class="sidenav">
+                 <a href="{% url 'polls:login' %}">login</a>
+        </div>
+  <center><h2>Create a new Account</h2></center>
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -28,6 +30,41 @@
         <title>Flickr Photobrowser</title>
         <style>
         html, body {
+            font-family: "Lato", sans-serif;
+}
+form{
+    padding-left:180px;
+}
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+
             height: 100%;
         }
         * {
@@ -39,18 +76,19 @@
         }
              h2 {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:45px;
+            font-size:60px;
             margin-top: 20px;
             color: #1f1f47;
             margin-bottom: 10px;
         }
             p {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:15px;
+            font-size:30px;
             margin-top: 20px;
             color: #1f1f47;
             margin-bottom: 10px;
         }
+
         </style>
     </head>
 </html>
