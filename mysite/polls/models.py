@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 import datetime
+from django.contrib.auth.models import User
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -13,9 +14,6 @@ class Question(models.Model):
     
     def was_published_recently(self):
         return self.pub_date >= timezone.now() -  datetime.timedelta(days=1)
-
-
-
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -78,22 +76,13 @@ class SupPrice(models.Model):
         unique_together = (("supplier", "part"),)  # used for double column primary key
     def __str__(self):
         return str(self.supplier) + " " + str(part) + " " + str(price)
-"""
-class Costumer(models.Model):
-    fname = models.CharField(max_length=200, null=False) #costumer first name
-    lname= models.CharField(max_length=200, null=False)#costumer last name
-    mail = models.EmailField(max_length=200,null=False) # costumer mail
-    gender= models.CharField(max_length=1, null=False)
-
-class OrderStatus(models.Model):
-    ordstatus=models.IntegerField(null=False) #open, ready, close
 
 class Orders(models.Model):
-    costumer = models.ForeignKey(Costumer, null=False, on_delete=models.CASCADE) #costumer ID
+    user = models.ForeignKey(User, null=False, on_delete=models.CASCADE) #costumer ID
     orderDate=models.DateTimeField(default=datetime.now, blank=True) #the date of order creation
     orderStatus=models.ForeignKey(OrderStatus,null=False,on_delete=models.CASCADE) #status of order
     remarks=models.CharField(max_length=300)  #remarks of the order
-    ifSupplied=models.IntegerField(null=False)
+    ifSupplied=models.BooleanField(default=False)
 
 class OrderItems(models.Model):
     product=models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
