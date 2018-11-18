@@ -1,7 +1,8 @@
 from django.urls import path
 from django.urls import include,re_path
 from . import views
-from .views import LoginView
+from .views import LoginView, OrderUser
+from django.views.generic.base import RedirectView
 
 
 app_name = 'polls'
@@ -11,6 +12,7 @@ urlpatterns = [
     re_path(r'^login/$', LoginView.as_view(), name='login'),
     re_path(r'^logout/$', views.logout, name='logout'),
     re_path(r'^register/$', views.UserFormView.as_view(), name='register'),
+    re_path(r'^order/$', views.OrderUser, name='order'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),

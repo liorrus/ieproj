@@ -4,7 +4,7 @@
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <center><li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li></center>
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
@@ -13,11 +13,20 @@
 
 {% block content %}
 
-  <center><h1>Shushtush Home Page</h1></center>
-  <center><p> <em>Welcome to Shushtush Home Page, {{ user.username }}!</em></p></center>
+  <center><h1>Ordering</h1></center>
+  <center><p> <em>Now you can order online, {{ user.username }}!</em></p></center>
+<div class="textproduct">
+    <p2>Recommended products for you:</p2>
+    <br><p3>Choose your product:</p3>
+    <br><box><iframe src="http://127.0.0.1:8000/polls/products" height="200" width="300" ></iframe></box>
+{{products.pdes}}
+    <br><p4>Choose extras:</p4>
+
+</div>
+
             <div class="sidenav">
                 <a href="{%url 'polls:index'%}">Home Page</a>
-                 <a href="{% url 'polls:order' %}">Order</a>
+                 <a href="# url 'polls:order' ">Order</a>
                 <a href="#contact">Contact</a>
                 <a href="{% url 'polls:login' %}">logout</a>
             </div>
@@ -91,6 +100,21 @@
             color: #1f1f47;
             margin-bottom: 10px;
             }
+
+
+
+            .textproduct{
+                font-size:30px;
+            margin-top: 20px;
+            color: #1f1f47;
+            margin-bottom: 10px;
+                padding-left:180px;
+            font-weight: bold
+            }
+            box {
+                color:  #1f1f47;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;}
 
         </style>
 </html>

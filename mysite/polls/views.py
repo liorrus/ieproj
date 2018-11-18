@@ -17,33 +17,35 @@ from django.contrib.auth import decorators
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 
-#from here
+
+# from here
 class UserFormView(View):
-    form_class=UserForm
-    template_name='polls/registration_form.html'
-    #display blank form
-    def get(self,request):
-        form=self.form_class(None)
-        return render(request, self.template_name, {'form':form})
+    form_class = UserForm
+    template_name = 'polls/registration_form.html'
 
+    # display blank form
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
 
-    #process from data
-    def post(self,request):
-        form=self.form_class(request.POST)
+    # process from data
+    def post(self, request):
+        form = self.form_class(request.POST)
         if form.is_valid():
-            user=form.save(commit=False)
-            #cleaned (normalized) data
-            username= form.cleaned_data['username']
-            password= form.cleaned_data['password']
+            user = form.save(commit=False)
+            # cleaned (normalized) data
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
             # return user objects if details are correct
-            user=authenticate(username=username, password=password)
+            user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
-                    login(request,user)
-                    return  redirect('polls:index')
-        return render(request, self.template_name, {'form':form})
+                    login(request, user)
+                    return redirect('polls:index')
+        return render(request, self.template_name, {'form': form})
+
 
 class LoginView(FormView):
     form_class = AuthenticationForm
@@ -55,12 +57,17 @@ class LoginView(FormView):
         django_login_view(self.request, usuario)
         return redirect('polls:index')
 
-        #return super(LoginView, self).form_valid(form)
+        # return super(LoginView, self).form_valid(form)
 
-#from .models import all  # Choice, Question, Product, Part, Unit
+
+# from .models import all  # Choice, Question, Product, Part, Unit
 def logout(request):
     auth.logout(request)
-    return render(request,'polls/logout.html')
+    return render(request, 'polls/logout.html')
+
+def OrderUser(request):
+    return render(request,'polls/order.html')
+
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -69,6 +76,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         return Question.objects.order_by('-pub_date')[:5]
+
 
 class DetailView(generic.DetailView):
     model = Question
@@ -79,70 +87,70 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+
 class ProductView(generic.ListView):
-    #model = Product
+    # model = Product
     context_object_name = 'all_generics'
-    template_name ='polls/generic_list.html'
+    template_name = 'polls/generic_list.html'
+
     def get_queryset(self):
         return Product.objects.all()
+
 
 class ProductOneView(generic.DetailView):
     model = Product
     template_name = 'polls/product_one.html'
     slug_url_kwarg = 'slug'
 
+
 class PartOneView(generic.DetailView):
     model = Part
     template_name = 'polls/part_one.html'
     slug_url_kwarg = 'slug'
 
+
 class PartView(generic.ListView):
     context_object_name = 'all_generics'
-    template_name ='polls/generic_list.html'
+    template_name = 'polls/generic_list.html'
+
     def get_queryset(self):
         return Part.objects.all()
+
 
 class SupplierOneView(generic.DetailView):
     model = Supplier
     template_name = 'polls/part_one.html'
     slug_url_kwarg = 'slug'
 
+
 class SupplierView(generic.ListView):
     context_object_name = 'all_generics'
-    template_name ='polls/generic_list.html'
+    template_name = 'polls/generic_list.html'
+
     def get_queryset(self):
         return Supplier.objects.all()
 
+
 class OrderView(generic.ListView):
     context_object_name = 'all_generics'
-    template_name ='polls/generic_list.html'
+    template_name = 'polls/generic_list.html'
+
     def get_queryset(self):
         return Order.objects.all()
 
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class OrderCreate(LoginRequiredMixin, CreateView): #LoginRequiredMixin
+
+class OrderCreate(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     model = Order
-    #fields = ['user', 'remarks']
+    # fields = ['user', 'remarks']
     fields = ['remarks']
     template_name = 'polls/generice_form.html'
-    
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def vote(request, question_id):
@@ -163,5 +171,5 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
-    #asdfaslk!! hiush ##
-    #try8
+    # asdfaslk!! hiush ##
+    # try8
