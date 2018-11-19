@@ -65,8 +65,13 @@ def logout(request):
     auth.logout(request)
     return render(request, 'polls/logout.html')
 
-def OrderUser(request):
-    return render(request,'polls/order.html')
+class OrderUser(generic.ListView):
+    # model = Product
+    context_object_name = 'all_generics'
+    template_name = 'polls/order.html'
+
+    def get_queryset(self):
+        return Product.objects.all()
 
 
 class IndexView(generic.ListView):

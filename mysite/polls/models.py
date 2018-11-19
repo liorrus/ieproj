@@ -28,9 +28,19 @@ class Product(models.Model):
     price = models.IntegerField(default=0) # price of product
     prep = models.FloatField(default=0.0) # time for preperation
     slug = models.SlugField(max_length=40)
+#    productExtra = models.ManyToManyField(Extras)
+
 
     def __str__(self):
         return self.pdes + " " + str(self.price) + " " + str(self.id)
+
+class Extras(models.Model):
+    pdes = models.CharField(max_length=48) # description
+    price = models.IntegerField(default=0) # price of product
+    productExtra = models.ManyToManyField(Product) #extra to product
+    def __str__(self):
+        return self.pdes + " " + str(self.price) +" " + str(self.productExtra)+ " " + str(self.id)
+
 
 class Unit(models.Model): 
     unit_des = models.CharField(max_length=13) # kg, m, box, etc     
@@ -80,6 +90,7 @@ class SupPrice(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE) #costumer ID
     orderDate = models.DateTimeField(auto_now_add=True) #the date of order creation
+    orderPick=models.DateTimeField(auto_now=False)
     ORDER_STATUS = (
         ('W', 'WAITING'),
         ('R', 'READY'),
@@ -90,24 +101,24 @@ class Order(models.Model):
     ifSupplied = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.user) + " " +str(self.orderDate) +" " + str(self.remarks) + " " +str(self.orderStatus) + " " + str(self.ifSupplied)
+        return str(self.user) + " " +str(self.orderDate) +" " + str(self.remarks) + " " +str(self.orderStatus) + " " + str(self.ifSupplied) + " " + str(self.orderPick)
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
     order = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #order ID
-    extra1 = models.CharField(max_length=200)#extra1 if have
-    extra2 = models.CharField(max_length=200)#extra2 if have
-    extra3 = models.CharField(max_length=200)#extra3 if have
-    extra4 = models.CharField(max_length=200)#extra4 if have
-    extra5 = models.CharField(max_length=200)#extra5 if have
+    extra1 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra1 if have
+    extra2 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra2 if have
+    extra3 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra3 if have
+    extra4 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra4 if have
+    extra5 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra5 if have
     quant = models.IntegerField()
     ifReady = models.IntegerField(null=False)
-    class Meta:
-        unique_together = (("product", "order"),)  # used for double column primary key
+  #  class Meta:
+  #      unique_together = (("product", "order", "extra1"),)  # used for double column primary key
 
 class POrder(models.Model):
     supplier = models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
-    orderStatus = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #product ID
+    orderStatus = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #status ID
     porderDate = models.DateField() #date of order
     ifSupplied=models.CharField(max_length=1)#if order cames
 

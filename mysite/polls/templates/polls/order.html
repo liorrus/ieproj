@@ -1,3 +1,4 @@
+
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
 
@@ -17,9 +18,14 @@
   <center><p> <em>Now you can order online, {{ user.username }}!</em></p></center>
 <div class="textproduct">
     <p2>Recommended products for you:</p2>
+    <center><form action="{% url 'polls:products'%}" method="POST"> {%csrf_token%}
+{%for product in generic_list%}
+    <l1>{{product}}</l1>
+    {%endfor%}
+</form></center>
     <br><p3>Choose your product:</p3>
-    <br><box><iframe src="http://127.0.0.1:8000/polls/products" height="200" width="300" ></iframe></box>
-{{products.pdes}}
+    <br><iframe src="http://127.0.0.1:8000/polls/products" height="200" width="300" ></iframe></box>
+
     <br><p4>Choose extras:</p4>
 
 </div>
