@@ -66,12 +66,17 @@ def logout(request):
     return render(request, 'polls/logout.html')
 
 class OrderUser(generic.ListView):
-    # model = Product
+    #model = Order
     context_object_name = 'all_generics'
     template_name = 'polls/order.html'
 
     def get_queryset(self):
-        return Product.objects.all()
+        return Order.objects.all()
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['product_form']=Product.objects.all()
+        #context['extras_form']=Extras.object.all()
+        return context
 
 
 class IndexView(generic.ListView):

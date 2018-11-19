@@ -28,9 +28,6 @@ class Product(models.Model):
     price = models.IntegerField(default=0) # price of product
     prep = models.FloatField(default=0.0) # time for preperation
     slug = models.SlugField(max_length=40)
-#    productExtra = models.ManyToManyField(Extras)
-
-
     def __str__(self):
         return self.pdes + " " + str(self.price) + " " + str(self.id)
 
@@ -106,11 +103,11 @@ class Order(models.Model):
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
     order = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #order ID
-    extra1 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra1 if have
-    extra2 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra2 if have
-    extra3 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra3 if have
-    extra4 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra4 if have
-    extra5 = models.ForeignKey(Extras, on_delete=models.CASCADE)#extra5 if have
+    extra1 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex1")#extra1 if have
+    extra2 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex2")#extra2 if have
+    extra3 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex3")#extra3 if have
+    extra4 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex4")#extra4 if have
+    extra5 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex5")#extra5 if have
     quant = models.IntegerField()
     ifReady = models.IntegerField(null=False)
   #  class Meta:

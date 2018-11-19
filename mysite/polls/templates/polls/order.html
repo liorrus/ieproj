@@ -16,19 +16,24 @@
 
   <center><h1>Ordering</h1></center>
   <center><p> <em>Now you can order online, {{ user.username }}!</em></p></center>
-<div class="textproduct">
+
     <p2>Recommended products for you:</p2>
-    <center><form action="{% url 'polls:products'%}" method="POST"> {%csrf_token%}
-{%for product in generic_list%}
-    <l1>{{product}}</l1>
+
+    <br><p2>Choose a product:</p2>
+
+    <form action="{% url 'polls:products'%}" method="POST"> {%csrf_token%}
+       <top><select name="Product">
+        {%for product in product_form%}
+    <sc><option value=" {{product.pdes}}">{{product.pdes}}</option></sc>
     {%endfor%}
-</form></center>
-    <br><p3>Choose your product:</p3>
-    <br><iframe src="http://127.0.0.1:8000/polls/products" height="200" width="300" ></iframe></box>
+           </select></top>
+    </form>
 
-    <br><p4>Choose extras:</p4>
 
-</div>
+    <br><p2>Choose extras:</p2>
+    <br><p2>Total Pay:</p2>
+    <input type="submit" value="Submit">
+
 
             <div class="sidenav">
                 <a href="{%url 'polls:index'%}">Home Page</a>
@@ -109,8 +114,8 @@
 
 
 
-            .textproduct{
-                font-size:30px;
+            p2{
+                font-size:25px;
             margin-top: 20px;
             color: #1f1f47;
             margin-bottom: 10px;
@@ -121,7 +126,22 @@
                 color:  #1f1f47;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 15px;}
+        top{
+            color: navajowhite;
+            padding-left:180px;
+            font-family: Arial;
+            font-size: 13px;
+            background: transparent;
+            line-height: 1;
+             border: 1px;
+            border-radius: 1px;
 
+
+        }
+            sc{
+                color: darkred;
+                font-size:12px ;
+            }
         </style>
 </html>
 
