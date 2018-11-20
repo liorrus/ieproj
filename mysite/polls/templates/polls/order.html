@@ -30,7 +30,98 @@
     </form>
 
 
-    <br><p2>Choose extras:</p2>
+
+    <p2>For salad, choose 5 components:</p2>
+    <form action="{% url 'polls:extras'%}" method="POST"> {%csrf_token%}
+       <top><select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       </top>
+    </form>
+    <p2>Choose extras (not must):</p2>
+
+
+<form action="{% url 'polls:extras'%}" method="POST"> {%csrf_token%}
+       <top><select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select>
+       <select name="Extras">
+           <option selected="selected">
+                None
+            </option>
+        {%for extras in extras_form%}
+    <sc><option value=" {{extras.pdes}}">{{extras.pdes}}</option></sc>
+    {%endfor%}
+           </select></top>
+    </form>
+    <p2>Time Pick:</p2>
+
     <br><p2>Total Pay:</p2>
     <input type="submit" value="Submit">
 
@@ -134,7 +225,6 @@
             background: transparent;
             line-height: 1;
              border: 1px;
-            border-radius: 1px;
 
 
         }

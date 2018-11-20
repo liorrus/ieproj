@@ -73,9 +73,9 @@ class OrderUser(generic.ListView):
     def get_queryset(self):
         return Order.objects.all()
     def get_context_data(self, **kwargs):
-        context=super().get_context_data(**kwargs)
+        context=super(OrderUser,self).get_context_data(**kwargs)
+        context['extras_form']=Extras.objects.all()
         context['product_form']=Product.objects.all()
-        #context['extras_form']=Extras.object.all()
         return context
 
 
@@ -106,12 +106,23 @@ class ProductView(generic.ListView):
     def get_queryset(self):
         return Product.objects.all()
 
-
 class ProductOneView(generic.DetailView):
     model = Product
     template_name = 'polls/product_one.html'
     slug_url_kwarg = 'slug'
 
+class ExtraView(generic.ListView):
+    # model = Product
+    context_object_name = 'all_generics'
+    template_name = 'polls/generic_list.html'
+
+    def get_queryset(self):
+        return Extras.objects.all()
+
+class ExtraOneView(generic.DetailView):
+    model = Extras
+    template_name = 'polls/extra_one.html'
+    slug_url_kwarg = 'slug'
 
 class PartOneView(generic.DetailView):
     model = Part

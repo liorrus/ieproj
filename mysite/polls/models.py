@@ -27,7 +27,7 @@ class Product(models.Model):
     pdes = models.CharField(max_length=48) # description 
     price = models.IntegerField(default=0) # price of product
     prep = models.FloatField(default=0.0) # time for preperation
-    slug = models.SlugField(max_length=40)
+    slug = models.SlugField(max_length=40, default="STRING")
     def __str__(self):
         return self.pdes + " " + str(self.price) + " " + str(self.id)
 
@@ -35,8 +35,9 @@ class Extras(models.Model):
     pdes = models.CharField(max_length=48) # description
     price = models.IntegerField(default=0) # price of product
     productExtra = models.ManyToManyField(Product) #extra to product
+    slug = models.SlugField(max_length=40, default="STRING")
     def __str__(self):
-        return self.pdes + " " + str(self.price) +" " + str(self.productExtra)+ " " + str(self.id)
+        return self.pdes + " " + str(self.price) + " " + str(self.id)
 
 
 class Unit(models.Model): 
@@ -110,8 +111,8 @@ class OrderItem(models.Model):
     extra5 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex5")#extra5 if have
     quant = models.IntegerField()
     ifReady = models.IntegerField(null=False)
-  #  class Meta:
-  #      unique_together = (("product", "order", "extra1"),)  # used for double column primary key
+    class Meta:
+        unique_together = (("product", "order", ),)  # used for double column primary key
 
 class POrder(models.Model):
     supplier = models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
