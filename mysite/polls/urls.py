@@ -13,6 +13,7 @@ urlpatterns = [
     re_path(r'^logout/$', views.logout, name='logout'),
     re_path(r'^register/$', views.UserFormView.as_view(), name='register'),
     re_path(r'^order/$', views.OrderUser.as_view(), name='order'),
+    re_path(r'^adminsite/$', views.AdminView.as_view(), name='adminsite'),
     #re_path(r'^(?P<pk>[0-9a-z-]+)/$', views.OrderUser.as_view(), name='order'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),

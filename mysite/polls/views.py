@@ -78,6 +78,13 @@ class OrderUser(generic.ListView):
         context['product_form']=Product.objects.all()
         return context
 
+class AdminView(generic.ListView):
+    context_object_name = 'all_generics'
+    template_name = 'polls/generic_list.html'
+
+    def get_queryset(self):
+        return Order.objects.all()
+
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
