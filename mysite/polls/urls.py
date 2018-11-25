@@ -1,7 +1,9 @@
 from django.urls import path
 from django.urls import include,re_path
+from django.conf.urls import url
 from . import views
 from .views import LoginView, OrderUser
+from django.views.generic import CreateView
 from django.views.generic.base import RedirectView
 
 
@@ -13,6 +15,7 @@ urlpatterns = [
     re_path(r'^logout/$', views.logout, name='logout'),
     re_path(r'^register/$', views.UserFormView.as_view(), name='register'),
     re_path(r'^order/$', views.OrderUser.as_view(), name='order'),
+    url(r'^(?P<slug>[-/w]+)/$', views.ProductView.as_view(), name='product'),
     re_path(r'^adminsite/$', views.AdminView.as_view(), name='adminsite'),
     #re_path(r'^(?P<pk>[0-9a-z-]+)/$', views.OrderUser.as_view(), name='order'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
@@ -28,4 +31,10 @@ urlpatterns = [
     path('suppliers', views.SupplierView.as_view(), name='suppliers'),
     path('orders', views.OrderView.as_view(), name='orders'),
     path('create/order', views.OrderCreate.as_view(), name='order_create'),
+    url(r'add_product/$', views.ProductCreate.as_view(), name="product-add"),
+    url(r'add_part/$', views.PartCreate.as_view(), name="part-add"),
+    url(r'add_supplier/$', views.SupplierCreate.as_view(), name="supplier-add"),
+    url(r'add_partsinproduct/$', views.PartsInProductCreate.as_view(), name="partsinproduct-add"),
+
+
 ]

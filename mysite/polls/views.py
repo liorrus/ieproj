@@ -16,9 +16,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import decorators
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
 
 # from here
+
 class UserFormView(View):
     form_class = UserForm
     template_name = 'polls/registration_form.html'
@@ -65,6 +67,7 @@ def logout(request):
     auth.logout(request)
     return render(request, 'polls/logout.html')
 
+
 class OrderUser(generic.ListView):
     #model = Order
     context_object_name = 'all_generics'
@@ -72,15 +75,17 @@ class OrderUser(generic.ListView):
 
     def get_queryset(self):
         return Order.objects.all()
+
     def get_context_data(self, **kwargs):
         context=super(OrderUser,self).get_context_data(**kwargs)
         context['extras_form']=Extras.objects.all()
         context['product_form']=Product.objects.all()
         return context
 
+
 class AdminView(generic.ListView):
     context_object_name = 'all_generics'
-    template_name = 'polls/generic_list.html'
+    template_name = 'polls/adminsite.html'
 
     def get_queryset(self):
         return Order.objects.all()
@@ -106,17 +111,19 @@ class ResultsView(generic.DetailView):
 
 
 class ProductView(generic.ListView):
-    # model = Product
+    model = Product
     context_object_name = 'all_generics'
     template_name = 'polls/generic_list.html'
 
     def get_queryset(self):
         return Product.objects.all()
 
+
 class ProductOneView(generic.DetailView):
     model = Product
     template_name = 'polls/product_one.html'
     slug_url_kwarg = 'slug'
+
 
 class ExtraView(generic.ListView):
     # model = Product
@@ -126,10 +133,12 @@ class ExtraView(generic.ListView):
     def get_queryset(self):
         return Extras.objects.all()
 
+
 class ExtraOneView(generic.DetailView):
     model = Extras
     template_name = 'polls/extra_one.html'
     slug_url_kwarg = 'slug'
+
 
 class PartOneView(generic.DetailView):
     model = Part
@@ -165,6 +174,29 @@ class OrderView(generic.ListView):
 
     def get_queryset(self):
         return Order.objects.all()
+
+
+"""Lior M"""
+
+
+class ProductCreate(CreateView):
+    model = Product
+    fields = ['pdes', 'price', 'prep']
+
+
+class PartCreate(CreateView):
+    model = Part
+    fields = ['pdes', 'unit', 'stock', 'lt', 'sshigh', 'sslow']
+
+
+class SupplierCreate(CreateView):
+    model = Supplier
+    fields = ['name', 'address', 'tel', 'mail']
+
+
+class PartsInProductCreate(CreateView):
+    model = PartsInProduct
+    fields = ['part', 'quant', 'product']
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin

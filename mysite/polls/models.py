@@ -5,6 +5,10 @@ from django.utils import timezone
 import datetime
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+
+
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -15,6 +19,7 @@ class Question(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() -  datetime.timedelta(days=1)
 
+
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
@@ -22,26 +27,34 @@ class Choice(models.Model):
     
     def __str__(self):
         return self.choice_text
-    
+
+
 class Product(models.Model):
-    pdes = models.CharField(max_length=48) # description 
-    price = models.IntegerField(default=0) # price of product
-    prep = models.FloatField(default=0.0) # time for preperation
+    pdes = models.CharField(max_length=48)  # description
+    price = models.IntegerField(default=0)  # price of product
+    prep = models.FloatField(default=0.0)  # time for preperation
     slug = models.SlugField(max_length=40, default="STRING")
+
+    #def get_absolute_url(self):
+     #   return reverse('product', kwargs={'slug':self.slug})
+
     def __str__(self):
         return self.pdes + " " + str(self.price) + " " + str(self.id)
+
 
 class Extras(models.Model):
     pdes = models.CharField(max_length=48) # description
     price = models.IntegerField(default=0) # price of product
     productExtra = models.ManyToManyField(Product) #extra to product
     slug = models.SlugField(max_length=40, default="STRING")
+
     def __str__(self):
         return self.pdes + " " + str(self.price) + " " + str(self.id)
 
 
 class Unit(models.Model): 
     unit_des = models.CharField(max_length=13) # kg, m, box, etc     
+
     def __str__(self):
         return self.unit_des
 
@@ -54,36 +67,44 @@ class Part(models.Model): # Raw material
     sshigh = models.FloatField(default=0) 
     sslow = models.FloatField(default=0) 
     slug = models.SlugField(max_length=48)
-    def __str__(self): 
+
+    def __str__(self):
         return self.pdes + " " + str(self.unit) + " " + str(self.stock) + " " + str(self.lt)
+
 
 class PartsInProduct(models.Model):
     part = models.ForeignKey(Part, on_delete=models.CASCADE)
     quant = models.FloatField(default=0.0)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
     class Meta:
         unique_together = (("part", "product"),) # used for double column primary key
-    def __str__ (self): ##### probley not ok to be set 
+
+    def __str__ (self): ##### probably not ok to be set
         return self.quant
+
 
 class Supplier(models.Model):
     name = models.CharField(max_length=200) #supplier name
-    adress = models.CharField(max_length=200) #supplier adress
+    address = models.CharField(max_length=200) #supplier adress
     tel = models.CharField(max_length=200) #supplier telephone
     mail = models.EmailField(max_length=200) # supplier mail
     slug = models.SlugField(max_length=200)
-    def __str__(self):
-        return self.name + " " + str(adress) + " " + str(tel) + " " + str(mail)
+    """def __str__(self):
+        return self.name + " " + str(adress) + " " + str(tel) + " " + str(mail)"""
+
 
 class SupPrice(models.Model):
     supplier = models.ForeignKey(Supplier,null=False, on_delete=models.CASCADE) #supplier name
     part = models.ForeignKey(Part, null=False, on_delete=models.CASCADE)
     price= models.FloatField(max_length=200)
     slug = models.SlugField(max_length=248) 
+
     class Meta:
         unique_together = (("supplier", "part"),)  # used for double column primary key
-    def __str__(self):
-        return str(self.supplier) + " " + str(part) + " " + str(price)
+    """def __str__(self):
+        return str(self.supplier) + " " + str(part) + " " + str(price)"""
+
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE) #costumer ID
@@ -101,6 +122,7 @@ class Order(models.Model):
     def __str__(self):
         return str(self.user) + " " +str(self.orderDate) +" " + str(self.remarks) + " " +str(self.orderStatus) + " " + str(self.ifSupplied) + " " + str(self.orderPick)
 
+
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
     order = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #order ID
@@ -114,11 +136,13 @@ class OrderItem(models.Model):
     class Meta:
         unique_together = (("product", "order", ),)  # used for double column primary key
 
+
 class POrder(models.Model):
     supplier = models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
     orderStatus = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #status ID
     porderDate = models.DateField() #date of order
     ifSupplied=models.CharField(max_length=1)#if order cames
+
 
 class POrderItem(models.Model):
     porder = models.ForeignKey(Supplier, null=False,on_delete=models.CASCADE) #product ID
@@ -127,8 +151,12 @@ class POrderItem(models.Model):
     class Meta:
         unique_together = (("part", "porder"),)  # used for double column primary key
 
+
 from django.contrib.auth.models import User
+
 
 def get_first_name(self):
     return str(self.username)
+
+
 User.add_to_class("__str__", get_first_name)
