@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19c5d8b4-7c66-4316-8be9-9130b4684f6b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/polls/templates/polls/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/polls/templates/polls/order_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/polls/templates/polls/order_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/polls/templates/polls/order_index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/polls/templates/polls/product_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/polls/templates/polls/product_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/polls/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/polls/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/adminsite.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/adminsite.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/part_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/part_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/partsInproduct_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/partsInproduct_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/product_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/product_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/supplier_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/supplier_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/polls/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/polls/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="19c5d8b4-7c66-4316-8be9-9130b4684f6b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
