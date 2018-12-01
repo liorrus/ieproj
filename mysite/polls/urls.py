@@ -14,11 +14,9 @@ urlpatterns = [
     re_path(r'^login/$', LoginView.as_view(), name='login'),
     re_path(r'^logout/$', views.logout, name='logout'),
     re_path(r'^register/$', views.UserFormView.as_view(), name='register'),
-    re_path(r'^order/$', views.OrderUser.as_view(), name='order'),
-    url(r'^(?P<slug>[-/w]+)/$', views.ProductView.as_view(), name='product'),
-    re_path(r'^adminsite/$', views.AdminView.as_view(), name='adminsite'),
+    #re_path(r'^order/$', views.OrderUser.as_view(), name='order'),
     #re_path(r'^(?P<pk>[0-9a-z-]+)/$', views.OrderUser.as_view(), name='order'),
-    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+    #path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
     path('products', views.ProductView.as_view(), name='products'),
@@ -35,6 +33,11 @@ urlpatterns = [
     url(r'add_part/$', views.PartCreate.as_view(), name="part-add"),
     url(r'add_supplier/$', views.SupplierCreate.as_view(), name="supplier-add"),
     url(r'add_partsinproduct/$', views.PartsInProductCreate.as_view(), name="partsinproduct-add"),
-
+    url(r'add_order/$', views.OrderCreate.as_view(), name="order-add"),
+    url(r'^product(?P<pk>[0-9]+)/$', views.ProductDetailView.as_view(), name='product_detail'),
+    re_path(r'^adminsite/$', views.AdminView.as_view(), name='adminsite'),
+    url(r'product_index/$', views.ProductIndexView.as_view(), name="product_index"),
+    url(r'^order(?P<pk>[0-9]+)/$', views.OrderDetailView.as_view(), name='order_detail'),
+    url(r'order_index/$', views.OrderIndexView.as_view(), name="order_index"),
 
 ]

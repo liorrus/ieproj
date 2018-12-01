@@ -93,16 +93,40 @@ class AdminView(generic.ListView):
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
-    context_object_name = 'latest_question_list'
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.all()
 
 
-class DetailView(generic.DetailView):
-    model = Question
-    template_name = 'polls/detail.html'
+""" Lior M """
+
+class ProductIndexView(generic.ListView):
+    template_name = 'polls/product_index.html'
+    context_object_name = 'all_products'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Product.objects.all()
+
+
+class ProductDetailView(generic.DetailView):
+    model = Product
+    template_name = 'polls/product_detail.html'
+
+
+class OrderDetailView(generic.DetailView):
+    model = Order
+    template_name = 'polls/order_detail.html'
+
+
+class OrderIndexView(generic.ListView):
+    template_name = 'polls/order_index.html'
+    context_object_name = 'all_orders'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Order.objects.all()
 
 
 class ResultsView(generic.DetailView):
@@ -181,7 +205,7 @@ class OrderView(generic.ListView):
 
 class ProductCreate(CreateView):
     model = Product
-    fields = ['pdes', 'price', 'prep']
+    fields = ['pdes', 'price', 'prep', 'slug']
 
 
 class PartCreate(CreateView):
@@ -204,9 +228,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class OrderCreate(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     model = Order
-    # fields = ['user', 'remarks']
-    fields = ['remarks']
-    template_name = 'polls/generice_form.html'
+    fields = ['user', 'orderPick', 'orderStatus', 'ifSupplied', 'product1',  'component1',
+              'component2',  'component3',  'component4', 'component5',
+              'extra1', 'extra2', 'extra3', 'extra4', 'extra5',  'product2', 'product3', 'remarks']
+    """template_name = 'polls/generice_form.html'"""
 
     def form_valid(self, form):
         form.instance.user = self.request.user

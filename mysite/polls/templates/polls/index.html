@@ -16,6 +16,9 @@
     {%for product in generic_list%}
     <center><l1><form action="{% url 'polls:products'%}" method="POST"> {%csrf_token%}{{product.pdes}}</form></l1></center>
     {%endfor%}
+    {%for order in generic_list%}
+    <center><l1><form action="{% url 'polls:orders'%}" method="POST"> {%csrf_token%}{{order.get_name}}</form></l1></center>
+    {%endfor%}
 </u1>
 {% block content %}
 

@@ -32,14 +32,17 @@ class Choice(models.Model):
 class Product(models.Model):
     pdes = models.CharField(max_length=48)  # description
     price = models.IntegerField(default=0)  # price of product
-    prep = models.FloatField(default=0.0)  # time for preperation
-    slug = models.SlugField(max_length=40, default="STRING")
+    prep = models.FloatField(default=0.0)  # time for preparation
+    slug = models.SlugField(max_length=40, default="224")  # serial number for product
 
-    #def get_absolute_url(self):
-     #   return reverse('product', kwargs={'slug':self.slug})
+    def get_absolute_url(self):
+        return reverse('polls:product_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return self.pdes + " " + str(self.price) + " " + str(self.id)
+        return self.pdes
+
+    def get_name(self):
+        return str(self.pdes) + " // " + str(self.price) + " // " + str(self.id)
 
 
 class Extras(models.Model):
@@ -49,7 +52,7 @@ class Extras(models.Model):
     slug = models.SlugField(max_length=40, default="STRING")
 
     def __str__(self):
-        return self.pdes + " " + str(self.price) + " " + str(self.id)
+        return self.pdes
 
 
 class Unit(models.Model): 
@@ -91,7 +94,7 @@ class Supplier(models.Model):
     mail = models.EmailField(max_length=200) # supplier mail
     slug = models.SlugField(max_length=200)
     """def __str__(self):
-        return self.name + " " + str(adress) + " " + str(tel) + " " + str(mail)"""
+        return self.name + " " + str(address) + " " + str(tel) + " " + str(mail)"""
 
 
 class SupPrice(models.Model):
@@ -106,6 +109,15 @@ class SupPrice(models.Model):
         return str(self.supplier) + " " + str(part) + " " + str(price)"""
 
 
+class Components(models.Model):
+    pdes = models.CharField(max_length=48) # description
+    product = models.ForeignKey(Product, on_delete=models.CASCADE) #component to product
+    slug = models.SlugField(max_length=40, default="STRING")
+
+    def __str__(self):
+        return self.pdes
+
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE) #costumer ID
     orderDate = models.DateTimeField(auto_now_add=True) #the date of order creation
@@ -116,23 +128,43 @@ class Order(models.Model):
         ('T', 'TAKE'),
     )
     orderStatus = models.CharField(max_length=1, choices=ORDER_STATUS, default='WAITING') 
-    remarks = models.CharField(max_length=300)  #remarks of the order
+    remarks = models.CharField(max_length=300, default=".")  #remarks of the order
     ifSupplied = models.BooleanField(default=False)
+    product1 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro1")  # product ID
+    product2 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro2", default=51)  # product ID
+    product3 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro3", default=51)  # product ID
+    extra1 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex1", default=5)  # extra1 if have
+    extra2 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex2", default=5)  # extra2 if have
+    extra3 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex3", default=5)  # extra3 if have
+    extra4 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex4", default=5)  # extra4 if have
+    extra5 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex5", default=5)  # extra5 if have
+    component1 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp1", default=4)  # component1 if have
+    component2 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp2", default=4)  # component2 if have
+    component3 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp3", default=4)  # component3 if have
+    component4 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp4", default=4)  # component4 if have
+    component5 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp5", default=4)  # component5 if have
+
+    def get_absolute_url(self):
+        return reverse('polls:order_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return str(self.user) + " " +str(self.orderDate) +" " + str(self.remarks) + " " +str(self.orderStatus) + " " + str(self.ifSupplied) + " " + str(self.orderPick)
+        return str(self.user) + " " + str(self.orderDate) + " " + str(self.remarks) + " " + str(self.orderStatus) +\
+               " " + str(self.ifSupplied) + " " + str(self.orderPick) + " " + str(self.id)
 
+    def get_name(self):
+        return str(self.user) + " // " + str(self.orderDate) + " // " + str(self.orderStatus) + " // " + str(self.id)
 
 class OrderItem(models.Model):
+    quant = models.IntegerField()
     product = models.ForeignKey(Product, null=False,on_delete=models.CASCADE) #product ID
     order = models.ForeignKey(Order, null=False,on_delete=models.CASCADE) #order ID
-    extra1 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex1")#extra1 if have
-    extra2 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex2")#extra2 if have
-    extra3 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex3")#extra3 if have
-    extra4 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex4")#extra4 if have
-    extra5 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex5")#extra5 if have
-    quant = models.IntegerField()
+    extra1 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex11")#extra1 if have
+    extra2 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex21")#extra2 if have
+    extra3 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex31")#extra3 if have
+    extra4 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex41")#extra4 if have
+    extra5 = models.ForeignKey(Extras, on_delete=models.CASCADE, related_name="ex51")#extra5 if have
     ifReady = models.IntegerField(null=False)
+
     class Meta:
         unique_together = (("product", "order", ),)  # used for double column primary key
 

@@ -1,0 +1,31 @@
+{% extends 'polls/base.html' %}
+{% block title %}Order Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> {{ order.get_name }}</h1>
+        <h2 align="center">User:  {{ order.user }}</h2>
+        <h2 align="center">Order Date:  {{ order.orderDate }}</h2>
+        <h2 align="center">Order Pick:  {{ order.orderPick }}</h2>
+        <h2 align="center">Status:  {{ order.orderStatus }}</h2>
+        <h2 align="center">Remarks:  {{ order.remarks }}</h2>
+        <h2 align="center">Supplied?:  {{ order.ifSupplied }}</h2>
+        <h2 align="center">Product1:  {{ order.product1 }}</h2>
+        <h3 align="center">Extra1:  {{ order.extra1 }}</h3>
+        <h3 align="center">Extra2:  {{ order.extra2 }}</h3>
+        <h3 align="center">Extra3:  {{ order.extra3 }}</h3>
+        <h3 align="center">Extra4:  {{ order.extra4 }}</h3>
+        <h3 align="center">Extra5:  {{ order.extra5 }}</h3>
+        <h3 align="center">Component1:  {{ order.component1 }}</h3>
+        <h3 align="center">Component2:  {{ order.component2 }}</h3>
+        <h3 align="center">Component3:  {{ order.component3 }}</h3>
+        <h3 align="center">Component4:  {{ order.component3 }}</h3>
+        <h3 align="center">Component5:  {{ order.component3 }}</h3>
+        <h2 align="center">Product2:  {{ order.product2 }}</h2>
+        <h2 align="center">Product3:  {{ order.product3 }}</h2>
+
+{% endblock %}
+
