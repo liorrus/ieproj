@@ -1,0 +1,141 @@
+
+{% block body %}
+
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> {{ order.get_name }}</h1>
+        <h2 align="center">Order Date:  {{ order.orderDate }}</h2>
+        <h2 align="center">Order Pick:  {{ order.orderPick }}</h2>
+        <h2 align="center">Remarks:  {{ order.remarks }}</h2>
+        <h2 align="center">Supplied?:  {{ order.ifSupplied }}</h2>
+        <h2 align="center">Product1:  {{ order.product1 }}</h2>
+        <h3 align="center">Extra1:  {{ order.extra1 }}</h3>
+        <h3 align="center">Extra2:  {{ order.extra2 }}</h3>
+        <h3 align="center">Extra3:  {{ order.extra3 }}</h3>
+        <h3 align="center">Extra4:  {{ order.extra4 }}</h3>
+        <h3 align="center">Extra5:  {{ order.extra5 }}</h3>
+        <h3 align="center">Component1:  {{ order.component1 }}</h3>
+        <h3 align="center">Component2:  {{ order.component2 }}</h3>
+        <h3 align="center">Component3:  {{ order.component3 }}</h3>
+        <h3 align="center">Component4:  {{ order.component3 }}</h3>
+        <h3 align="center">Component5:  {{ order.component3 }}</h3>
+        <h2 align="center">Product2:  {{ order.product2 }}</h2>
+        <h2 align="center">Product3:  {{ order.product3 }}</h2>
+
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Shushtush{% endblock %}</title>
+
+    {%load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+
+    <html>
+            <style>
+
+            html, body {
+                font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 170px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+                height: 100%;
+            }
+
+            * {
+                margin: 5;
+                padding: 7;
+            }
+            #wrap {
+                min-height:100%;
+            }
+                 h1 {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size:60px;
+                margin-top: 20px;
+                color: #1f1f47;
+                margin-bottom: 10px;
+            }
+                p{
+                    font-size:30px;
+                margin-top: 20px;
+                color: #1f1f47;
+                margin-bottom: 10px;
+                }
+
+
+
+                p2{
+                    font-size:25px;
+                margin-top: 20px;
+                color: #1f1f47;
+                margin-bottom: 10px;
+                    padding-left:180px;
+                font-weight: bold
+                }
+                box {
+                    color:  #1f1f47;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 15px;}
+            top{
+                color: navajowhite;
+                padding-left:180px;
+                font-family: Arial;
+                font-size: 13px;
+                background: transparent;
+                line-height: 1;
+                 border: 1px;
+
+
+            }
+                sc{
+                    color: darkred;
+                    font-size:12px ;
+                }
+            </style>
+    </html>
+</head>
+<body>
+                < <div class="sidenav">
+                <a href="{%url 'polls:index'%}">Home Page</a>
+                 <a href="# url 'polls:order_costumer' ">Order</a>
+                <a href="#contact">Contact</a>
+                <a href="{% url 'polls:login' %}">logout</a>
+            </div>
+                    <a></a><a></a><a></a>
+                    <a href="{% url 'polls:login' %}">Logout</a>
+                </div>
+{% block body %}
+{% endblock %}
+</body>
+</html>

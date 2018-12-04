@@ -23,7 +23,7 @@
     </form>
     <ul align="center">
         {% for order in all_orders %}
-            <li><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }}</a></li>
+            <li><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }} {{order.product}}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

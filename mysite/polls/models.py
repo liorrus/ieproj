@@ -33,7 +33,7 @@ class Product(models.Model):
     pdes = models.CharField(max_length=48)  # description
     price = models.IntegerField(default=0)  # price of product
     prep = models.FloatField(default=0.0)  # time for preparation
-    slug = models.SlugField(max_length=40, default="224")  # serial number for product
+
 
     def get_absolute_url(self):
         return reverse('polls:product_detail', kwargs={'pk': self.pk})
@@ -49,8 +49,6 @@ class Extras(models.Model):
     pdes = models.CharField(max_length=48) # description
     price = models.IntegerField(default=0) # price of product
     productExtra = models.ManyToManyField(Product) #extra to product
-    slug = models.SlugField(max_length=40, default="STRING")
-
     def __str__(self):
         return self.pdes
 
@@ -69,7 +67,6 @@ class Part(models.Model): # Raw material
     lt = models.FloatField(default=1.0) # time to deliver
     sshigh = models.FloatField(default=0) 
     sslow = models.FloatField(default=0) 
-    slug = models.SlugField(max_length=48)
 
     def __str__(self):
         return self.pdes + " " + str(self.unit) + " " + str(self.stock) + " " + str(self.lt)
@@ -92,7 +89,6 @@ class Supplier(models.Model):
     address = models.CharField(max_length=200) #supplier adress
     tel = models.CharField(max_length=200) #supplier telephone
     mail = models.EmailField(max_length=200) # supplier mail
-    slug = models.SlugField(max_length=200)
     """def __str__(self):
         return self.name + " " + str(address) + " " + str(tel) + " " + str(mail)"""
 
@@ -101,7 +97,7 @@ class SupPrice(models.Model):
     supplier = models.ForeignKey(Supplier,null=False, on_delete=models.CASCADE) #supplier name
     part = models.ForeignKey(Part, null=False, on_delete=models.CASCADE)
     price= models.FloatField(max_length=200)
-    slug = models.SlugField(max_length=248) 
+
 
     class Meta:
         unique_together = (("supplier", "part"),)  # used for double column primary key
@@ -112,7 +108,7 @@ class SupPrice(models.Model):
 class Components(models.Model):
     pdes = models.CharField(max_length=48) # description
     product = models.ForeignKey(Product, on_delete=models.CASCADE) #component to product
-    slug = models.SlugField(max_length=40, default="STRING")
+
 
     def __str__(self):
         return self.pdes
@@ -152,7 +148,7 @@ class Order(models.Model):
                " " + str(self.ifSupplied) + " " + str(self.orderPick) + " " + str(self.id)
 
     def get_name(self):
-        return str(self.user) + " // " + str(self.orderDate) + " // " + str(self.orderStatus) + " // " + str(self.id)
+        return str(self.user) + " //product1: " + str(self.product1) + " ,product2: " + str(self.product2) + " ,product3: " + str(self.product3) + " // " + str(self.orderDate) + " // " + str(self.orderStatus) + " // " + str(self.id)
 
 class OrderItem(models.Model):
     quant = models.IntegerField()

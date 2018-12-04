@@ -68,19 +68,7 @@ def logout(request):
     return render(request, 'polls/logout.html')
 
 
-class OrderUser(generic.ListView):
-    #model = Order
-    context_object_name = 'all_generics'
-    template_name = 'polls/order.html'
 
-    def get_queryset(self):
-        return Order.objects.all()
-
-    def get_context_data(self, **kwargs):
-        context=super(OrderUser,self).get_context_data(**kwargs)
-        context['extras_form']=Extras.objects.all()
-        context['product_form']=Product.objects.all()
-        return context
 
 
 class AdminView(generic.ListView):
@@ -119,6 +107,16 @@ class OrderDetailView(generic.DetailView):
     model = Order
     template_name = 'polls/order_detail.html'
 
+class OrderView(generic.ListView):
+    context_object_name = 'all_generics'
+    template_name = 'polls/generic_list.html'
+
+    def get_queryset(self):
+        return Order.objects.all()
+
+
+"""Lior M"""
+
 
 class OrderIndexView(generic.ListView):
     template_name = 'polls/order_index.html'
@@ -126,7 +124,7 @@ class OrderIndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Order.objects.all()
+        return Order.objects.order_by('-orderDate')
 
 
 class ResultsView(generic.DetailView):
@@ -143,69 +141,9 @@ class ProductView(generic.ListView):
         return Product.objects.all()
 
 
-class ProductOneView(generic.DetailView):
-    model = Product
-    template_name = 'polls/product_one.html'
-    slug_url_kwarg = 'slug'
-
-
-class ExtraView(generic.ListView):
-    # model = Product
-    context_object_name = 'all_generics'
-    template_name = 'polls/generic_list.html'
-
-    def get_queryset(self):
-        return Extras.objects.all()
-
-
-class ExtraOneView(generic.DetailView):
-    model = Extras
-    template_name = 'polls/extra_one.html'
-    slug_url_kwarg = 'slug'
-
-
-class PartOneView(generic.DetailView):
-    model = Part
-    template_name = 'polls/part_one.html'
-    slug_url_kwarg = 'slug'
-
-
-class PartView(generic.ListView):
-    context_object_name = 'all_generics'
-    template_name = 'polls/generic_list.html'
-
-    def get_queryset(self):
-        return Part.objects.all()
-
-
-class SupplierOneView(generic.DetailView):
-    model = Supplier
-    template_name = 'polls/part_one.html'
-    slug_url_kwarg = 'slug'
-
-
-class SupplierView(generic.ListView):
-    context_object_name = 'all_generics'
-    template_name = 'polls/generic_list.html'
-
-    def get_queryset(self):
-        return Supplier.objects.all()
-
-
-class OrderView(generic.ListView):
-    context_object_name = 'all_generics'
-    template_name = 'polls/generic_list.html'
-
-    def get_queryset(self):
-        return Order.objects.all()
-
-
-"""Lior M"""
-
-
 class ProductCreate(CreateView):
     model = Product
-    fields = ['pdes', 'price', 'prep', 'slug']
+    fields = ['pdes', 'price', 'prep']
 
 
 class PartCreate(CreateView):
@@ -226,7 +164,7 @@ class PartsInProductCreate(CreateView):
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class OrderCreate(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
+class OrderCreateAdmin(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     model = Order
     fields = ['user', 'orderPick', 'orderStatus', 'ifSupplied', 'product1',  'component1',
               'component2',  'component3',  'component4', 'component5',
