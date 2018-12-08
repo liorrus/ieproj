@@ -1,14 +1,7 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
-{%load staticfiles%}
-<link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
 
 {% block content %}
 
-
+  <center><h1>Your order has been approved!</h1></center>
             <div class="sidenav">
                 <a href="{%url 'polls:index'%}">Home Page</a>
 
@@ -32,9 +25,6 @@
 
         html, body {
             font-family: "Lato", sans-serif;
-}
-        form{
-    padding-left:180px;
 }
 
 .sidenav {
@@ -92,3 +82,4 @@
 
         </style>
 </html>
+

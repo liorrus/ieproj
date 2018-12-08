@@ -1,5 +1,109 @@
-{% extends 'polls/base.html' %}
-{% block title %}Order Details{% endblock %}
+{% block content %}
+{%load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+  <center><h1>Order Detail</h1></center>
+{% if request.user.is_superuser %}
+
+                <div class="sidenav">
+                     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
+                    <a></a><a></a><a></a>
+                        <div class="w3-dropdown-content w3-bar-block">
+                          <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
+                            <a></a>
+                          <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
+                            <a></a>
+                          <a href="{% url 'polls:part-add' %}" class="w3-bar-item w3-button"> Part</a>
+                            <a></a>
+                          <a href="{% url 'polls:partsinproduct-add' %}" class="w3-bar-item w3-button"> Part to Product</a>
+                            <a></a>
+                          <a href="{% url 'polls:supplier-add' %}" class="w3-bar-item w3-button"> Supplier</a>
+                            <a></a>
+                        </div>
+                    <a></a><a></a><a></a>
+                    <a href="{% url 'polls:login' %}">Logout</a>
+                </div>
+{%else%}
+                <div class="sidenav">
+                <a href="{%url 'polls:index'%}">Home Page</a>
+
+                <a href="{% url 'polls:order_costumer' %}">Order</a>
+                <a href="#contact">Contact</a>
+                <a href="{% url 'polls:login' %}">logout</a>
+                 </div>
+{%endif%}
+{% endblock %}
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+
+    </head>
+        <body>
+
+        </body>
+
+
+        <style>
+
+        html, body {
+            font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 170px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+            height: 100%;
+        }
+
+        * {
+            margin: 5;
+            padding: 7;
+        }
+        #wrap {
+            min-height:100%;
+        }
+             h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:60px;
+            margin-top: 20px;
+            color: #1f1f47;
+            margin-bottom: 10px;
+        }
+            p{
+                font-size:30px;
+            margin-top: 20px;
+            color: #1f1f47;
+            margin-bottom: 10px;
+            }
+
+        </style>
+</html>
 
 {% block body %}
 
@@ -7,7 +111,9 @@
         <h1 align="center"> </h1>
         <h1 align="center"> </h1>
         <h1 align="center"> {{ order.get_name }}</h1>
-        <h2 align="center">User:  {{ order.user }}</h2>
+        {% if request.user.is_superuser %}
+                <h2 align="center">User:  {{ order.user }}</h2>
+        {%endif%}
         <h2 align="center">Order Date:  {{ order.orderDate }}</h2>
         <h2 align="center">Order Pick:  {{ order.orderPick }}</h2>
         <h2 align="center">Status:  {{ order.orderStatus }}</h2>

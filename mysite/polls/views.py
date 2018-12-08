@@ -175,6 +175,17 @@ class OrderCreateAdmin(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
+    model = Order
+    fields = [ 'orderPick', 'product1',  'component1',
+              'component2',  'component3',  'component4', 'component5',
+              'extra1', 'extra2', 'extra3', 'extra4', 'extra5',  'product2', 'product3', 'remarks']
+    template_name = 'polls/order_costumer.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(OrderCreateCustomer, self).form_valid(form)
+
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
