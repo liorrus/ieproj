@@ -1,0 +1,15 @@
+{% extends 'polls/base.html' %}
+{% block title %}PartsInProduct Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> {{ pip.get_name }}</h1>
+        <h2 align="center">Part:  {{ pip.part }}</h2>
+        <h2 align="center">Quantity:  {{ pip.quant }}</h2>
+        <h2 align="center">Product:  {{ pip.product }}</h2>
+
+{% endblock %}
+

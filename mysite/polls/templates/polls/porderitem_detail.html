@@ -1,0 +1,11 @@
+{% extends 'polls/base.html' %}
+{% block title %}Purchase Order Item Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> {{ porderitem.get_name }}</h1>
+        <h2 align="center">Purchase Order:  {{ porderitem.porder }}</h2>
+        <h2 align="center">Part:  {{ porderitem.part }}</h2>
+        <h2 align="center">Quantity:  {{ porderitem.quant }}</h2>
+
+{% endblock %}

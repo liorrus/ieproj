@@ -1,15 +1,15 @@
 {% extends 'polls/base.html' %}
-{% block title %}Products{% endblock %}
+{% block title %}Supplier Price{% endblock %}
 {% block body %}
 
-    <h1 align="center">Products:</h1>
+    <h1 align="center">Supplier Price:</h1>
 <div class="form-group" align="center">
         <div class="col-sm-offset-2 col-sm-10">
             <button id="myButton" class="float-left submit-button" >Add</button>
 
         <script type="text/javascript">
             document.getElementById("myButton").onclick = function () {
-                location.href ="{% url 'polls:product-add' %}";
+                location.href ="{% url 'polls:supprice-add' %}";
             };
         </script>
         </div>
@@ -22,8 +22,8 @@
         <button type="submit" class="btn btn-default">Search</button>
     </form>
     <ul align="center">
-        {% for product in all_products %}
-            <li><a href="{% url 'polls:product_detail' product.pk %}">{{ product.get_name }}</a></li>
+        {% for supprice in all_supprices %}
+            <li><a href="{% url 'polls:supprice_detail' supprice.pk %}">{{ supprice.get_name }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

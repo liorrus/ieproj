@@ -17,9 +17,10 @@ from django.contrib.auth import decorators
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # from here
+
 
 class UserFormView(View):
     form_class = UserForm
@@ -68,9 +69,6 @@ def logout(request):
     return render(request, 'polls/logout.html')
 
 
-
-
-
 class AdminView(generic.ListView):
     context_object_name = 'all_generics'
     template_name = 'polls/adminsite.html'
@@ -87,15 +85,15 @@ class IndexView(generic.ListView):
         return Question.objects.all()
 
 
-""" Lior M """
-
-class ProductIndexView(generic.ListView):
-    template_name = 'polls/product_index.html'
-    context_object_name = 'all_products'
+class OrderView(generic.ListView):
+    context_object_name = 'all_generics'
+    template_name = 'polls/generic_list.html'
 
     def get_queryset(self):
-        """Return the last five published questions."""
-        return Product.objects.all()
+        return Order.objects.all()
+
+
+"""DetailsView"""
 
 
 class ProductDetailView(generic.DetailView):
@@ -107,15 +105,57 @@ class OrderDetailView(generic.DetailView):
     model = Order
     template_name = 'polls/order_detail.html'
 
-class OrderView(generic.ListView):
-    context_object_name = 'all_generics'
-    template_name = 'polls/generic_list.html'
+
+class PartDetailView(generic.DetailView):
+    model = Part
+    template_name = 'polls/part_detail.html'
+
+
+class PipDetailView(generic.DetailView):
+    model = Pip
+    template_name = 'polls/pip_detail.html'
+
+
+class SupplierDetailView(generic.DetailView):
+    model = Supplier
+    template_name = 'polls/supplier_detail.html'
+
+
+class ComponentsDetailView(generic.DetailView):
+    model = Components
+    template_name = 'polls/components_detail.html'
+
+
+class ExtrasDetailView(generic.DetailView):
+    model = NewExtra
+    template_name = 'polls/newextra_detail.html'
+
+
+class SuppriceDetailView(generic.DetailView):
+    model = SupPrice
+    template_name = 'polls/supprice_detail.html'
+
+
+class PordDetailView(generic.DetailView):
+    model = POrder
+    template_name = 'polls/pord_detail.html'
+
+
+class PorderitemDetailView(generic.DetailView):
+    model = POrderItem
+    template_name = 'polls/porderitem_detail.html'
+
+
+"""IndexView"""
+
+
+class ProductIndexView(generic.ListView):
+    template_name = 'polls/product_index.html'
+    context_object_name = 'all_products'
 
     def get_queryset(self):
-        return Order.objects.all()
-
-
-"""Lior M"""
+        """Return the last five published questions."""
+        return Product.objects.all()
 
 
 class OrderIndexView(generic.ListView):
@@ -125,6 +165,78 @@ class OrderIndexView(generic.ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         return Order.objects.order_by('-orderDate')
+
+
+class PartIndexView(generic.ListView):
+    template_name = 'polls/part_index.html'
+    context_object_name = 'all_parts'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Part.objects.all()
+
+
+class PipIndexView(generic.ListView):
+    template_name = 'polls/pip_index.html'
+    context_object_name = 'all_pips'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Pip.objects.all()
+
+
+class SupplierIndexView(generic.ListView):
+    template_name = 'polls/supplier_index.html'
+    context_object_name = 'all_suppliers'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Supplier.objects.all()
+
+
+class ComponentsIndexView(generic.ListView):
+    template_name = 'polls/components_index.html'
+    context_object_name = 'all_componentss'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Components.objects.all()
+
+
+class ExtrasIndexView(generic.ListView):
+    template_name = 'polls/newextra_index.html'
+    context_object_name = 'all_newextras'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return NewExtra.objects.all()
+
+
+class SuppriceIndexView(generic.ListView):
+    template_name = 'polls/supprice_index.html'
+    context_object_name = 'all_supprices'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return SupPrice.objects.all()
+
+
+class PordIndexView(generic.ListView):
+    template_name = 'polls/pord_index.html'
+    context_object_name = 'all_porders'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return POrder.objects.all()
+
+
+class PorderitemIndexView(generic.ListView):
+    template_name = 'polls/porderitem_index.html'
+    context_object_name = 'all_porderitems'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return POrderItem.objects.all()
 
 
 class ResultsView(generic.DetailView):
@@ -156,12 +268,34 @@ class SupplierCreate(CreateView):
     fields = ['name', 'address', 'tel', 'mail']
 
 
-class PartsInProductCreate(CreateView):
-    model = PartsInProduct
+class ComponentsCreate(CreateView):
+    model = Components
     fields = ['part', 'quant', 'product']
 
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+class PipCreate(CreateView):
+    model = Pip
+    fields = ['part', 'quant', 'product']
+
+
+class ExtrasCreate(CreateView):
+    model = NewExtra
+    fields = ['extra_part', 'extra_price', 'extra_product']
+
+
+class SuppriceCreate(CreateView):
+    model = SupPrice
+    fields = ['supplier', 'part', 'price']
+
+
+class PordCreate(CreateView):
+    model = POrder
+    fields = ['supplier', 'orderStatus', 'ifSupplied']
+
+
+class PorderitemCreate(CreateView):
+    model = POrderItem
+    fields = ['porder', 'part', 'quant']
 
 
 class OrderCreateAdmin(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
