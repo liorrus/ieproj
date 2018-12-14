@@ -1,0 +1,17 @@
+{% extends 'polls/base.html' %}
+{% block title %}Supplier Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> {{ supplier.get_name }}</h1>
+        <h2 align="center">Description:  {{ supplier.name }}</h2>
+        <h2 align="center">Address:  {{ supplier.address }}</h2>
+        <h2 align="center">Telephone:  {{ supplier.tel }}</h2>
+        <h2 align="center">Email:  {{ supplier.mail }}</h2>
+
+
+{% endblock %}
+

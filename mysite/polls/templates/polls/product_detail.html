@@ -1,0 +1,10 @@
+{% extends 'polls/base.html' %}
+{% block title %}Product Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> {{ product.pdes }}</h1>
+        <h2 align="center">Price:  {{ product.price }}</h2>
+        <h2 align="center">Preparation Time (minutes):  {{ product.prep }}</h2>
+
+{% endblock %}

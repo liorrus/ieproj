@@ -1,0 +1,11 @@
+{% extends 'polls/base.html' %}
+{% block title %}Supplier Price Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> {{ supprice.get_name }}</h1>
+        <h2 align="center">Supplier:  {{ supprice.supplier }}</h2>
+        <h2 align="center">Part:  {{ supprice.part }}</h2>
+        <h2 align="center">Price:  {{ supprice.price }}</h2>
+
+{% endblock %}

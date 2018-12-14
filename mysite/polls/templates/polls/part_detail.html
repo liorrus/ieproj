@@ -1,0 +1,19 @@
+{% extends 'polls/base.html' %}
+{% block title %}Part Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> </h1>
+        <h1 align="center"> {{ part.get_name }}</h1>
+        <h2 align="center">Description:  {{ part.pdes }}</h2>
+        <h2 align="center">Unit:  {{ part.unit }}</h2>
+        <h2 align="center">Stock:  {{ part.stock }}</h2>
+        <h2 align="center">Lead Time:  {{ part.lt }}</h2>
+        <h2 align="center">SS High:  {{ part.sshigh }}</h2>
+        <h2 align="center">SS Low:  {{ part.sslow }}</h2>
+
+
+{% endblock %}
+

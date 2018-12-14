@@ -1,0 +1,81 @@
+{%load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+{% block content %}
+        <div class="sidenav">
+                 <a href="{% url 'polls:register' %}">register</a>
+        </div>
+  <center><h1>Login</h1></center>
+{% endblock %}
+<form method="post" autocomplete="off" >
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <button type="submit">Login</button>
+</form>
+
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>Flickr Photobrowser</title>
+        <style>
+        html, body {
+            font-family: "Lato", sans-serif;
+}
+form{
+    padding-left:180px;
+}
+.sidenav {
+    height: 100%;
+    width: 170px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+            height: 100%;
+        }
+        * {
+            margin: 5;
+            padding: 7;
+        }
+        #wrap {
+            min-height:100%;
+        }
+             h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:60px;
+            margin-top: 20px;
+            color: #1f1f47;
+            margin-bottom: 10px;
+        }
+            p{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size:30px;
+            margin-top: 20px;
+            color: #1f1f47;
+            margin-bottom: 10px;
+            }
+        </style>
+    </head>
+</html>

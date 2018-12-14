@@ -1,0 +1,9 @@
+{% if all_generics %}
+    <ul>
+    {% for generic in all_generics %}
+        <br>{{generic}}</br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}

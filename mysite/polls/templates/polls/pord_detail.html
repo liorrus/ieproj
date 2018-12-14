@@ -1,0 +1,12 @@
+{% extends 'polls/base.html' %}
+{% block title %}Purchase Order Details{% endblock %}
+
+{% block body %}
+
+        <h1 align="center"> {{ porder.get_name }}</h1>
+        <h2 align="center">Supplier:  {{ porder.supplier }}</h2>
+        <h2 align="center">Order Status:  {{ porder.orderStatus }}</h2>
+        <h2 align="center">Order Date:  {{ porder.porderDate }}</h2>
+        <h2 align="center">Supplied?:  {{ porder.ifSupplied }}</h2>
+
+{% endblock %}
