@@ -8,4 +8,25 @@
         <h2 align="center">Quantity:  {{ components.quant }}</h2>
         <h2 align="center">Product:  {{ components.product }}</h2>
 
+
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="myButton" class="float-left submit-button" >Change</button>
+
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href ="{% url 'polls:components_update' components.pk %}";
+            };
+        </script>
+        </div>
+
+                        <form action="{% url 'polls:components_delete' components.pk %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="components pk" value="{{ components.pk }}"/>
+                            <button type="submit" class="btn btn-default btn-sm"> Delete
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+
+</div>
 {% endblock %}

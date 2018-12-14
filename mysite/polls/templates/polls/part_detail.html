@@ -15,5 +15,25 @@
         <h2 align="center">SS Low:  {{ part.sslow }}</h2>
 
 
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="myButton" class="float-left submit-button" >Change</button>
+
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href ="{% url 'polls:part_update' part.pk %}";
+            };
+        </script>
+        </div>
+
+                        <form action="{% url 'polls:part_delete' part.pk %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="part pk" value="{{ part.pk }}"/>
+                            <button type="submit" class="btn btn-default btn-sm"> Delete
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+
+</div>
 {% endblock %}
 

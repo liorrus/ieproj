@@ -1,111 +1,8 @@
-{% block content %}
-{%load staticfiles%}
-    <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
-  <center><h1>Order Detail</h1></center>
-{% if request.user.is_superuser %}
-
-                <div class="sidenav">
-                     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
-                    <a></a><a></a><a></a>
-                        <div class="w3-dropdown-content w3-bar-block">
-                          <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
-                            <a></a>
-                          <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
-                            <a></a>
-                          <a href="{% url 'polls:part-add' %}" class="w3-bar-item w3-button"> Part</a>
-                            <a></a>
-                          <a href="{% url 'polls:partsinproduct-add' %}" class="w3-bar-item w3-button"> Part to Product</a>
-                            <a></a>
-                          <a href="{% url 'polls:supplier-add' %}" class="w3-bar-item w3-button"> Supplier</a>
-                            <a></a>
-                        </div>
-                    <a></a><a></a><a></a>
-                    <a href="{% url 'polls:login' %}">Logout</a>
-                </div>
-{%else%}
-                <div class="sidenav">
-                <a href="{%url 'polls:index'%}">Home Page</a>
-
-                <a href="{% url 'polls:order_costumer' %}">Order</a>
-                <a href="#contact">Contact</a>
-                <a href="{% url 'polls:login' %}">logout</a>
-                 </div>
-{%endif%}
-{% endblock %}
-<html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-
-    </head>
-        <body>
-
-        </body>
-
-
-        <style>
-
-        html, body {
-            font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-    height: 100%;
-    width: 170px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-            height: 100%;
-        }
-
-        * {
-            margin: 5;
-            padding: 7;
-        }
-        #wrap {
-            min-height:100%;
-        }
-             h1 {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size:60px;
-            margin-top: 20px;
-            color: #1f1f47;
-            margin-bottom: 10px;
-        }
-            p{
-                font-size:30px;
-            margin-top: 20px;
-            color: #1f1f47;
-            margin-bottom: 10px;
-            }
-
-        </style>
-</html>
+{% extends 'polls/base.html' %}
+{% block title %}Order Details{% endblock %}
 
 {% block body %}
+
 
         <h1 align="center"> </h1>
         <h1 align="center"> </h1>
@@ -133,5 +30,26 @@
         <h2 align="center">Product2:  {{ order.product2 }}</h2>
         <h2 align="center">Product3:  {{ order.product3 }}</h2>
 
+
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="myButton" class="float-left submit-button" >Change</button>
+
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href ="{% url 'polls:order_update' order.pk %}";
+            };
+        </script>
+        </div>
+
+                        <form action="{% url 'polls:order_delete' order.pk %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="order pk" value="{{ order.pk }}"/>
+                            <button type="submit" class="btn btn-default btn-sm"> Delete
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+
+</div>
 {% endblock %}
 

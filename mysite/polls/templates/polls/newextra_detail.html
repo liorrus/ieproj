@@ -8,4 +8,25 @@
         <h2 align="center">Price:  {{ newextra.extra_price }}</h2>
         <h2 align="center">Product:  {{ newextra.extra_product }}</h2>
 
+
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="myButton" class="float-left submit-button" >Change</button>
+
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href ="{% url 'polls:newextra_update' newextra.pk %}";
+            };
+        </script>
+        </div>
+
+                        <form action="{% url 'polls:newextra_delete' newextra.pk %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="newextra pk" value="{{ newextra.pk }}"/>
+                            <button type="submit" class="btn btn-default btn-sm"> Delete
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+
+</div>
 {% endblock %}

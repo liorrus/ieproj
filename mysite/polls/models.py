@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+import datetime
 
 
 class Question(models.Model):
@@ -33,6 +34,7 @@ class Product(models.Model):
     pdes = models.CharField(max_length=48)  # description
     price = models.IntegerField(default=0)  # price of product
     prep = models.FloatField(default=0.0)  # time for preparation
+    slug = models.SlugField(default="STRING")
 
     def get_absolute_url(self):
         return reverse('polls:product_detail', kwargs={'pk': self.pk})
@@ -57,13 +59,14 @@ class Part(models.Model): # Raw material
     stock = models.FloatField(default=0.0) # How Much are in current stock
     lt = models.FloatField(default=1.0) # time to deliver
     sshigh = models.FloatField(default=0) 
-    sslow = models.FloatField(default=0) 
+    sslow = models.FloatField(default=0)
+    slug = models.SlugField(default="STRING")
 
     def get_absolute_url(self):
         return reverse('polls:part_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return self.pdes + " " + str(self.unit) + " " + str(self.stock) + " " + str(self.lt)
+        return self.pdes
 
     def get_name(self):
         return str(self.pdes) + " // " + str(self.stock)
@@ -153,31 +156,34 @@ class Components(models.Model):
         return str(self.part) + " // " + str(self.quant) + " // " + str(self.product)
 
 
+now = datetime.datetime.now()
+
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # costumer ID
     orderDate = models.DateTimeField(auto_now_add=True)  # the date of order creation
-    orderPick=models.DateTimeField(auto_now=False)
+    orderPick=models.DateTimeField(blank=True, default=now)
     ORDER_STATUS = (
         ('W', 'WAITING'),
         ('R', 'READY'),
         ('T', 'TAKE'),
     )
     orderStatus = models.CharField(max_length=1, choices=ORDER_STATUS, default='WAITING') 
-    remarks = models.CharField(max_length=300, default=".")  # remarks of the order
+    remarks = models.CharField(max_length=300, default="-none-")  # remarks of the order
     ifSupplied = models.BooleanField(default=False)
     product1 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro1")  # product ID
-    product2 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro2", default=51)  # product ID
-    product3 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro3", default=51)  # product ID
-    extra1 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex1")  # extra1 if have
-    extra2 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex2")  # extra2 if have
-    extra3 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex3")  # extra3 if have
-    extra4 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex4")  # extra4 if have
-    extra5 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex5")  # extra5 if have
-    component1 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp1")  # component1 if have
-    component2 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp2")  # component2 if have
-    component3 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp3")  # component3 if have
-    component4 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp4")  # component4 if have
-    component5 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp5")  # component5 if have
+    product2 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pro2", default=52)  # product ID
+    product3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pro3", default=52)  # product ID
+    extra1 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex1", default=3)  # extra1 if have
+    extra2 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex2", default=3)  # extra2 if have
+    extra3 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex3", default=3)  # extra3 if have
+    extra4 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex4", default=3)  # extra4 if have
+    extra5 = models.ForeignKey(NewExtra, on_delete=models.CASCADE, related_name="ex5", default=3)  # extra5 if have
+    component1 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp1", default=6)  # component1 if have
+    component2 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp2", default=6)  # component2 if have
+    component3 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp3", default=6)  # component3 if have
+    component4 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp4", default=6)  # component4 if have
+    component5 = models.ForeignKey(Components, on_delete=models.CASCADE, related_name="comp5", default=6)  # component5 if have
 
     def get_absolute_url(self):
         return reverse('polls:order_detail', kwargs={'pk': self.pk})

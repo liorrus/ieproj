@@ -13,5 +13,25 @@
         <h2 align="center">Email:  {{ supplier.mail }}</h2>
 
 
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="myButton" class="float-left submit-button" >Change</button>
+
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href ="{% url 'polls:supplier_update' supplier.pk %}";
+            };
+        </script>
+        </div>
+
+                        <form action="{% url 'polls:supplier_delete' supplier.pk %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="supplier pk" value="{{ supplier.pk }}"/>
+                            <button type="submit" class="btn btn-default btn-sm"> Delete
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+
+</div>
 {% endblock %}
 

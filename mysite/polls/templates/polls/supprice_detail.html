@@ -8,4 +8,26 @@
         <h2 align="center">Part:  {{ supprice.part }}</h2>
         <h2 align="center">Price:  {{ supprice.price }}</h2>
 
+
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="myButton" class="float-left submit-button" >Change</button>
+
+        <script type="text/javascript">
+            document.getElementById("myButton").onclick = function () {
+                location.href ="{% url 'polls:supprice_update' supprice.pk %}";
+            };
+        </script>
+        </div>
+
+                        <form action="{% url 'polls:supprice_delete' supprice.pk %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="supprice pk" value="{{ supprice.pk }}"/>
+                            <button type="submit" class="btn btn-default btn-sm"> Delete
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </form>
+
+</div>
 {% endblock %}
+

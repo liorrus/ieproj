@@ -13,6 +13,5 @@ admin.site.register(Order)
 admin.site.register(Unit)
 admin.site.register(POrder)
 admin.site.register(POrderItem)
-
 admin.site.register(NewExtra)
 admin.site.register(Components)

@@ -137,7 +137,7 @@ class SuppriceDetailView(generic.DetailView):
     template_name = 'polls/supprice_detail.html'
 
 
-class PordDetailView(generic.DetailView):
+class PorderDetailView(generic.DetailView):
     model = POrder
     template_name = 'polls/pord_detail.html'
 
@@ -222,7 +222,7 @@ class SuppriceIndexView(generic.ListView):
         return SupPrice.objects.all()
 
 
-class PordIndexView(generic.ListView):
+class PorderIndexView(generic.ListView):
     template_name = 'polls/pord_index.html'
     context_object_name = 'all_porders'
 
@@ -274,9 +274,29 @@ class PartCreate(CreateView):
     fields = ['pdes', 'unit', 'stock', 'lt', 'sshigh', 'sslow']
 
 
+class PartUpdate(UpdateView):
+    model = Part
+    fields = ['pdes', 'unit', 'stock', 'lt', 'sshigh', 'sslow']
+
+
+class PartDelete(DeleteView):
+    model = Part
+    success_url = reverse_lazy('polls:part_index')
+
+
 class SupplierCreate(CreateView):
     model = Supplier
     fields = ['name', 'address', 'tel', 'mail']
+
+
+class SupplierUpdate(UpdateView):
+    model = Supplier
+    fields = ['name', 'address', 'tel', 'mail']
+
+
+class SupplierDelete(DeleteView):
+    model = Supplier
+    success_url = reverse_lazy('polls:supplier_index')
 
 
 class ComponentsCreate(CreateView):
@@ -284,9 +304,29 @@ class ComponentsCreate(CreateView):
     fields = ['part', 'quant', 'product']
 
 
+class ComponentsUpdate(UpdateView):
+    model = Components
+    fields = ['part', 'quant', 'product']
+
+
+class ComponentsDelete(DeleteView):
+    model = Components
+    success_url = reverse_lazy('polls:components_index')
+
+
 class PipCreate(CreateView):
     model = Pip
     fields = ['part', 'quant', 'product']
+
+
+class PipUpdate(UpdateView):
+    model = Pip
+    fields = ['part', 'quant', 'product']
+
+
+class PipDelete(DeleteView):
+    model = Pip
+    success_url = reverse_lazy('polls:pip_index')
 
 
 class ExtrasCreate(CreateView):
@@ -294,19 +334,59 @@ class ExtrasCreate(CreateView):
     fields = ['extra_part', 'extra_price', 'extra_product']
 
 
+class ExtrasUpdate(UpdateView):
+    model = NewExtra
+    fields = ['extra_part', 'extra_price', 'extra_product']
+
+
+class ExtrasDelete(DeleteView):
+    model = NewExtra
+    success_url = reverse_lazy('polls:newextra_index')
+
+
 class SuppriceCreate(CreateView):
     model = SupPrice
     fields = ['supplier', 'part', 'price']
 
 
-class PordCreate(CreateView):
+class SuppriceUpdate(UpdateView):
+    model = SupPrice
+    fields = ['supplier', 'part', 'price']
+
+
+class SuppriceDelete(DeleteView):
+    model = SupPrice
+    success_url = reverse_lazy('polls:supprice_index')
+
+
+class PorderCreate(CreateView):
     model = POrder
     fields = ['supplier', 'orderStatus', 'ifSupplied']
+
+
+class PorderUpdate(UpdateView):
+    model = POrder
+    fields = ['supplier', 'orderStatus', 'ifSupplied']
+
+
+class PorderDelete(DeleteView):
+    model = POrder
+    success_url = reverse_lazy('polls:pord_index')
 
 
 class PorderitemCreate(CreateView):
     model = POrderItem
     fields = ['porder', 'part', 'quant']
+
+
+class PorderitemUpdate(UpdateView):
+    model = POrderItem
+    fields = ['porder', 'part', 'quant']
+
+
+class PorderitemDelete(DeleteView):
+    model = POrderItem
+    success_url = reverse_lazy('polls:porderitem_index')
 
 
 class OrderCreateAdmin(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
@@ -319,6 +399,20 @@ class OrderCreateAdmin(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class OrderUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
+    model = Order
+    fields = ['user', 'orderPick', 'orderStatus', 'ifSupplied', 'product1',  'component1',
+              'component2',  'component3',  'component4', 'component5',
+              'extra1', 'extra2', 'extra3', 'extra4', 'extra5',  'product2', 'product3', 'remarks']
+    """template_name = 'polls/generice_form.html'"""
+
+
+class OrderDeleteAdmin(DeleteView):
+    model = Order
+    success_url = reverse_lazy('polls:order_index')
+
 
 class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     model = Order
