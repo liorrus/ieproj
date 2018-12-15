@@ -2,18 +2,19 @@
 {% block title %}Components{% endblock %}
 {% block body %}
 
-    <h1 align="center">Components:</h1>
-<div class="form-group" align="center">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button id="myButton" class="float-left submit-button" >Add</button>
 
-        <script type="text/javascript">
-            document.getElementById("myButton").onclick = function () {
-                location.href ="{% url 'polls:components-add' %}";
-            };
-        </script>
-        </div>
-</div>
+        <h1 align="center">Components:</h1>
+    <div class="form-group" align="center">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button id="myButton" class="float-left submit-button" >Add</button>
+
+            <script type="text/javascript">
+                document.getElementById("myButton").onclick = function () {
+                    location.href ="{% url 'polls:components-add' %}";
+                };
+            </script>
+            </div>
+    </div>
     <br>
     <form class="navbar-form navbar-left" role="search" method="get" action="#" align="center">
         <div class="form-group">
@@ -23,7 +24,7 @@
     </form>
     <ul align="center">
         {% for components in all_componentss %}
-            <li><a href="{% url 'polls:components_detail' components.pk %}">{{ components.get_name }}</a></li>
+            <li><a href="{% url 'polls:components_detail' components.pk %}">{{ components.get_name }} {{components.product}}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

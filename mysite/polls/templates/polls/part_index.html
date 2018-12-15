@@ -2,28 +2,45 @@
 {% block title %}Parts{% endblock %}
 {% block body %}
 
-    <h1 align="center">Parts:</h1>
-<div class="form-group" align="center">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button id="myButton" class="float-left submit-button" >Add</button>
 
-        <script type="text/javascript">
-            document.getElementById("myButton").onclick = function () {
-                location.href ="{% url 'polls:part-add' %}";
-            };
-        </script>
-        </div>
-</div>
+        <h1 align="center">Parts:</h1>
+    <div class="form-group" align="center">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button id="myButton" class="float-left submit-button" >Add</button>
+
+            <script type="text/javascript">
+                document.getElementById("myButton").onclick = function () {
+                    location.href ="{% url 'polls:part-add' %}";
+                };
+            </script>
+            </div>
+    </div>
     <br>
-    <form class="navbar-form navbar-left" role="search" method="get" action="#" align="center">
-        <div class="form-group">
-            <input type="text" class="form-control" name="q" value="">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
+    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:part_search' %}" align="center">
+
+                <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
+                       placeholder="Search Parts" aria-label="Search">
+                <input type="submit" value="Search"></input>
+
     </form>
     <ul align="center">
-        {% for part in all_parts %}
-            <li><a href="{% url 'polls:part_detail' part.pk %}">{{ part.get_name }}</a></li>
-        {% endfor %}
+            {% for part in all_parts %}
+                    <li class="list-group-item"><a href="{% url 'polls:part_detail' part.pk %}">{{ part.get_name }}</a></li>
+            {% endfor %}
     </ul>
+    <div class="pagination" align="center">
+            <span class="step-links">
+                {% if all_parts.has_previous %}
+                    <a href="?{{ page_request_var }}={{ all_parts.previous_page_number }}&q={{ request.GET.q }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ all_parts.number }} of {{ all_parts.paginator.num_pages }}.
+                </span>
+
+                {% if all_parts.has_next %}
+                    <a href="?{{ page_request_var }}={{ all_parts.next_page_number }}&q={{ request.GET.q }}">next</a>
+                {% endif %}
+            </span>
+    </div>
 {% endblock %}

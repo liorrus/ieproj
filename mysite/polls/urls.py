@@ -2,7 +2,7 @@ from django.urls import path
 from django.urls import include,re_path
 from django.conf.urls import url
 from . import views
-from .views import LoginView
+from .views import *
 from django.views.generic import CreateView
 from django.views.generic.base import RedirectView
 
@@ -69,7 +69,10 @@ urlpatterns = [
     url(r'porderitem_index/$', views.PorderitemIndexView.as_view(), name="porderitem_index"),
     url(r'porderitem/(?P<pk>[0-9]+)/$', views.PorderitemUpdate.as_view(), name="porderitem_update"),
     url(r'porderitem/(?P<pk>[0-9]+)/delete/$', views.PorderitemDelete.as_view(), name="porderitem_delete"),
-
+    url(r'^product_results/$', product_index, name="product_search"),
+    url(r'^part_results/$', part_index, name="part_search"),
+    url(r'^components_results/$', components_index, name="components_search"),
+    url(r'^supplier_results/$', supplier_index, name="supplier_search"),
 
 
 

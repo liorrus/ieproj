@@ -19,6 +19,9 @@ from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 # from here
 
@@ -443,6 +446,113 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def product_index(request):
+    today = timezone.now().date()
+    queryset_list = Product.objects.all()
+    query = request.GET['q']
+    if query:
+        queryset_list = queryset_list.filter(
+            Q(pdes__icontains=query) |
+            Q(price__icontains=query) |
+            Q(prep__icontains=query)
+        ).distinct()
+    else:
+        queryset_list = Product.objects.all()
+    paginator = Paginator(queryset_list, 10)
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    context = {"all_products": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+    return render(request, 'polls/product_index.html', context)
+
+
+def part_index(request):
+        today = timezone.now().date()
+        queryset_lists = Part.objects.all()
+        query = request.GET['q']
+        if query:
+            queryset_lists = queryset_lists.filter(
+                Q(pdes__icontains=query) |
+                Q(stock__icontains=query)
+            ).distinct()
+        else:
+            queryset_lists = Part.objects.all()
+        paginator = Paginator(queryset_lists, 10)
+        page_request_var = "page"
+        page = request.GET.get(page_request_var)
+        try:
+            queryset = paginator.page(page)
+        except PageNotAnInteger:
+            queryset = paginator.page(1)
+        except EmptyPage:
+            queryset = paginator.page(paginator.num_pages)
+
+        context = {"all_parts": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+        return render(request, 'polls/part_index.html', context)
+
+
+def components_index(request):
+    today = timezone.now().date()
+    queryset_lists1 = Components.objects.all()
+    query = request.GET['q']
+    if query:
+        queryset_lists1 = queryset_lists1.filter(
+            Q(part__icontains=query) |
+            Q(quant__icontains=query) |
+            Q(product__icontains=query)
+        ).distinct()
+    else:
+        queryset_lists1 = Components.objects.all()
+    paginator = Paginator(queryset_lists1, 10)
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    context = {"all_componentss": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+    return render(request, 'polls/components_index.html', context)
+
+
+def supplier_index(request):
+        today = timezone.now().date()
+        queryset_list = Supplier.objects.all()
+        query = request.GET['q']
+        if query:
+            queryset_list = queryset_list.filter(
+                Q(address__icontains=query) |
+                Q(name__icontains=query) |
+                Q(mail__icontains=query)
+            ).distinct()
+        else:
+            queryset_list = Supplier.objects.all()
+        paginator = Paginator(queryset_list, 10)
+        page_request_var = "page"
+        page = request.GET.get(page_request_var)
+        try:
+            queryset = paginator.page(page)
+        except PageNotAnInteger:
+            queryset = paginator.page(1)
+        except EmptyPage:
+            queryset = paginator.page(paginator.num_pages)
+
+        context = {"all_suppliers": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+        return render(request, 'polls/supplier_index.html', context)
 
     # asdfaslk!! hiush ##
     # try8

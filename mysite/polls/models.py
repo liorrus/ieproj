@@ -43,7 +43,7 @@ class Product(models.Model):
         return self.pdes
 
     def get_name(self):
-        return str(self.pdes) + " // " + str(self.price) + " // " + str(self.id)
+        return str(self.pdes) + " // " + str(self.price) + " // " + str(self.pk)
 
 
 class Unit(models.Model): 

@@ -15,15 +15,31 @@
         </div>
 </div>
     <br>
-    <form class="navbar-form navbar-left" role="search" method="get" action="#" align="center">
-        <div class="form-group">
-            <input type="text" class="form-control" name="q" value="">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
+    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:supplier_search' %}" align="center">
+
+                <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
+                       placeholder="Search Suppliers" aria-label="Search">
+                <input type="submit" value="Search"></input>
+
     </form>
     <ul align="center">
-        {% for supplier in all_suppliers %}
-            <li><a href="{% url 'polls:supplier_detail' supplier.pk %}">{{ supplier.get_name }}</a></li>
-        {% endfor %}
+            {% for supplier in all_suppliers %}
+                    <li class="list-group-item"><a href="{% url 'polls:supplier_detail' supplier.pk %}">{{ supplier.get_name }}</a></li>
+            {% endfor %}
     </ul>
+    <div class="pagination" align="center">
+            <span class="step-links">
+                {% if all_suppliers.has_previous %}
+                    <a href="?{{ page_request_var }}={{ all_suppliers.previous_page_number }}&q={{ request.GET.q }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ all_suppliers.number }} of {{ all_suppliers.paginator.num_pages }}.
+                </span>
+
+                {% if all_suppliers.has_next %}
+                    <a href="?{{ page_request_var }}={{ all_suppliers.next_page_number }}&q={{ request.GET.q }}">next</a>
+                {% endif %}
+            </span>
+    </div>
 {% endblock %}
