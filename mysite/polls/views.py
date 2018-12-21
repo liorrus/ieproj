@@ -74,6 +74,7 @@ def logout(request):
     auth.logout(request)
     return render(request, 'polls/logout.html')
 
+
 class Inventory(generic.ListView):
     template_name = 'polls/inventory.html'
     context_object_name = 'all_generics'
@@ -83,12 +84,15 @@ class Inventory(generic.ListView):
         query_last_month= "SELECT * FROM polls_order WHERE orderDate BETWEEN datetime('now','-30 days') AND datetime('now','localtime') "
         return Order.objects.raw(query_last_month)
 
+
 class AdminView(generic.ListView):
-    context_object_name = 'all_generics'
     template_name = 'polls/adminsite.html'
+    context_object_name = 'all_orders'
 
     def get_queryset(self):
-        return Order.objects.all()
+        return Order.objects.filter(
+            Q(ifSupplied=False)
+        ).order_by('-orderDate')
 
 
 class IndexView(generic.ListView):
