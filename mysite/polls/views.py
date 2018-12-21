@@ -726,6 +726,12 @@ def supprice_index(request):
         return render(request, 'polls/supprice_index.html', context)
 
 
+class QueueUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
+    model = Order
+    fields = ['ifSupplied']
+    """template_name = 'polls/generice_form.html'"""
+
+
 def queue_index(request):
     today = timezone.now().date()
     queryset_list3 = Order.objects.filter(
@@ -755,6 +761,8 @@ def queue_index(request):
     context = {"all_orders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
 
     return render(request, 'polls/adminsite.html', context)
+
+
 
     # asdfaslk!! hiush ##
     # try8
