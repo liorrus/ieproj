@@ -22,6 +22,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
+from django.db import connection
 
 
 # from here
@@ -73,25 +74,21 @@ def logout(request):
     auth.logout(request)
     return render(request, 'polls/logout.html')
 
-
 class Inventory(generic.ListView):
     template_name = 'polls/inventory.html'
     context_object_name = 'all_generics'
 
     def get_queryset(self):
         """Return the last five published questions."""
-        query_last_month= "SELECT * FROM POrder"
+        query_last_month= "SELECT * FROM polls_order WHERE orderDate BETWEEN datetime('now','-30 days') AND datetime('now','localtime') "
         return Order.objects.raw(query_last_month)
 
-
 class AdminView(generic.ListView):
+    context_object_name = 'all_generics'
     template_name = 'polls/adminsite.html'
-    context_object_name = 'all_orders'
 
     def get_queryset(self):
-        return Order.objects.filter(
-            Q(ifSupplied=False)
-        ).order_by('-orderDate')
+        return Order.objects.all()
 
 
 class IndexView(generic.ListView):
@@ -425,12 +422,6 @@ class OrderUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
     """template_name = 'polls/generice_form.html'"""
 
 
-class QueueUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
-    model = Order
-    fields = ['ifSupplied']
-    """template_name = 'polls/generice_form.html'"""
-
-
 class OrderDeleteAdmin(DeleteView):
     model = Order
     success_url = reverse_lazy('polls:order_index')
@@ -526,9 +517,9 @@ def components_index(request):
     query = request.GET['q']
     if query:
         queryset_lists1 = queryset_lists1.filter(
-            Q(part__pdes__icontains=query) |
+            Q(part_pdes_icontains=query) |
             Q(quant__icontains=query) |
-            Q(product__pdes__icontains=query)
+            Q(product_pdes_icontains=query)
         ).distinct()
     else:
         queryset_lists1 = Components.objects.all()
@@ -581,8 +572,8 @@ def extra_index(request):
     if query:
         queryset_list2 = queryset_list2.filter(
             Q(extra_price__icontains=query) |
-            Q(extra_part__pdes__icontains=query) |
-            Q(extra_product__pdes__icontains=query)
+            Q(extra_part_pdes_icontains=query) |
+            Q(extra_product_pdes_icontains=query)
         ).distinct()
     else:
         queryset_list2 = NewExtra.objects.all()
@@ -607,7 +598,7 @@ def order_index(request):
         query = request.GET['q']
         if query:
             queryset_list3 = queryset_list3.filter(
-                Q(user__username__contains=query) |
+                Q(user_username_contains=query) |
                 Q(remarks__contains=query) |
                 Q(orderStatus__contains=query)
             ).distinct()
@@ -626,6 +617,113 @@ def order_index(request):
         context = {"all_orders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
 
         return render(request, 'polls/order_index.html', context)
+
+
+def pip_index(request):
+    today = timezone.now().date()
+    queryset_list4 = Pip.objects.all()
+    query = request.GET['q']
+    if query:
+        queryset_list4 = queryset_list4.filter(
+            Q(part_pdes_contains=query) |
+            Q(quant__contains=query) |
+            Q(product_pdes_contains=query)
+        ).distinct()
+    else:
+        queryset_list4 = Pip.objects.all()
+    paginator = Paginator(queryset_list4, 10)
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    context = {"all_pips": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+    return render(request, 'polls/pip_index.html', context)
+
+
+def pord_index(request):
+        today = timezone.now().date()
+        queryset_list4 = POrder.objects.all()
+        query = request.GET['q']
+        if query:
+            queryset_list4 = queryset_list4.filter(
+                Q(supplier_name_contains=query) |
+                Q(orderStatus__contains=query)
+            ).distinct()
+        else:
+            queryset_list4 = POrder.objects.all()
+        paginator = Paginator(queryset_list4, 10)
+        page_request_var = "page"
+        page = request.GET.get(page_request_var)
+        try:
+            queryset = paginator.page(page)
+        except PageNotAnInteger:
+            queryset = paginator.page(1)
+        except EmptyPage:
+            queryset = paginator.page(paginator.num_pages)
+
+        context = {"all_porders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+        return render(request, 'polls/pord_index.html', context)
+
+
+def porderitem_index(request):
+    today = timezone.now().date()
+    queryset_list2 = POrderItem.objects.all()
+    query = request.GET['q']
+    if query:
+        queryset_list2 = queryset_list2.filter(
+            Q(porder_suppliername_icontains=query) |
+            Q(part_pdes_icontains=query) |
+            Q(quant__icontains=query)
+        ).distinct()
+    else:
+        queryset_list2 = POrderItem.objects.all()
+    paginator = Paginator(queryset_list2, 10)
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    context = {"all_porderitems": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+    return render(request, 'polls/porderitem_index.html', context)
+
+
+def supprice_index(request):
+        today = timezone.now().date()
+        queryset_list2 = SupPrice.objects.all()
+        query = request.GET['q']
+        if query:
+            queryset_list2 = queryset_list2.filter(
+                Q(supplier_name_icontains=query) |
+                Q(part_pdes_icontains=query) |
+                Q(price__icontains=query)
+            ).distinct()
+        else:
+            queryset_list2 = SupPrice.objects.all()
+        paginator = Paginator(queryset_list2, 10)
+        page_request_var = "page"
+        page = request.GET.get(page_request_var)
+        try:
+            queryset = paginator.page(page)
+        except PageNotAnInteger:
+            queryset = paginator.page(1)
+        except EmptyPage:
+            queryset = paginator.page(paginator.num_pages)
+
+        context = {"all_supprices": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+        return render(request, 'polls/supprice_index.html', context)
 
 
 def queue_index(request):
@@ -657,113 +755,6 @@ def queue_index(request):
     context = {"all_orders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
 
     return render(request, 'polls/adminsite.html', context)
-
-
-def pip_index(request):
-    today = timezone.now().date()
-    queryset_list4 = Pip.objects.all()
-    query = request.GET['q']
-    if query:
-        queryset_list4 = queryset_list4.filter(
-            Q(part__pdes__contains=query) |
-            Q(quant__contains=query) |
-            Q(product__pdes__contains=query)
-        ).distinct()
-    else:
-        queryset_list4 = Pip.objects.all()
-    paginator = Paginator(queryset_list4, 10)
-    page_request_var = "page"
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-
-    context = {"all_pips": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
-
-    return render(request, 'polls/pip_index.html', context)
-
-
-def pord_index(request):
-        today = timezone.now().date()
-        queryset_list4 = POrder.objects.all()
-        query = request.GET['q']
-        if query:
-            queryset_list4 = queryset_list4.filter(
-                Q(supplier__name__contains=query) |
-                Q(orderStatus__contains=query)
-            ).distinct()
-        else:
-            queryset_list4 = POrder.objects.all()
-        paginator = Paginator(queryset_list4, 10)
-        page_request_var = "page"
-        page = request.GET.get(page_request_var)
-        try:
-            queryset = paginator.page(page)
-        except PageNotAnInteger:
-            queryset = paginator.page(1)
-        except EmptyPage:
-            queryset = paginator.page(paginator.num_pages)
-
-        context = {"all_porders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
-
-        return render(request, 'polls/pord_index.html', context)
-
-
-def porderitem_index(request):
-    today = timezone.now().date()
-    queryset_list2 = POrderItem.objects.all()
-    query = request.GET['q']
-    if query:
-        queryset_list2 = queryset_list2.filter(
-            Q(porder__supplier__name__icontains=query) |
-            Q(part__pdes__icontains=query) |
-            Q(quant__icontains=query)
-        ).distinct()
-    else:
-        queryset_list2 = POrderItem.objects.all()
-    paginator = Paginator(queryset_list2, 10)
-    page_request_var = "page"
-    page = request.GET.get(page_request_var)
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
-
-    context = {"all_porderitems": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
-
-    return render(request, 'polls/porderitem_index.html', context)
-
-
-def supprice_index(request):
-        today = timezone.now().date()
-        queryset_list2 = SupPrice.objects.all()
-        query = request.GET['q']
-        if query:
-            queryset_list2 = queryset_list2.filter(
-                Q(supplier__name__icontains=query) |
-                Q(part__pdes__icontains=query) |
-                Q(price__icontains=query)
-            ).distinct()
-        else:
-            queryset_list2 = SupPrice.objects.all()
-        paginator = Paginator(queryset_list2, 10)
-        page_request_var = "page"
-        page = request.GET.get(page_request_var)
-        try:
-            queryset = paginator.page(page)
-        except PageNotAnInteger:
-            queryset = paginator.page(1)
-        except EmptyPage:
-            queryset = paginator.page(paginator.num_pages)
-
-        context = {"all_supprices": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
-
-        return render(request, 'polls/supprice_index.html', context)
 
     # asdfaslk!! hiush ##
     # try8
