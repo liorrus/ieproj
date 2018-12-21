@@ -8,6 +8,8 @@ from django.conf import settings
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 import datetime
+from django.urls import path
+from django.shortcuts import render, redirect
 
 
 class Question(models.Model):
@@ -44,6 +46,9 @@ class Product(models.Model):
 
     def get_name(self):
         return str(self.pdes) + " // " + str(self.price) + " // " + str(self.pk)
+
+    def get_prep_time(self):
+        return self.prep
 
 
 class Unit(models.Model): 
@@ -170,7 +175,7 @@ class Order(models.Model):
     )
     orderStatus = models.CharField(max_length=1, choices=ORDER_STATUS, default='WAITING') 
     remarks = models.CharField(max_length=300, default="-none-")  # remarks of the order
-    ifSupplied = models.BooleanField(default=False)
+    ifSupplied = models.BooleanField(default=True)
     product1 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro1")  # product ID
     product2 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pro2", default=52)  # product ID
     product3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pro3", default=52)  # product ID
@@ -190,12 +195,11 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.user) + " " + str(self.orderDate) + " " + str(self.remarks) + " " + str(self.orderStatus) +\
-               " " + str(self.ifSupplied) + " " + str(self.orderPick) + " " + str(self.id)
+               " " + str(self.ifSupplied) + " " + str(self.orderPick)
 
     def get_name(self):
         return str(self.user) + " //product1: " + str(self.product1) + " ,product2: " + str(self.product2) \
-               + " ,product3: " + str(self.product3) + " // " + str(self.orderDate) + " // " + str(self.orderStatus) \
-               + " // " + str(self.id)
+               + " ,product3: " + str(self.product3) + " // " + str(self.orderDate) + " // " + str(self.orderStatus)
 
 
 class POrder(models.Model):

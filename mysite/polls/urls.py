@@ -76,10 +76,13 @@ urlpatterns = [
     url(r'^supplier_results/$', supplier_index, name="supplier_search"),
     url(r'^extra_results/$', extra_index, name="extra_search"),
     url(r'^order_results/$', order_index, name="order_search"),
+    url(r'^queue_results/$', queue_index, name="queue_search"),
     url(r'^pip_results/$', pip_index, name="pip_search"),
     url(r'^pord_results/$', pord_index, name="pord_search"),
     url(r'^porderitem_results/$', porderitem_index, name="porderitem_search"),
     url(r'^supprice_results/$', supprice_index, name="supprice_search"),
+    url(r'queue/(?P<pk>[0-9]+)/$', views.QueueUpdateAdmin.as_view(), name="queue_update"),
+
 
 
 

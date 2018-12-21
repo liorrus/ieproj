@@ -24,7 +24,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 
 
-
 # from here
 
 
@@ -74,6 +73,7 @@ def logout(request):
     auth.logout(request)
     return render(request, 'polls/logout.html')
 
+
 class Inventory(generic.ListView):
     template_name = 'polls/inventory.html'
     context_object_name = 'all_generics'
@@ -83,12 +83,15 @@ class Inventory(generic.ListView):
         query_last_month= "SELECT * FROM POrder"
         return Order.objects.raw(query_last_month)
 
+
 class AdminView(generic.ListView):
-    context_object_name = 'all_generics'
     template_name = 'polls/adminsite.html'
+    context_object_name = 'all_orders'
 
     def get_queryset(self):
-        return Order.objects.all()
+        return Order.objects.filter(
+            Q(ifSupplied=False)
+        ).order_by('-orderDate')
 
 
 class IndexView(generic.ListView):
@@ -422,6 +425,12 @@ class OrderUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
     """template_name = 'polls/generice_form.html'"""
 
 
+class QueueUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
+    model = Order
+    fields = ['ifSupplied']
+    """template_name = 'polls/generice_form.html'"""
+
+
 class OrderDeleteAdmin(DeleteView):
     model = Order
     success_url = reverse_lazy('polls:order_index')
@@ -617,6 +626,37 @@ def order_index(request):
         context = {"all_orders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
 
         return render(request, 'polls/order_index.html', context)
+
+
+def queue_index(request):
+    today = timezone.now().date()
+    queryset_list3 = Order.objects.filter(
+            Q(ifSupplied=False)
+        )
+    query = request.GET['q']
+    if query:
+        queryset_list3 = queryset_list3.filter(
+            Q(user__username__contains=query) |
+            Q(remarks__contains=query) |
+            Q(orderStatus__contains=query)
+        ).distinct()
+    else:
+        queryset_list3 = Order.objects.filter(
+            Q(ifSupplied=False)
+        )
+    paginator = Paginator(queryset_list3, 10)
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    context = {"all_orders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+    return render(request, 'polls/adminsite.html', context)
 
 
 def pip_index(request):
