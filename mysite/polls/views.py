@@ -21,6 +21,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import datetime
+
 
 
 # from here
@@ -72,6 +74,14 @@ def logout(request):
     auth.logout(request)
     return render(request, 'polls/logout.html')
 
+class Inventory(generic.ListView):
+    template_name = 'polls/inventory.html'
+    context_object_name = 'all_generics'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        query_last_month= "SELECT * FROM POrder"
+        return Order.objects.raw(query_last_month)
 
 class AdminView(generic.ListView):
     context_object_name = 'all_generics'

@@ -1,25 +1,17 @@
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
 
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <center><li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li></center>
-    {% endfor %}
 
+<ul align="center">
+            {% for order in all_generics %}
+             {% csrf_token %}
+
+                    <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }}</a></li>
+            {% endfor %}
     </ul>
-
-{% else %}
-
-{% endif %}
-<u1>
-    {%for product in generic_list%}
-    <center><l1><form action="{% url 'polls:products'%}" method="POST"> {%csrf_token%}{{product.pdes}}</form></l1></center>
-    {%endfor%}
-</u1>
 {% block content %}
 
-  <center><h1>Orders Queue</h1></center>
+  <center><h1>Inventory</h1></center>
 
                 <div class="sidenav">
                      <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
