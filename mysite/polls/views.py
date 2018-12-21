@@ -80,8 +80,14 @@ class Inventory(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        query_last_month= "SELECT * FROM POrder"
+        query_last_month= "SELECT * FROM polls_order WHERE orderDate BETWEEN datetime('now','-30 days') AND datetime('now','localtime') "
         return Order.objects.raw(query_last_month)
+
+#class BusyTime(generic.ListView):
+ #   template_name = 'polls/busytime.html'
+ #   context_object_name = 'all_generics'
+
+ #   def get_queryset(self):
 
 class AdminView(generic.ListView):
     context_object_name = 'all_generics'
