@@ -4,6 +4,9 @@
 {% block body %}
 
         <h1 align="center"> {{ porder.get_name }}</h1>
+<h4 align="center">Guidelines:  Below you may find a specific purchase order details.</h4>
+<h4 align="center">If you would like to make a change in the details, click the "Change" button.</h4>
+<br>
         <h2 align="center">Supplier:  {{ porder.supplier }}</h2>
         <h2 align="center">Order Status:  {{ porder.orderStatus }}</h2>
         <h2 align="center">Order Date:  {{ porder.porderDate }}</h2>
@@ -20,14 +23,5 @@
             };
         </script>
         </div>
-
-                        <form action="{% url 'polls:pord_delete' porder.pk %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <input type="hidden" name="porder pk" value="{{ porder.pk }}"/>
-                            <button type="submit" class="btn btn-default btn-sm"> Delete
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                        </form>
-
 </div>
 {% endblock %}

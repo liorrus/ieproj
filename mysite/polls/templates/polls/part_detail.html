@@ -7,6 +7,9 @@
         <h1 align="center"> </h1>
         <h1 align="center"> </h1>
         <h1 align="center"> {{ part.get_name }}</h1>
+<h4 align="center">Guidelines:  Below you may find a specific part details.</h4>
+<h4 align="center">If you would like to make a change in the details, click the "Change" button.</h4>
+<br>
         <h2 align="center">Description:  {{ part.pdes }}</h2>
         <h2 align="center">Unit:  {{ part.unit }}</h2>
         <h2 align="center">Stock:  {{ part.stock }}</h2>
@@ -25,15 +28,6 @@
             };
         </script>
         </div>
-
-                        <form action="{% url 'polls:part_delete' part.pk %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <input type="hidden" name="part pk" value="{{ part.pk }}"/>
-                            <button type="submit" class="btn btn-default btn-sm"> Delete
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                        </form>
-
 </div>
 {% endblock %}
 

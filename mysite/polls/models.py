@@ -211,7 +211,7 @@ class POrder(models.Model):
     )
     orderStatus = models.CharField(max_length=1, choices=ORDER_STATUS, default='WAITING')
     porderDate = models.DateTimeField(auto_now_add=True)  # the date of order creation
-    ifSupplied = models.CharField(max_length=1)
+    ifSupplied = models.BooleanField(default=True)
 
     def get_absolute_url(self):
         return reverse('polls:pord_detail', kwargs={'pk': self.pk})

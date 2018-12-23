@@ -7,6 +7,9 @@
         <h1 align="center"> </h1>
         <h1 align="center"> </h1>
         <h1 align="center"> {{ pip.get_name }}</h1>
+<h4 align="center">Guidelines:  Below you may find a specific "parts in product" details.</h4>
+<h4 align="center">If you would like to make a change in the details, click the "Change" button.</h4>
+<br>
         <h2 align="center">Part:  {{ pip.part }}</h2>
         <h2 align="center">Quantity:  {{ pip.quant }}</h2>
         <h2 align="center">Product:  {{ pip.product }}</h2>
@@ -22,15 +25,6 @@
             };
         </script>
         </div>
-
-                        <form action="{% url 'polls:pip_delete' pip.pk %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <input type="hidden" name="pip pk" value="{{ pip.pk }}"/>
-                            <button type="submit" class="btn btn-default btn-sm"> Delete
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                        </form>
-
 </div>
 {% endblock %}
 

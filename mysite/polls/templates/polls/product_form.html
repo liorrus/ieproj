@@ -12,6 +12,8 @@
 {% endif %}
 
 {% block content %}
+<h4 align="center">Guidelines:  Below you may insert a new product.</h4>
+<h4 align="center">Choose the price it is sold to customers, and the time to prepare it (minutes).</h4>
 <form class="form-horizontal" align="center" action ="" method="POST" enctype="multipart/form-data"
       action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
