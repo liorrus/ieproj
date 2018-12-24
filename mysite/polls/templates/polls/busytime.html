@@ -2,13 +2,32 @@
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
 
 
-
 {% block content %}
 
-  <center><h1>Inventory</h1></center>
-<ul align="center">
+  <center><h1>Data of orders for each hour in the last quarterly</h1></center>
 
-    </ul>
+    <br><a1 align="center">
+    {{hour8}}</a1>
+    <br><a1 align="center">
+    {{hour9}}</a1>
+    <br><a1 align="center">
+    {{hour10}}</a1>
+    <br><a1 align="center">
+    {{hour11}}</a1>
+    <br><a1 align="center">
+    {{hour12}}</a1>
+    <br><a1 align="center">
+    {{hour13}}</a1>
+    <br><a1 align="center">
+    {{hour14}}</a1>
+    <br><a1 align="center">
+    {{hour15}}</a1>
+    <br><a1 align="center">
+    {{hour16}}</a1>
+    <br><a1 align="center">
+    {{hour17}}</a1>
+    <br><a1 align="center">
+    {{hour18}}</a1>
 
                 <div class="sidenav">
                      <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
@@ -36,6 +55,8 @@
                             <a></a>
                            <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
                             <a></a>
+                           <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data of Busy Time</a>
+                            <a></a>
                         </div>
                     <a></a><a></a><a></a>
                     <a href="{% url 'polls:login' %}">Logout</a>
@@ -45,48 +66,9 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 22px;
-  text-align: left;
-}
-table#t01 {
-  width: 30%;
-  background-color: #ffdd99;
-      margin: 10px auto;
 
-}
-</style>
     </head>
         <body>
-        <table class="centerTable" id="t01" >
-
-
-
-  <tr>
-    <th>Part</th>
-    <th>Current Stock</th>
-    <th>Quantity For The Next Order</th>
-      <th>Date For Next Order</th>
-
-  </tr>
-  <tr>
-      {% for part in parts %}
-
-    <td>{{ part.pdes }}</td>
-    <td>{{ part.stock }}</td>
-    <td>15</td>
-      <td>15</td>
-  </tr>
-
-            {% endfor %}
-
-</table>
-
 
         </body>
 
@@ -96,10 +78,7 @@ table#t01 {
         html, body {
             font-family: "Lato", sans-serif;
 }
-ttable{
-    padding-left:180px;
 
-}
 .sidenav {
     height: 100%;
     width: 170px;
@@ -141,7 +120,7 @@ ttable{
         }
              h1 {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:60px;
+            font-size:30px;
             margin-top: 20px;
             color: #1f1f47;
             margin-bottom: 10px;
@@ -151,6 +130,15 @@ ttable{
             margin-top: 20px;
             color: #1f1f47;
             margin-bottom: 10px;
+            }
+
+            a1{
+                font-family: Arial, Helvetica, sans-serif;
+            font-size:25px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+              padding-left:180px;
+
             }
 
         </style>

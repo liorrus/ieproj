@@ -19,6 +19,7 @@ urlpatterns = [
     re_path(r'order_costumer/$', views.OrderCreateCustomer.as_view(), name="order_costumer"),
     path('order_ok', views.OrderDetailView.as_view(), name='order_ok'),
     url(r'inventory/$', views.Inventory.as_view(), name="inventory"),
+    url(r'busytime/$', views.BusyTime, name="busytime"),
     url(r'add_product/$', views.ProductCreate.as_view(), name="product-add"),
     url(r'add_part/$', views.PartCreate.as_view(), name="part-add"),
     url(r'add_supplier/$', views.SupplierCreate.as_view(), name="supplier-add"),

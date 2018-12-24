@@ -23,6 +23,11 @@ from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 from django.db import connection
+from datetime import datetime, timedelta
+from django.views.generic import TemplateView, DetailView
+import matplotlib.pyplot as plt
+import threading
+from tkinter import *
 
 
 # from here
@@ -75,14 +80,16 @@ def logout(request):
     return render(request, 'polls/logout.html')
 
 
-class Inventory(generic.ListView):
+class Inventory(TemplateView):
     template_name = 'polls/inventory.html'
     context_object_name = 'all_generics'
 
-    def get_queryset(self):
-        """Return the last five published questions."""
-        query_last_month= "SELECT * FROM polls_order WHERE orderDate BETWEEN datetime('now','-30 days') AND datetime('now','localtime') "
-        return Order.objects.raw(query_last_month)
+    def get_context_data(self, *args, **kwargs):
+        context = super(Inventory, self).get_context_data(*args, **kwargs)
+
+        context['parts'] = Part.objects.all()
+        context['date_last_order']=POrderItem.objects.filter()
+        return context
 
 
 class AdminView(generic.ListView):
@@ -766,6 +773,19 @@ def queue_index(request):
 
     return render(request, 'polls/adminsite.html', context)
 
+def BusyTime(request):
+    context = {}
+    for i in range(8, 18):
+        times = Order.objects.filter(orderPick__hour=i, orderPick__gte=datetime.now() - timedelta(days=90)).count()
+        hour = 'hour' + str(i)
+        context.update({hour: times})
+    fig = plt.figure()
+    fig.suptitle('Data of orders for each hour in the last quarterly', fontsize=16)
+    plt.bar(list(context.keys()), (list(context.values())))  # A bar chart
+    plt.xlabel('Hour', fontsize=14)
+    plt.ylabel('Orders', fontsize=14)
+    plt.show()
+    return render(request, 'polls/busytime.html', context)
 
 
     # asdfaslk!! hiush ##
