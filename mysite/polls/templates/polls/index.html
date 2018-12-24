@@ -24,12 +24,16 @@
 
   <center><h1>Shushtush Home Page</h1></center>
   <center><p> <em>Welcome to Shushtush Home Page, {{ user.username }}!</em></p></center>
+{% if request.user.is_superuser %}
+                <p align="center"><em><a href="{% url 'polls:adminsite' %}">Click here</a> for the business management page </em></p>
+
+        {%endif%}
             <div class="sidenav">
                 <a href="{%url 'polls:index'%}">Home Page</a>
 
                 <a href="{% url 'polls:order_costumer' %}">Order</a>
                 <a href="#contact">Contact</a>
-                <a href="{% url 'polls:login' %}">logout</a>
+                <a href="{% url 'polls:logout' %}">logout</a>
             </div>
 {% endblock %}
 <html>

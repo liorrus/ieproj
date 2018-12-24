@@ -58,6 +58,7 @@ class UserFormView(View):
                 if user.is_active:
                     login(request, user)
                     return redirect('polls:index')
+
         return render(request, self.template_name, {'form': form})
 
 
