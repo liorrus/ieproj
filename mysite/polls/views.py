@@ -529,9 +529,9 @@ def components_index(request):
     query = request.GET['q']
     if query:
         queryset_lists1 = queryset_lists1.filter(
-            Q(part_pdes_icontains=query) |
+            Q(part__pdes__icontains=query) |
             Q(quant__icontains=query) |
-            Q(product_pdes_icontains=query)
+            Q(product__pdes__icontains=query)
         ).distinct()
     else:
         queryset_lists1 = Components.objects.all()
@@ -584,8 +584,8 @@ def extra_index(request):
     if query:
         queryset_list2 = queryset_list2.filter(
             Q(extra_price__icontains=query) |
-            Q(extra_part_pdes_icontains=query) |
-            Q(extra_product_pdes_icontains=query)
+            Q(extra_part__pdes__icontains=query) |
+            Q(extra_product__pdes__icontains=query)
         ).distinct()
     else:
         queryset_list2 = NewExtra.objects.all()
@@ -610,9 +610,9 @@ def order_index(request):
         query = request.GET['q']
         if query:
             queryset_list3 = queryset_list3.filter(
-                Q(user_username_contains=query) |
-                Q(remarks__contains=query) |
-                Q(orderStatus__contains=query)
+                Q(user__username__icontains=query) |
+                Q(remarks__icontains=query) |
+                Q(orderStatus__icontains=query)
             ).distinct()
         else:
             queryset_list3 = Order.objects.all()
@@ -637,9 +637,9 @@ def pip_index(request):
     query = request.GET['q']
     if query:
         queryset_list4 = queryset_list4.filter(
-            Q(part_pdes_contains=query) |
-            Q(quant__contains=query) |
-            Q(product_pdes_contains=query)
+            Q(part__pdes__icontains=query) |
+            Q(quant__icontains=query) |
+            Q(product__pdes__icontains=query)
         ).distinct()
     else:
         queryset_list4 = Pip.objects.all()
@@ -664,8 +664,8 @@ def pord_index(request):
         query = request.GET['q']
         if query:
             queryset_list4 = queryset_list4.filter(
-                Q(supplier_name_contains=query) |
-                Q(orderStatus__contains=query)
+                Q(supplier__name__icontains=query) |
+                Q(orderStatus__icontains=query)
             ).distinct()
         else:
             queryset_list4 = POrder.objects.all()
@@ -690,8 +690,8 @@ def porderitem_index(request):
     query = request.GET['q']
     if query:
         queryset_list2 = queryset_list2.filter(
-            Q(porder_suppliername_icontains=query) |
-            Q(part_pdes_icontains=query) |
+            Q(porder__supplier__name__icontains=query) |
+            Q(part__pdes__icontains=query) |
             Q(quant__icontains=query)
         ).distinct()
     else:
@@ -717,8 +717,8 @@ def supprice_index(request):
         query = request.GET['q']
         if query:
             queryset_list2 = queryset_list2.filter(
-                Q(supplier_name_icontains=query) |
-                Q(part_pdes_icontains=query) |
+                Q(supplier__name__icontains=query) |
+                Q(part__pdes__icontains=query) |
                 Q(price__icontains=query)
             ).distinct()
         else:
