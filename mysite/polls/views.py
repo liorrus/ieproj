@@ -100,7 +100,7 @@ class AdminView(generic.ListView):
     def get_queryset(self):
         return Order.objects.filter(
             Q(ifSupplied=False)
-        ).order_by('-orderDate')
+        ).order_by('orderDate')
 
 
 class IndexView(generic.ListView):
