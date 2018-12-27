@@ -1,12 +1,12 @@
-from my_projects.models import Person
 from adaptor.model import CsvDbModel
+from polls.models.py import Order
 
 class MyCsvModel(CsvDbModel):
 
      class Meta:
         dbModel = Order
         delimiter = ","
+        has_header = 1
 
 
-# my_csv_list = MyCsvModel.import_data(data = open("my_csv_file_name.csv"))
-
+my_csv_list = MyCsvModel.import_data(data = open("1000randomorders.csv"))
