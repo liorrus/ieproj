@@ -29,6 +29,10 @@ import matplotlib.pyplot as plt
 import threading
 from tkinter import *
 
+import csv, io
+from django.contrib.auth.decorators import permission_required
+from django.contrib import messages
+
 
 # from here
 
@@ -788,6 +792,45 @@ def BusyTime(request):
     plt.show()
     return render(request, 'polls/busytime.html', context)
 
+@permission_required('admin.can_add_CSV')
+def orders_upload(request):
+    template = "orders_upload.html"
+    prompt ={
+        'order': 'order of the CSV should be user id, orderdate, orderpick, order status, remarks, ifsupplied, '
+                 'product1	product2	product3	extra1	extra2	extra3	extra4	extra5,'
+                 '	componen1	component2	component3	component4	component5'
+   }
+    if request.method == "GET":
+        return render(request, 'polls/orders_upload.html')
 
-    # asdfaslk!! hiush ##
-    # try8
+    csv_file = request.FILES['file']
+    if not csv_file.name.endswith('.csv'):
+        messages.error(request, 'not a csv file')
+
+    data_set = csv_file.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        _, created = Order.objects.update_or_create(
+            user = column[0],
+            orderDate= column[1],
+            orderPick = column[2],
+            orderStatus=column[3],
+            remarks = column[4],
+            ifSupplied = column[5],
+            product1 = column[6],
+            product2 = column[7],
+            product3 = column[8],
+            extra1 = column[9],
+            extra2 = column[10],
+            extra3 = column[11],
+            extra4 = column[12],
+            extra5 = column[13],
+            component1 = column[14],
+            component2 = column[15],
+            component3 = column[16],
+            component4 = column[17],
+            component5 = column[18],
+        )
+    #context ={}
+    return render(request, 'polls/orders_upload.html')

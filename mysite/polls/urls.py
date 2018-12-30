@@ -5,11 +5,12 @@ from . import views
 from .views import *
 from django.views.generic import CreateView
 from django.views.generic.base import RedirectView
+from .views import orders_upload
 
 
 app_name = 'polls'
 urlpatterns = [
-
+    path('orders_upload/', orders_upload, name="orders_upload"),
     path('', views.IndexView.as_view(), name='index'),
     re_path(r'^login/$', LoginView.as_view(), name='login'),
     re_path(r'^logout/$', views.logout, name='logout'),
@@ -83,8 +84,6 @@ urlpatterns = [
     url(r'^porderitem_results/$', porderitem_index, name="porderitem_search"),
     url(r'^supprice_results/$', supprice_index, name="supprice_search"),
     url(r'queue/(?P<pk>[0-9]+)/$', views.QueueUpdateAdmin.as_view(), name="queue_update"),
-
-
 
 
 ]
