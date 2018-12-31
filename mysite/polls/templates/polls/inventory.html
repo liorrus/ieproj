@@ -71,19 +71,10 @@ table#t01 {
     <th>Part</th>
     <th>Current Stock</th>
     <th>Quantity For The Next Order</th>
-      <th>Date For Next Order</th>
-
+    <th>Date For Next Order</th>
   </tr>
   <tr>
-      {% for part in parts %}
-
-    <td>{{ part.pdes }}</td>
-    <td>{{ part.stock }}</td>
-    <td>15</td>
-      <td>15</td>
-  </tr>
-
-            {% endfor %}
+   {{parts|safe}}
 
 </table>
 

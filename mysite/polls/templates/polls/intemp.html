@@ -1,0 +1,44 @@
+
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 22px;
+  text-align: left;
+}
+table#t01 {
+  width: 30%;
+  background-color: #ffdd99;
+      margin: 10px auto;
+
+}
+</style>
+    </head>
+        <body>
+        <table class="centerTable" id="t01" >
+
+
+
+  <tr>
+    <th>Part</th>
+    <th>Current Stock</th>
+    <th>Quantity For The Next Order</th>
+    <th>Date For Next Order</th>
+   
+  </tr>
+  <tr>
+ {{ parts|safe }}
+        
+
+</table>
+
+ 
+        </body>
+</html>
+

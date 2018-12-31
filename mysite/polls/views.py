@@ -21,14 +21,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import datetime
+#import datetime
 from django.db import connection
 from datetime import datetime, timedelta
 from django.views.generic import TemplateView, DetailView
 import matplotlib.pyplot as plt
 import threading
 from tkinter import *
-
+import math
 import csv, io
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
@@ -90,10 +90,31 @@ class Inventory(TemplateView):
     context_object_name = 'all_generics'
 
     def get_context_data(self, *args, **kwargs):
+        kaki = " "
+        demands=getallPartsDemand()
         context = super(Inventory, self).get_context_data(*args, **kwargs)
-
-        context['parts'] = Part.objects.all()
-        context['date_last_order']=POrderItem.objects.filter()
+        for par in Part.objects.all():
+            for dem in demands:
+                if(dem[0] == par):
+                    today = (datetime.now()).replace(tzinfo=None)
+                    lastOrder = getLatesTakenPorderWithPart(par)
+                    #quantity = order 
+                    if(lastOrder == None):
+                        delta=0
+                    else:  
+                        delta = (today-lastOrder.porderDate.replace(tzinfo=None)).days
+                        #delta=0
+                    #nextdate = today + timedelta(days=5)
+                    nextdate = today + timedelta(days=int(par.lt/30)-int(delta))
+                  
+                     
+                    kaki += "<td>" + par.pdes +"</td><td>" + str(par.stock) + "</td><td>" + str(math.sqrt(2*dem[1])) + "</td><td>" + str(nextdate) + "</td></tr>"  
+        context['parts'] = kaki
+        #context['parts'] = Part.objects.all()
+        #context['date_last_order']=POrderItem.objects.filter()
+        #context['parts_demand']=getallPartsDemand()
+        
+        
         return context
 
 
@@ -834,3 +855,80 @@ def orders_upload(request):
         )
     #context ={}
     return render(request, 'polls/orders_upload.html')
+
+def getallPartsDemand():  
+    currentMonth = datetime.now().month
+    currentYear = datetime.now().year
+    count = 0
+    lis = [] 
+    for par in Part.objects.all():
+        for i in range(0,1):
+            year = currentYear
+            month=currentMonth-i-1
+            if month<=0:
+                year=currentYear-1
+                month=12-month
+            total = getNumberOfPartsUsedOnMonth(year,month,par)
+            temp=[par,total]
+            lis.append(temp)
+    return lis
+
+
+def getNumberOfPartsUsedOnMonth(year,month,par):
+    total=0
+    list=getListOfProuductWithPart(par)
+    if(list==None):
+        return total 
+    for prod in list:
+        total=total+(getNumberOfProductOrdersInMonth(year,month,prod)*getQuant(prod,par))
+    return total
+
+def getQuant(prod,par):
+    return Pip.objects.filter(part=par,product=prod)[0].quant
+
+
+def getNumberOfProductOrdersInMonth(year,month,prod):
+    orderp1=Order.objects.filter(product1=prod,ifSupplied=True,orderPick__month=month,orderPick__year=year)
+    orderp2=Order.objects.filter(product2=prod,ifSupplied=True,orderPick__month=month,orderPick__year=year)
+    orderp3=Order.objects.filter(product3=prod,ifSupplied=True,orderPick__month=month,orderPick__year=year)
+    return orderp1.count()+orderp2.count()+orderp3.count()
+
+
+def getListOfProuductWithPart(par):
+    
+    count = 0
+    qs=None
+    pips=Pip.objects.filter(part=par)
+    if(pips.count() > 0):
+        qs=Product.objects.filter(pk=pips[0].product.pk)
+    else:
+        return qs
+    for pip in pips:
+        if(count == 0):
+            count+=1
+            continue
+        qs=qs.union(Product.objects.filter(pk=pip.product.pk))
+
+    return qs
+
+def getAllPOrdersWithPart(par):
+    pois = POrderItem.objects.filter(part = par)
+    count = 0
+    qs=None
+    if(pois.count() > 0):
+        qs=POrder.objects.filter(pk=pois[0].porder.pk)
+    else:
+        return qs
+    for poi in pois:
+        if(count == 0):
+            count+=1
+            continue
+        qs=qs.union(POrder.objects.filter(pk=poi.porder.pk))
+    return qs
+
+def getLatesTakenPorderWithPart(par):
+    qs = getAllPOrdersWithPart(par)
+    if(qs == None):
+        return None
+    qs = qs.filter(ifSupplied=True).order_by('-porderDate')[0]
+    return qs
