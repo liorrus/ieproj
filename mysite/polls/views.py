@@ -831,7 +831,7 @@ def orders_upload(request):
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
-    datetime.strptime
+
     for column in csv.reader(io_string, delimiter=',', quotechar="|"):
         _, created = Order.objects.update_or_create(
             user = User.objects.get(id=column[0]),
@@ -852,7 +852,7 @@ def orders_upload(request):
             component2 = Components.objects.get(part=column[15]),
             component3 = Components.objects.get(part=column[16]),
             component4 = Components.objects.get(part=column[17]),
-            component5 = Components.objects.get(part=column[18]),
+            component5 = Components.objects.get(part=column[18])
         )
     context ={}
     return render(request, 'polls/orders_upload.html', context)

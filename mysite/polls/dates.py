@@ -14,4 +14,5 @@ print (start, end)
 for i in range(1,1000):
 
     i=random_date(start, end)
-    print(i)
+    if 7 < i.hour < 19:
+        print(i)
