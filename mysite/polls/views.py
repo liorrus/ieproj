@@ -824,7 +824,7 @@ def orders_upload(request):
     if request.method == "GET":
         return render(request, 'polls/orders_upload.html', prompt)
 
-    csv_file = request.FILES['file']
+    csv_file = request.FILES['orders']
     if not csv_file.name.endswith('.csv'):
         messages.error(request, 'not a csv file')
 
