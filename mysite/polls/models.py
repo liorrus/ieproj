@@ -175,7 +175,7 @@ class Order(models.Model):
     )
     orderStatus = models.CharField(max_length=1, choices=ORDER_STATUS, default='WAITING') 
     remarks = models.CharField(max_length=300, default="-none-")  # remarks of the order
-    ifSupplied = models.BooleanField(default=True)
+    ifSupplied = models.BooleanField(default=False)
     product1 = models.ForeignKey(Product, null=False, on_delete=models.CASCADE, related_name="pro1")  # product ID
     product2 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pro2", default=52)  # product ID
     product3 = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pro3", default=52)  # product ID
