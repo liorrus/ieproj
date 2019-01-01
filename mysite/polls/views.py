@@ -447,6 +447,12 @@ class OrderCreateAdmin(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     """template_name = 'polls/generice_form.html'"""
 
     def form_valid(self, form):
+        if ((form.instance.ifSupplied)==True):
+            queryPr=Pip.objects.filter(product=form.instance.product1)
+            for pip in queryPr:
+                pip.part.stock=pip.part.stock-pip.quant
+                pip.part.save()
+
         form.instance.user = self.request.user
         return super().form_valid(form)
 
@@ -457,6 +463,13 @@ class OrderUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
               'component2',  'component3',  'component4', 'component5',
               'extra1', 'extra2', 'extra3', 'extra4', 'extra5',  'product2', 'product3', 'remarks']
     """template_name = 'polls/generice_form.html'"""
+    def form_valid(self, form):
+        if ((form.instance.ifSupplied)==True and Order.objects.filter(pk=form.instance.pk)):
+            queryPr=Pip.objects.filter(product=form.instance.product1)
+            for pip in queryPr:
+                pip.part.stock=pip.part.stock-pip.quant
+                pip.part.save()
+        return super().form_valid(form)
 
 
 class OrderDeleteAdmin(DeleteView):
