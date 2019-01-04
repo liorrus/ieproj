@@ -226,20 +226,21 @@ class POrder(models.Model):
 
 class POrderItem(models.Model):
     porder = models.ForeignKey(POrder, null=False,on_delete=models.CASCADE)  # product ID
-    part = models.ForeignKey(Part, null=False,on_delete=models.CASCADE)  # product ID
+    supprice = models.ForeignKey(SupPrice, null=False,on_delete=models.CASCADE)  # product ID
     quant = models.FloatField(max_length=200)
+    part = models.ForeignKey(Part, null=True,on_delete=models.CASCADE, default=1)  # product ID
 
     class Meta:
-        unique_together = (("part", "porder"),)  # used for double column primary key
+        unique_together = (("supprice", "porder"),)  # used for double column primary key
 
     def get_absolute_url(self):
         return reverse('polls:porderitem_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return str(self.porder) + " " + str(self.part) + " " + str(self.quant)
+        return str(self.porder) + " " + str(self.supprice) + " " + str(self.quant)
 
     def get_name(self):
-        return str(self.porder) + " // " + str(self.part) + " // " + str(self.quant)
+        return str(self.porder) + " // " + str(self.supprice) + " // " + str(self.quant)
 
 
 def get_first_name(self):

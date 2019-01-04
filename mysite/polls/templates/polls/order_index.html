@@ -33,19 +33,20 @@
                     <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }}</a></li>
             {% endfor %}
     </ul>
+    {% if is_paginated %}
     <div class="pagination" align="center">
             <span class="step-links">
-                {% if all_orders.has_previous %}
-                    <a href="?{{ page_request_var }}={{ all_orders.previous_page_number }}&q={{ request.GET.q }}">previous</a>
+                {% if page_obj.has_previous %}
+                  <li><a href="?page={{ page_obj.previous_page_number }}">previous;</a></li>
                 {% endif %}
 
                 <span class="current">
-                    Page {{ all_orders.number }} of {{ all_orders.paginator.num_pages }}.
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                 </span>
-
-                {% if all_orders.has_next %}
-                    <a href="?{{ page_request_var }}={{ all_orders.next_page_number }}&q={{ request.GET.q }}">next</a>
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}">next;</a></li>
                 {% endif %}
             </span>
     </div>
+    {% endif %}
 {% endblock %}

@@ -431,12 +431,12 @@ class PorderDelete(DeleteView):
 
 class PorderitemCreate(CreateView):
     model = POrderItem
-    fields = ['porder', 'part', 'quant']
+    fields = ['porder', 'supprice', 'quant']
 
 
 class PorderitemUpdate(UpdateView):
     model = POrderItem
-    fields = ['porder', 'part', 'quant']
+    fields = ['porder', 'supprice', 'quant']
 
 
 class PorderitemDelete(DeleteView):
@@ -747,7 +747,7 @@ def porderitem_index(request):
     if query:
         queryset_list2 = queryset_list2.filter(
             Q(porder__supplier__name__icontains=query) |
-            Q(part__pdes__icontains=query) |
+            Q(supprice__part__pdes__icontains=query) |
             Q(quant__icontains=query)
         ).distinct()
     else:
