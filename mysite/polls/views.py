@@ -125,7 +125,7 @@ class AdminView(generic.ListView):
     def get_queryset(self):
         return Order.objects.filter(
             Q(ifSupplied=False)
-        ).order_by('orderPick')
+        ).order_by('-orderPick')
 
 
 class IndexView(generic.ListView):
