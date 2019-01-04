@@ -10,7 +10,7 @@
 </form>
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
-
+<font color="red">{{ form.none_field_errors  }}</font>
 {% block content %}
 
 
