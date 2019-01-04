@@ -105,7 +105,7 @@ class Inventory(TemplateView):
                         delta = (today-lastOrder.porderDate.replace(tzinfo=None)).days
                         #delta=0
                     #nextdate = today + timedelta(days=5)
-                    nextdate = today + timedelta(days=int(par.lt/30)-int(delta))
+                    nextdate = today + timedelta(days=int((par.lt/30)*(math.sqrt(2*dem[1])))-int(delta))
                   
                      
                     kaki += "<td>" + par.pdes +"</td><td>" + str(par.stock) + "</td><td>" + str(math.sqrt(2*dem[1])) + "</td><td>" + str(nextdate) + "</td></tr>"  
@@ -485,8 +485,14 @@ class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     template_name = 'polls/order_costumer.html'
 
     def form_valid(self, form):
+        if ((form.instance.ifSupplied)==True):
+            queryPr=Pip.objects.filter(product=form.instance.product1)
+            for pip in queryPr:
+                pip.part.stock=pip.part.stock-pip.quant
+                pip.part.save()
+
         form.instance.user = self.request.user
-        return super(OrderCreateCustomer, self).form_valid(form)
+        return super().form_valid(form)
 
 
 def vote(request, question_id):

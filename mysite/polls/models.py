@@ -199,7 +199,7 @@ class Order(models.Model):
 
     def get_name(self):
         return str(self.user) + " //product1: " + str(self.product1) + " ,product2: " + str(self.product2) \
-               + " ,product3: " + str(self.product3) + " // " + str(self.orderDate) + " // " + str(self.orderStatus)
+               + " ,product3: " + str(self.product3) + " // " + str(self.orderPick) + " // " + str(self.orderStatus)
 
 
 class POrder(models.Model):
