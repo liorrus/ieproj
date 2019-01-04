@@ -125,7 +125,7 @@ class AdminView(generic.ListView):
     def get_queryset(self):
         return Order.objects.filter(
             Q(ifSupplied=False)
-        ).order_by('orderDate')
+        ).order_by('orderPick')
 
 
 class IndexView(generic.ListView):
@@ -206,16 +206,18 @@ class ProductIndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Product.objects.all()
+        return Product.objects.order_by('pdes')
 
 
 class OrderIndexView(generic.ListView):
     template_name = 'polls/order_index.html'
     context_object_name = 'all_orders'
+    paginate_by = 10
+    queryset = Order.objects.all()
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Order.objects.order_by('-orderDate')
+        return Order.objects.all()
 
 
 class PartIndexView(generic.ListView):
@@ -224,7 +226,7 @@ class PartIndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Part.objects.all()
+        return Part.objects.order_by('pdes')
 
 
 class PipIndexView(generic.ListView):
@@ -233,7 +235,7 @@ class PipIndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Pip.objects.all()
+        return Pip.objects.order_by('part__pdes')
 
 
 class SupplierIndexView(generic.ListView):
@@ -660,7 +662,7 @@ def order_index(request):
             ).distinct()
         else:
             queryset_list3 = Order.objects.all()
-        paginator = Paginator(queryset_list3, 10)
+        paginator = Paginator(queryset_list3, 5)
         page_request_var = "page"
         page = request.GET.get(page_request_var)
         try:
@@ -672,7 +674,7 @@ def order_index(request):
 
         context = {"all_orders": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
 
-        return render(request, 'polls/order_index.html', context)
+        return render(request, 'polls/order_search.html', context)
 
 
 def pip_index(request):
@@ -818,6 +820,7 @@ def queue_index(request):
 
     return render(request, 'polls/adminsite.html', context)
 
+
 def BusyTime(request):
     context = {}
     for i in range(8, 18):
@@ -932,6 +935,7 @@ def getListOfProuductWithPart(par):
 
     return qs
 
+
 def getAllPOrdersWithPart(par):
     pois = POrderItem.objects.filter(part = par)
     count = 0
@@ -946,6 +950,7 @@ def getAllPOrdersWithPart(par):
             continue
         qs=qs.union(POrder.objects.filter(pk=poi.porder.pk))
     return qs
+
 
 def getLatesTakenPorderWithPart(par):
     qs = getAllPOrdersWithPart(par)
