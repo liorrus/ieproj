@@ -489,6 +489,7 @@ class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
               'extra1', 'extra2', 'extra3', 'extra4', 'extra5', 'remarks']
     template_name = 'polls/order_costumer.html'
     def form_valid(self, form):
+        print("kaki: ", form.instance.extra1)
         if(form.instance.product1.pdes in getAllProductsThatHasComponets()):
             if(form.instance.component1 == None ) or (form.instance.component2 == None): 
                 form.add_error('component1', "component1 and component2 should not be empty if you want " +  form.instance.product1.pdes )
@@ -496,8 +497,27 @@ class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
         elif (form.instance.component1 != None ) or (form.instance.component2 != None) or (form.instance.component3 != None) or (form.instance.component4 != None) or (form.instance.component5 != None):
             form.add_error('component1', "components should be empty if no product with component was chosen")
             return super().form_invalid(form)
-        #elif(form.instance.extra1.product.pdes):
-        #    pass
+        
+        elif(form.instance.extra1 != None):
+            if(form.instance.extra1.extra_product.pdes!=form.instance.product1.pdes):
+                form.add_error('extra1', "extras should be only used corresponding product" )
+                return super().form_invalid(form)
+        elif(form.instance.extra2 != None):
+            if(form.instance.extra2.extra_product.pdes!=form.instance.product1.pdes):
+                form.add_error('extra1', "extras should be only used corresponding product" )
+                return super().form_invalid(form)
+        elif(form.instance.extra3 != None):
+            if(form.instance.extra3.extra_product.pdes!=form.instance.product1.pdes):
+                form.add_error('extra1', "extras should be only used corresponding product" )
+                return super().form_invalid(form)        
+        elif(form.instance.extra4 != None):
+            if(form.instance.extra4.extra_product.pdes!=form.instance.product1.pdes):
+                form.add_error('extra1', "extras should be only used corresponding product" )
+                return super().form_invalid(form) 
+        elif(form.instance.extra5 != None):
+            if(form.instance.extra5.extra_product.pdes!=form.instance.product1.pdes):
+                form.add_error('extra1', "extras should be only used corresponding product" )
+                return super().form_invalid(form) 
         if ((form.instance.ifSupplied)==True):
             queryPr=Pip.objects.filter(product=form.instance.product1)
             for pip in queryPr:
