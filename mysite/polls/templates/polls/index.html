@@ -6,12 +6,24 @@
 {% block content %}
 
 <center><h1>Shushtush Home Page</h1></center>
-<center><p><em>Welcome to Shushtush Home Page, {{ user.username }}!
-    <br>Here are your recommended orders:</em></p></center>
-{% if request.user.is_superuser %}
-<p align="center"><em><a href="{% url 'polls:adminsite' %}">Click here</a> for the business management page </em></p>
+<center><p><em>Welcome, {{ user.username }}!</em></p></center>
+<p></p><p></p>
 
-{%endif%}
+
+
+<p><em>Order Status:
+    {% for d in order_list %}
+    {% if forloop.first %}
+    {% ifequal d.ifSupplied True %}
+        {{ "Your last order from"}} {{d.orderPick}}{{" is ready"}}
+    {%else%}
+        <not_r>{{ "Your last order from"}} {{d.orderPick}}{{" is not ready yet"}}</not_r>
+    {% endifequal  %}
+
+    {% endif %}
+{% endfor %}
+</em>
+
 <div class="sidenav">
     <a href="{%url 'polls:index'%}">Home Page</a>
 
@@ -19,18 +31,23 @@
     <a href="#contact">Contact</a>
     <a href="{% url 'polls:logout' %}">logout</a>
 </div>
-<div>
-<p>
-        {% for question in order_list %}
-       <a href="{% url 'polls:order_detail' question.pk%}"> {{ question.product1 }} </a>-  {{ question.orderPick }} {{ question.component1.part }},{{ question.component2.part }},
-        {{ question.component5.part }}, {{ question.component4.part }}, {{ question.component5.part }}, {{ question.extra1.extra_part }}, {{ question.extra2.extra_part }},
-        {{ question.extra3.extra_part }}, {{ question.extra4.extra_part }}, {{ question.extra5.extra_part }}
-        <br/>
+    <p><em>Here are your recommended orders:</em></p>
+
+<p><p2>
+        {% for question in order_list %}<br>
+       product: {{ question.product1 }}, components:   {{ question.component1.part }} {{ question.component2.part }}
+        {{ question.component5.part }} {{ question.component4.part }} {{ question.component5.part }}, extras: {{ question.extra1.extra_part }} {{ question.extra2.extra_part }}
+        {{ question.extra3.extra_part }} {{ question.extra4.extra_part }} {{ question.extra5.extra_part }}
         {% endfor %}
-</p>
-</div>
+</p2></p>
+
+
 
 {% endblock %}
+{% if request.user.is_superuser %}
+<p align="center"><em><a href="{% url 'polls:adminsite' %}">Click here</a> for the business management page </em></p>
+
+{%endif%}
 <html>
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -104,11 +121,17 @@
     }
 
     p {
-        font-size: 20px;
+        font-size: 30px;
         margin-top: 20px;
         color: #1f1f47;
         margin-bottom: 10px;
         padding-left: 180px;
+    }
+    p2 {
+        font-size: 20px;
+        margin-top: 20px;
+        color: #1f1f47;
+        margin-bottom: 10px;
     }
     b {
         font-size: 20px;
@@ -118,6 +141,11 @@
         padding-left: 180px;
 
     }
+    not_r{
+        color: #990000;
+
+    }
+
 
 </style>
 </html>
