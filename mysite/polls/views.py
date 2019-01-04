@@ -132,8 +132,11 @@ class IndexView(generic.ListView):
     template_name = 'polls/index.html'
 
     def get_queryset(self):
-        """Return the last five published questions."""
-        return Question.objects.all()
+        request = self.request
+        user_id = request.user.id
+        order_list =Order.objects.filter(user=user_id).order_by('orderPick')
+        order_list=order_list.reverse()[:5]
+        return order_list
 
 
 class OrderView(generic.ListView):
@@ -483,19 +486,26 @@ class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     model = Order
     fields = [ 'orderPick', 'product1',  'component1',
               'component2',  'component3',  'component4', 'component5',
-              'extra1', 'extra2', 'extra3', 'extra4', 'extra5',  'product2', 'product3', 'remarks']
+              'extra1', 'extra2', 'extra3', 'extra4', 'extra5', 'remarks']
     template_name = 'polls/order_costumer.html'
-
     def form_valid(self, form):
+        if(form.instance.product1.pdes in getAllProductsThatHasComponets()):
+            if(form.instance.component1 == None ) or (form.instance.component2 == None): 
+                form.add_error('component1', "component1 and component2 should not be empty if you want " +  form.instance.product1.pdes )
+                return super().form_invalid(form)
+        elif (form.instance.component1 != None ) or (form.instance.component2 != None) or (form.instance.component3 != None) or (form.instance.component4 != None) or (form.instance.component5 != None):
+            form.add_error('component1', "components should be empty if no product with component was chosen")
+            return super().form_invalid(form)
+        #elif(form.instance.extra1.product.pdes):
+        #    pass
         if ((form.instance.ifSupplied)==True):
             queryPr=Pip.objects.filter(product=form.instance.product1)
             for pip in queryPr:
                 pip.part.stock=pip.part.stock-pip.quant
                 pip.part.save()
-
-        form.instance.user = self.request.user
+        form.instance.user=self.request.user
         return super().form_valid(form)
-
+    
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -956,5 +966,21 @@ def getLatesTakenPorderWithPart(par):
     qs = getAllPOrdersWithPart(par)
     if(qs == None):
         return None
-    qs = qs.filter(ifSupplied=True).order_by('-porderDate')[0]
-    return qs
+    qs = qs.filter(ifSupplied=True).order_by('-porderDate')
+    if(qs.count() == 0):
+        return None
+    return qs[0]
+
+def getAllProductsThatHasComponets():
+    list1=[]
+    comps=Components.objects.all()
+    for comp in comps:
+        list1.append(comp.product.pdes)
+    return list1
+
+def getAllProductsThatHasComponets():
+    list1=[]
+    comps=Components.objects.all()
+    for comp in comps:
+        list1.append(comp.product.pdes)
+    return list1
