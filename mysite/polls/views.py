@@ -95,15 +95,19 @@ class Inventory(TemplateView):
         demands=getallPartsDemand()
         context = super(Inventory, self).get_context_data(*args, **kwargs)
         for par in Part.objects.all():
+            if(par.pdes != "Carrot"):
+                continue
             for dem in demands:
                 if(dem[0] == par):
                     today = (datetime.now()).replace(tzinfo=None)
                     lastOrder = getLatesTakenPorderWithPart(par)
                     #quantity = order 
                     if(lastOrder == None):
+                        print("hhhhh")
                         delta=0
                     else:  
                         delta = (today-lastOrder.porderDate.replace(tzinfo=None)).days
+                        print("delta: ", delta)
                         #delta=0
                     #nextdate = today + timedelta(days=5)
                     nextdate = today + timedelta(days=int((par.lt/30)*(math.sqrt(2*dem[1])))-int(delta))
@@ -973,7 +977,7 @@ def getListOfProuductWithPart(par):
 
 
 def getAllPOrdersWithPart(par):
-    pois = POrderItem.objects.filter(part = par)
+    pois = POrderItem.objects.filter(supprice__part = par)
     count = 0
     qs=None
     if(pois.count() > 0):

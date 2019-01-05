@@ -45,10 +45,13 @@ class Product(models.Model):
         return self.pdes
 
     def get_name(self):
-        return str(self.pdes) + " // " + str(self.price) + " // " + str(self.prep)
+        return str(self.pdes) + " // " + str(self.price)  + "$ // " + str(self.prep)
 
     def get_prep_time(self):
         return self.prep
+    
+    class Meta:
+        ordering = ('pdes',)
 
 
 class Unit(models.Model): 
@@ -75,6 +78,8 @@ class Part(models.Model): # Raw material
 
     def get_name(self):
         return str(self.pdes) + " // " + str(self.stock)
+    class Meta:
+        ordering = ('pdes',)
 
 
 class Pip(models.Model):
@@ -104,10 +109,13 @@ class NewExtra(models.Model):
         return reverse('polls:newextra_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return str(self.extra_part.pdes) + " " + str(self.extra_price) + " " + str(self.extra_product)
+       return str(self.extra_part.pdes) + " " + str(self.extra_product) + " " + str(self.extra_price)  + "$"
 
     def get_name(self):
-        return str(self.extra_part) + " // " + str(self.extra_price) + " // " + str(self.extra_product)
+        #eturn str(self.extra_part) + " // " + str(self.extra_price) + " // " + str(self.extra_product)
+        return str(self.extra_part.pdes) + " " + str(self.extra_product) + " " + str(self.extra_price)  + "$"
+    class Meta:
+        ordering = ('extra_product','extra_part')
 
 
 class Supplier(models.Model):
@@ -144,7 +152,7 @@ class SupPrice(models.Model):
 
     def get_name(self):
         return str(self.supplier.name) + " // " + str(self.part.pdes) + " // " + str(self.price)
-
+    
 
 class Components(models.Model):
     part = models.ForeignKey(Part, on_delete=models.CASCADE)
@@ -155,10 +163,12 @@ class Components(models.Model):
         return reverse('polls:components_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return str(self.part) + " " + str(self.quant) + " " + str(self.product)
+        return str(self.part) + " "  + str(self.product)
 
     def get_name(self):
-        return str(self.part) + " // " + str(self.quant) + " // " + str(self.product)
+        return str(self.part) +  " // " + str(self.product)
+    class Meta:
+        ordering = ('product','part')
 
 
 now = datetime.datetime.now()
