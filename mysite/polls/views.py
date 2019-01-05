@@ -32,6 +32,7 @@ import math
 import csv, io
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # from here
@@ -879,35 +880,40 @@ def orders_upload(request):
     csv_file = request.FILES['orders']
     if not csv_file.name.endswith('.csv'):
         messages.error(request, 'not a csv file')
+        return render(request, 'polls/orders_upload.html', prompt)
+
 
     data_set = csv_file.read().decode('UTF-8')
     io_string = io.StringIO(data_set)
     next(io_string)
+    try:
+        for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+            _, created = Order.objects.update_or_create(
+                user = User.objects.get(id=column[0]),
+                orderDate= datetime.strptime(column[1], '%d/%m/%Y %H:%M'),
+                orderPick = datetime.strptime(column[2], '%d/%m/%Y %H:%M'),
+                orderStatus=column[3],
+                remarks = column[4],
+                ifSupplied = TRUE,
+                product1 = Product.objects.get(pk=column[6]),
+                product2 = Product.objects.get(pk=column[7]),
+                product3 = Product.objects.get(pk=column[8]),
+                extra1 = NewExtra.objects.get(Q(extra_part=column[9]),Q(extra_product=column[6])),
+                extra2 = NewExtra.objects.get(Q(extra_part=column[10]),Q(extra_product=column[6])),
+                extra3 = NewExtra.objects.get(Q(extra_part=column[11]),Q(extra_product=column[6])),
+                extra4 = NewExtra.objects.get(Q(extra_part=column[12]),Q(extra_product=column[6])),
+                extra5 = NewExtra.objects.get(Q(extra_part=column[13]),Q(extra_product=column[6])),
+                component1 = Components.objects.get(part=column[14]),
+                component2 = Components.objects.get(part=column[15]),
+                component3 = Components.objects.get(part=column[16]),
+                component4 = Components.objects.get(part=column[17]),
+                component5 = Components.objects.get(part=column[18])
+            )
+    except ObjectDoesNotExist:
+        context ={}
+        return HttpResponse('Your CSV has illegal IDs.')
 
-    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
-        _, created = Order.objects.update_or_create(
-            user = User.objects.get(id=column[0]),
-            orderDate= datetime.strptime(column[1], '%d/%m/%Y %H:%M'),
-            orderPick = datetime.strptime(column[2], '%d/%m/%Y %H:%M'),
-            orderStatus=column[3],
-            remarks = column[4],
-            ifSupplied = TRUE,
-            product1 = Product.objects.get(pdes=column[6]),
-            product2 = Product.objects.get(pdes=column[7]),
-            product3 = Product.objects.get(pdes=column[8]),
-            extra1 = NewExtra.objects.get(extra_part=column[9]),
-            extra2 = NewExtra.objects.get(extra_part=column[10]),
-            extra3 = NewExtra.objects.get(extra_part=column[11]),
-            extra4 = NewExtra.objects.get(extra_part=column[12]),
-            extra5 = NewExtra.objects.get(extra_part=column[13]),
-            component1 = Components.objects.get(part=column[14]),
-            component2 = Components.objects.get(part=column[15]),
-            component3 = Components.objects.get(part=column[16]),
-            component4 = Components.objects.get(part=column[17]),
-            component5 = Components.objects.get(part=column[18])
-        )
-    context ={}
-    return render(request, 'polls/orders_upload.html', context)
+    return render(request, 'polls/orders_upload.html')
 
 
 def getallPartsDemand():  
