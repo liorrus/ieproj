@@ -50,8 +50,8 @@ class Product(models.Model):
     def get_prep_time(self):
         return self.prep
     
-    class Meta:
-        ordering = ('pdes',)
+    #class Meta:
+    #    ordering = ('pdes',)
 
 
 class Unit(models.Model): 
