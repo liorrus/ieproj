@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c41b42ca-7260-4229-8c4a-abe2c4751608" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/views.py" afterDir="false" />
     </list>
@@ -63,31 +62,32 @@
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="6" />
+          <entry key="html" value="8" />
           <entry key="py" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="6" />
+          <entry key="HTML" value="8" />
           <entry key="Python" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="353" />
-          <entry key="py" value="1277" />
+          <entry key="py" value="2317" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="353" />
-          <entry key="Python" value="1277" />
+          <entry key="Python" value="2317" />
         </counts>
       </usages-collector>
     </session>
@@ -97,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/polls/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="148" column="16" selection-start-line="148" selection-start-column="6" selection-end-line="148" selection-end-column="16" />
+            <state relative-caret-position="-897">
+              <caret line="181" column="21" lean-forward="true" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
               <folding>
                 <element signature="e#1#29#0" expanded="true" />
               </folding>
@@ -109,11 +109,30 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mysite/polls/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="913" column="21" selection-start-line="913" selection-start-column="14" selection-end-line="913" selection-end-column="21" />
+            <state relative-caret-position="500">
+              <caret line="1036" lean-forward="true" selection-start-line="1036" selection-end-line="1036" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
+                <marker date="1546793091405" expanded="true" signature="33826:33867" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/order_costumer.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/adminsite.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -157,16 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>css</find>
-      <find>pip</find>
-      <find>inventory</find>
-      <find>template</find>
-      <find>templateview</find>
-      <find>generic</find>
-      <find>invento</find>
-      <find>product</find>
-      <find>produc</find>
-      <find>delete</find>
       <find>busytime</find>
       <find>form</find>
       <find>messag</find>
@@ -181,11 +190,22 @@
       <find>context</find>
       <find>Components</find>
       <find>context = {</find>
-      <find>order</find>
       <find>ordercreate</find>
       <find>except</find>
       <find>form.add_error('component1', &quot;components should be empty if no product with component was chosen&quot;)</find>
       <find>add_error</find>
+      <find>queueUP</find>
+      <find>queu</find>
+      <find>queue_upd</find>
+      <find>order_de</find>
+      <find>orderupdat</find>
+      <find>queue</find>
+      <find>orderUpd</find>
+      <find>create</find>
+      <find>pick</find>
+      <find>order</find>
+      <find>form_valid</find>
+      <find>deleteview</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -216,11 +236,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="795" />
-    <option name="y" value="202" />
-    <option name="width" value="779" />
-    <option name="height" value="832" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -363,10 +382,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13965885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.141258" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -530,10 +549,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/adminsite.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/order_costumer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="148" column="16" selection-start-line="148" selection-start-column="6" selection-end-line="148" selection-end-column="16" />
+        <state relative-caret-position="-897">
+          <caret line="181" column="21" lean-forward="true" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
           <folding>
             <element signature="e#1#29#0" expanded="true" />
           </folding>
@@ -542,10 +575,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="913" column="21" selection-start-line="913" selection-start-column="14" selection-end-line="913" selection-end-column="21" />
+        <state relative-caret-position="500">
+          <caret line="1036" lean-forward="true" selection-start-line="1036" selection-end-line="1036" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
+            <marker date="1546793091405" expanded="true" signature="33826:33867" ph="..." />
           </folding>
         </state>
       </provider>

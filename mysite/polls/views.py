@@ -33,6 +33,8 @@ import csv, io
 from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+import smtplib
+
 
 
 # from here
@@ -476,6 +478,7 @@ class OrderUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
     def form_valid(self, form):
         if ((form.instance.ifSupplied)==True and Order.objects.filter(pk=form.instance.pk)):
             queryPr=Pip.objects.filter(product=form.instance.product1)
+
             for pip in queryPr:
                 pip.part.stock=pip.part.stock-pip.quant
                 pip.part.save()
@@ -1014,3 +1017,30 @@ def getAllProductsThatHasComponets():
     for comp in comps:
         list1.append(comp.product.pdes)
     return list1
+
+"""
+    target_email = form.instance.user.email
+    send_email(target_email)
+
+def get_email():
+    return form.instance.user.email
+"""
+def send_email():
+    FROM = 'shushtushliraz@gmail.com'
+    TO ='koren76@gmail.com'
+    SUBJECT = 'Your order is ready to pickup!'
+    TEXT = 'Thank you for buying at Shush Tush!'
+
+    message = """From: %s\nTo: %s\nSubject: %s\n\n%s
+        """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
+
+
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.ehlo()
+    server.starttls()
+    server.login('shushtushliraz@gmail.com', 'maataroze123')
+    server.sendmail(FROM, TO, message)
+    server.close()
+    print('successfully sent the mail')
+    #this function works here, but needs to be fixed to be called from the queue update
+    #TO field needs to be changed to the user's email probably like this:   form.instance.user.email
