@@ -491,18 +491,41 @@ class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     fields = [ 'orderPick', 'product1',  'component1',
               'component2',  'component3',  'component4', 'component5',
               'extra1', 'extra2', 'extra3', 'extra4', 'extra5', 'remarks']
-    template_name = 'polls/order_costumer.html'
+    template_name = 'polls/temp.html'
+    #initial = {"remarks": "Placeholder title", "product1":"59"}
+    
+    def get_initial(self): 
+        initial = super(OrderCreateCustomer, self).get_initial()
+        lastorder=Order.objects.filter(user=self.request.user.id).order_by("-orderDate")[0]
+        initial['product1'] = str(lastorder.product1.pk)
+        if(lastorder.product1.pdes=="Salad"):
+            initial['component1'] =str(lastorder.component1.pk)
+            initial['component2'] =str(lastorder.component2.pk)
+            initial['component3'] =str(lastorder.component3.pk)
+            initial['component4'] =str(lastorder.component4.pk)
+            initial['component5'] =str(lastorder.component5.pk)
+        if(lastorder.extra1 != None):
+            initial['extra1'] =str(lastorder.extra1.pk)
+        if(lastorder.extra2 != None):
+            initial['extra2'] =str(lastorder.extra2.pk)
+        if(lastorder.extra3 != None):
+            initial['extra3'] =str(lastorder.extra3.pk)
+        initial['remarks'] = lastorder.remarks
+        print(initial)
+        return initial
+
+    
     def form_valid(self, form):
-        print("kaki: ", form.instance.extra1)
         if(form.instance.product1.pdes in getAllProductsThatHasComponets()):
             if(form.instance.component1 == None ) or (form.instance.component2 == None): 
                 form.add_error('component1', "component1 and component2 should not be empty if you want " +  form.instance.product1.pdes )
                 return super().form_invalid(form)
         elif (form.instance.component1 != None ) or (form.instance.component2 != None) or (form.instance.component3 != None) or (form.instance.component4 != None) or (form.instance.component5 != None):
-            form.add_error('component1', "components should be empty if no product with component was chosen")
+            form.add_error('component1', "components should be empty if no product with component was chosen") 
+            print(form) 
             return super().form_invalid(form)
         
-        elif(form.instance.extra1 != None):
+        if(form.instance.extra1 != None):
             if(form.instance.extra1.extra_product.pdes!=form.instance.product1.pdes):
                 form.add_error('extra1', "extras should be only used corresponding product" )
                 return super().form_invalid(form)

@@ -1,0 +1,30 @@
+<h4 align="left">Guidelines:  Below you may insert a new order.</h4>
+<h4 align="left">Order pick is the requested pickup time.</h4>
+<h4 align="left">You may choose up to 3 products, 5 components and 5 extras. At least one product is mandatory.</h4>
+<h4 align="left">Components and extras are relevant for complex products only, else leave blank.</h4>
+<h4 align="left">Type any remarks if necessary.</h4>
+<form method="post">
+    
+    {% csrf_token %}
+    {{ form.none_field_errors  }}
+    <p><h5>Product: {{ form.product1 }}Chose time to pick:{{form.orderPick}}</p> 
+    <p>components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}</p>
+    <p>extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}</p>
+    <p>remarks: {{form.remarks}}</p></h5>
+    <input type="submit" value="Save">
+</form>
+{{ form.none_field_errors  }}
+{{ form.errors }}
+{% block content %}
+
+
+            <div class="sidenav">
+                <a href="{%url 'polls:index'%}">Home Page</a>
+
+                <a href="{% url 'polls:order_costumer' %}">Order</a>
+                <a href="#contact">Contact</a>
+                <a href="{% url 'polls:login' %}">logout</a>
+            </div>
+{% endblock %}
+
+
