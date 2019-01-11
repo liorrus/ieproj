@@ -2,34 +2,37 @@
 {% block title %}Extras{% endblock %}
 {% block body %}
 
-    <h1 align="center">Extras:</h1>
-<h4 align="center">Guidelines:  Below you may find a list of all the extras in the system.</h4>
+<h2 align="center" style="font-size: 55px; font-family:Courier ">Extras </h2>
 <h4 align="center">Extra is an optional addition which is being chosen by the user in complex products, e.g salad, toast.</h4>
 <h4 align="center">You may use the search function to search for an extra, click the "Add" button to add new or click one to see more details.</h4>
 <div class="form-group" align="center">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button id="myButton" class="float-left submit-button" >Add</button>
 
-        <script type="text/javascript">
-            document.getElementById("myButton").onclick = function () {
-                location.href ="{% url 'polls:newextra-add' %}";
-            };
-        </script>
+    <div class="col-sm-offset-2 col-sm-10">
+        <a class="example_b" href="{% url 'polls:newextra-add' %}"  >Add new Order</a>
+
+
         </div>
 </div>
     <br>
-    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:extra_search' %}" align="center">
+
+<form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:extra_search' %}" align="center">
 
                 <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
-                       placeholder="Search Extras" aria-label="Search">
-                <input type="submit" value="Search"></input>
+                       placeholder="Search Orders" aria-label="Search">
 
     </form>
-    <ul align="center">
-            {% for newextra in all_newextras %}
-                    <li class="list-group-item"><a href="{% url 'polls:newextra_detail' newextra.pk %}">{{ newextra.get_name }}</a></li>
+
+
+    <ul style=" padding-left:180px;">
+            {% for newextra in all_newextras %}<br>
+        <geti style="font-size: 18px;"><b>{{ newextra.get_name }}</b></geti>
+        <a class="example_a" href="{% url 'polls:newextra_detail' newextra.pk %}"  rel="nofollow noopener">more details</a>
+
+                <br>
             {% endfor %}
     </ul>
+
+
     <div class="pagination" align="center">
             <span class="step-links">
                 {% if all_newextras.has_previous %}
