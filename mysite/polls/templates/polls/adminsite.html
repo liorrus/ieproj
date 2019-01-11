@@ -17,10 +17,12 @@
     </form>
     <ul style=" padding-left:180px;">
             {% for order in all_orders %}<br>
-        <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %} "style= " color: darkblue; font-size: 18px;">{{ order.get_name }}</a><geti style="font-size: 18px;">{{order.get_details}}</geti></li>
-                        <form action="{% url 'polls:queue_update' order.pk %}">
-                            <input type="submit" value="Remove" />
-                        </form>
+        <geti style="font-size: 18px;">{{ order.get_name }}{{order.get_details}}</geti>
+<br>
+        <a class="example_a" href="{% url 'polls:order_detail' order.pk %}" target="_blank" rel="nofollow noopener">more details</a>
+       <a class="example_a" href="{% url 'polls:queue_update' order.pk %}" target="_blank" rel="nofollow noopener">remove</a>
+
+                <br>
             {% endfor %}
     </ul>
     <div class="pagination" align="center">
