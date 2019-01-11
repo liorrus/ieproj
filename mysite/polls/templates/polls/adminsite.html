@@ -2,11 +2,9 @@
 {% block title %}Orders{% endblock %}
 {% block body %}
 <div class=main>
-<h1 align="center">Welcome to ShushTush!</h1>
 <h4 align="center">Guidelines: The orders below are ordered by the recommended time to start it's preparation, top-bottom.</h4>
 <h4 align="center">You may click the order link to get more details, and use the search button to find a specific order.</h4>
 <h4 align="center">Once the order has been supplied to customer- please click to remove it from the queue.</h4>
-<br>
 <h2 align="center">Orders Queue</h2>
     <br>
     <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:queue_search' %}" align="center">
@@ -16,9 +14,9 @@
                 <input type="submit" value="Search"></input>
 
     </form>
-    <ul align="center">
-            {% for order in all_orders %}
-                    <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }}</a>{{order.get_details}}</li>
+    <ul style=" padding-left:180px;">
+            {% for order in all_orders %}<br>
+        <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %} "style= " color: darkblue; font-size: 18px;">{{ order.get_name }}</a><geti style="font-size: 18px;">{{order.get_details}}</geti></li>
                         <form action="{% url 'polls:queue_update' order.pk %}">
                             <input type="submit" value="Remove" />
                         </form>
