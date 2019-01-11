@@ -45,7 +45,7 @@ class Product(models.Model):
         return self.pdes
 
     def get_name(self):
-        return str(self.pdes) + " // " + str(self.price)  + "$ // " + str(self.prep)
+        return str(self.pdes) + " // " + str(self.price)  + "₪ // " + str(self.prep)
 
     def get_prep_time(self):
         return self.prep
@@ -109,11 +109,11 @@ class NewExtra(models.Model):
         return reverse('polls:newextra_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-       return str(self.extra_part.pdes) + " " + str(self.extra_product) + " " + str(self.extra_price)  + "$"
+       return str(self.extra_part.pdes) + " " + str(self.extra_product) + " " + str(self.extra_price)  + "₪"
 
     def get_name(self):
         #eturn str(self.extra_part) + " // " + str(self.extra_price) + " // " + str(self.extra_product)
-        return str(self.extra_part.pdes) + " " + str(self.extra_product) + " " + str(self.extra_price)  + "$"
+        return str(self.extra_part.pdes) + " " + str(self.extra_product) + " " + str(self.extra_price)  + "₪"
     class Meta:
         ordering = ('extra_product','extra_part')
 
