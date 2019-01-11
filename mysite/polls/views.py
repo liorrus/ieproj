@@ -943,7 +943,7 @@ def BusyTime(request):
     context = {}
     for i in range(8, 18):
         times = Order.objects.filter(orderPick__hour=i, orderPick__gte=datetime.now() - timedelta(days=90)).count()
-        hour = 'hour' + str(i)
+        hour = 'h' + str(i)
         context.update({hour: times})
     fig = plt.figure()
     fig.suptitle('Data of orders for each hour in the last quarterly', fontsize=16)
