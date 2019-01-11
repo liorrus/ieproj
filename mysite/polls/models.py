@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 import datetime
 from django.urls import path
 from django.shortcuts import render, redirect
-
+import itertools
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -247,7 +247,7 @@ class Order(models.Model):
             if self.extra5.extra_part!=(27 or 22):
                 details.append(str(self.extra5.extra_part))
 
-        return str(details)
+        return ', '.join(details)
 
 class POrder(models.Model):
     supplier = models.ForeignKey(Supplier, null=False, on_delete=models.CASCADE)  # product ID

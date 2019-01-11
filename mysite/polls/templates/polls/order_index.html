@@ -28,9 +28,12 @@
                 <input type="submit" value="Search"></input>
 
     </form>
-    <ul align="center">
-            {% for order in all_orders %}
-                    <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }}</a></li>
+    <ul style=" padding-left:180px;">
+            {% for order in all_orders %}<br>
+        <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %} "style= " color: darkblue; font-size: 18px;">{{ order.get_name }}</a><geti style="font-size: 18px;">{{order.get_details}}</geti></li>
+                        <form action="{% url 'polls:queue_update' order.pk %}">
+                            <input type="submit" value="Remove" />
+                        </form>
             {% endfor %}
     </ul>
     {% if is_paginated %}

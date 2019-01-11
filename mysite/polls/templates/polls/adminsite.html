@@ -1,11 +1,12 @@
 {% extends 'polls/base.html' %}
 {% block title %}Orders{% endblock %}
 {% block body %}
+<h2 align="center">Orders Queue</h2>
+
 <div class=main>
 <h4 align="center">Guidelines: The orders below are ordered by the recommended time to start it's preparation, top-bottom.</h4>
 <h4 align="center">You may click the order link to get more details, and use the search button to find a specific order.</h4>
 <h4 align="center">Once the order has been supplied to customer- please click to remove it from the queue.</h4>
-<h2 align="center">Orders Queue</h2>
     <br>
     <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:queue_search' %}" align="center">
 
