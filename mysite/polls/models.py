@@ -209,7 +209,7 @@ class Order(models.Model):
 
     def get_name(self):
         return str(self.user) + ": " + str(self.product1) + "- pick: " + str(
-            self.orderPick.strftime("%d/%m %H:%M")) + " // " + str(self.orderStatus)+": "
+            self.orderPick.strftime("%d/%m %H:%M")) + " , " + str(self.orderStatus)+": "
 
     def get_details(self):
         details = []
