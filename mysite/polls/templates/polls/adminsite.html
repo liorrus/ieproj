@@ -1,7 +1,7 @@
 {% extends 'polls/base.html' %}
 {% block title %}Orders{% endblock %}
 {% block body %}
-
+<div class=main>
 <h1 align="center">Welcome to ShushTush!</h1>
 <h4 align="center">Guidelines: The orders below are ordered by the recommended time to start it's preparation, top-bottom.</h4>
 <h4 align="center">You may click the order link to get more details, and use the search button to find a specific order.</h4>
@@ -18,7 +18,7 @@
     </form>
     <ul align="center">
             {% for order in all_orders %}
-                    <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }}</a></li>
+                    <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %}">{{ order.get_name }}</a>{{order.get_details}}</li>
                         <form action="{% url 'polls:queue_update' order.pk %}">
                             <input type="submit" value="Remove" />
                         </form>
