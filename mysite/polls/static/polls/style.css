@@ -1,6 +1,7 @@
 body{
-    background:  url("images/paper.jpg");
+    background:  url("images/backgr22.jpeg");
     font-family: "Lato", sans-serif;
+    background-size: 80px 80px;
 }
 .shadow {
    color: white;
