@@ -208,9 +208,46 @@ class Order(models.Model):
                " " + str(self.ifSupplied) + " " + str(self.orderPick)
 
     def get_name(self):
-        return str(self.user) + " //product1: " + str(self.product1) + " ,product2: " + str(self.product2) \
-               + " ,product3: " + str(self.product3) + " // " + str(self.orderPick) + " // " + str(self.orderStatus)
+        return str(self.user) + ": " + str(self.product1) + "- pick: " + str(
+            self.orderPick.strftime("%d/%m %H:%M")) + " // " + str(self.orderStatus)
 
+    def get_details(self):
+        details = []
+        if self.product1.pk!=7 and self.product1.pk!=5:
+            return str(details)
+        if self.component1 is not None:
+            if self.component1.part!=(37 or 36):
+                details.append(str(self.component1.part))
+        if self.component2 is not None:
+            if self.component2.part != (37 or 36):
+                details.append(str(self.component2.part))
+        if self.component3 is not None:
+            if self.component3.part!=(37 or 36):
+                details.append(str(self.component3.part))
+        if self.component4 is not None:
+            if self.component4.part!=(37 or 36):
+                details.append(str(self.component4.part))
+        if self.component5 is not None:
+            if self.component5.part!=(37 or 36):
+                details.append(str(self.component5.part))
+
+        if self.extra1 is not None:
+            if self.extra1.extra_part!=(27 or 22):
+                details.append(str(self.extra1.extra_part))
+        if self.extra2 is not None:
+            if self.extra2.extra_part!=(27 or 22):
+                details.append(str(self.extra2.extra_part))
+        if self.extra3 is not None:
+            if self.extra3.extra_part != (27 or 22):
+                details.append(str(self.extra3.extra_part))
+        if self.extra4 is not None:
+            if self.extra4.extra_part!=(27 or 22):
+                details.append(str(self.extra4.extra_part))
+        if self.extra5 is not None:
+            if self.extra5.extra_part!=(27 or 22):
+                details.append(str(self.extra5.extra_part))
+
+        return str(details)
 
 class POrder(models.Model):
     supplier = models.ForeignKey(Supplier, null=False, on_delete=models.CASCADE)  # product ID
