@@ -109,6 +109,8 @@ class Inventory(TemplateView):
                         #delta=0
                     #nextdate = today + timedelta(days=5)
                     nextdate = today + timedelta(days=int((par.lt/30)*(math.sqrt(2*dem[1])))-int(delta))
+                    nextdate = datetime.strftime(nextdate, '%d/%m/%Y')
+
                   
                      
                     kaki += "<td>" + par.pdes +"</td><td>" + str(par.stock) + "</td><td>" + str(math.sqrt(2*dem[1])) + "</td><td>" + str(nextdate) + "</td></tr>"  

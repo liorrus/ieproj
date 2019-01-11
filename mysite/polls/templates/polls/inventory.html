@@ -1,46 +1,7 @@
-{%load staticfiles%}
-<link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+{% extends 'polls/base.html' %}
+{% block title %}Products{% endblock %}
+{% block body %}
 
-
-
-{% block content %}
-
-  <center><h1>Inventory</h1></center>
-<ul align="center">
-
-    </ul>
-
-                <div class="sidenav">
-                     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
-                    <a></a><a></a><a></a>
-                        <div class="w3-dropdown-content w3-bar-block">
-                          <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
-                            <a></a>
-                          <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
-                            <a></a>
-                          <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
-                            <a></a>
-                          <a href="{% url 'polls:pip_index' %}" class="w3-bar-item w3-button"> Part to Product</a>
-                            <a></a>
-                          <a href="{% url 'polls:components_index' %}" class="w3-bar-item w3-button"> Component</a>
-                            <a></a>
-                          <a href="{% url 'polls:newextra_index' %}" class="w3-bar-item w3-button"> Extra</a>
-                            <a></a>
-                          <a href="{% url 'polls:supplier_index' %}" class="w3-bar-item w3-button"> Supplier</a>
-                            <a></a>
-                          <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
-                            <a></a>
-                          <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
-                            <a></a>
-                          <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
-                            <a></a>
-                           <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
-                            <a></a>
-                        </div>
-                    <a></a><a></a><a></a>
-                    <a href="{% url 'polls:login' %}">Logout</a>
-                </div>
-{% endblock %}
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -51,11 +12,12 @@ table, th, td {
   border-collapse: collapse;
 }
 th, td {
-  padding: 22px;
+  padding: 11px;
   text-align: left;
 }
 table#t01 {
-  width: 30%;
+    align-content: normal ;
+  width: 45%;
   background-color: #ffdd99;
       margin: 10px auto;
 
@@ -64,9 +26,6 @@ table#t01 {
     </head>
         <body>
         <table class="centerTable" id="t01" >
-
-
-
   <tr>
     <th>Part</th>
     <th>Current Stock</th>
@@ -77,73 +36,7 @@ table#t01 {
    {{parts|safe}}
 
 </table>
-
-
         </body>
 
-
-        <style>
-
-        html, body {
-            font-family: "Lato", sans-serif;
-}
-ttable{
-    padding-left:180px;
-
-}
-.sidenav {
-    height: 100%;
-    width: 170px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-
-
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-            height: 100%;
-        }
-
-        * {
-            margin: 5;
-            padding: 7;
-        }
-        #wrap {
-            min-height:100%;
-        }
-             h1 {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size:60px;
-            margin-top: 20px;
-            color: #1f1f47;
-                 margin: ;argin-bottom: 10px;
-        }
-            p{
-                font-size:30px;
-            margin-top: 20px;
-            color: #1f1f47;
-            margin-bottom: 10px;
-            }
-
-        </style>
 </html>
-
+{% endblock %}
