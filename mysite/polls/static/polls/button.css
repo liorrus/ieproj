@@ -1,9 +1,9 @@
 .example_a {
 color: #fff !important;
 text-transform: uppercase;
-font-size: 12px;
+font-size: 11px;
 background: #ed3330;
-padding: 10px;
+padding: 8px;
 border-radius: 5px;
 display: inline-block;
 border: none;
@@ -22,7 +22,40 @@ transition: all 0.4s ease 0s;
         display: inline-block;
 
 }
-  h20{
-        margin: 0;
-        display: inline-block;
-      }
+.example_b {
+color: #fff !important;
+text-transform: uppercase;
+    font-size: 15px;
+background: #4d1919;
+padding: 8px;
+border-radius: 50px;
+display: inline-block;
+border: none;
+    display: inline-block;
+    text-decoration:none;
+
+
+}
+
+.example_b:hover {
+text-shadow: 0px 0px 6px rgba(50, 50, 50, 1);
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.4s ease 0s;
+}
+input[type=text] {
+  width: 320px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('images/searchicon.jpg') ;
+    background-size: 20px 20px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+

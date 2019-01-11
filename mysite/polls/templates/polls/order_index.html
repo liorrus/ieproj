@@ -11,29 +11,26 @@
 <h4 align="center">Type any remarks if necessary.</h4>
 <div class="form-group" align="center">
         <div class="col-sm-offset-2 col-sm-10">
-            <button id="myButton" class="float-left submit-button" >Add</button>
+        <a class="example_b" href="{% url 'polls:order-add' %}"  >Add Order</a>
 
-        <script type="text/javascript">
-            document.getElementById("myButton").onclick = function () {
-                location.href ="{% url 'polls:order-add' %}";
-            };
-        </script>
+
         </div>
 </div>
     <br>
-    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:order_search' %}" align="center">
+    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:queue_search' %}" align="center">
 
                 <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
                        placeholder="Search Orders" aria-label="Search">
-                <input type="submit" value="Search"></input>
 
     </form>
     <ul style=" padding-left:180px;">
             {% for order in all_orders %}<br>
-        <li class="list-group-item"><a href="{% url 'polls:order_detail' order.pk %} "style= " color: darkblue; font-size: 18px;">{{ order.get_name }}</a><geti style="font-size: 18px;">{{order.get_details}}</geti></li>
-                        <form action="{% url 'polls:queue_update' order.pk %}">
-                            <input type="submit" value="Remove" />
-                        </form>
+        <geti style="font-size: 18px;"><b>{{ order.get_name }}{{order.get_details}}</b></geti>
+<br>
+        <a class="example_a" href="{% url 'polls:order_detail' order.pk %}" target="_blank" rel="nofollow noopener">more details</a>
+       <a class="example_a" href="{% url 'polls:queue_update' order.pk %}" target="_blank" rel="nofollow noopener">remove</a>
+
+                <br>
             {% endfor %}
     </ul>
     {% if is_paginated %}
