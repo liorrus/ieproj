@@ -166,7 +166,7 @@ class Components(models.Model):
         return str(self.part) + " "  + str(self.product)
 
     def get_name(self):
-        return str(self.part) +  " // " + str(self.product)
+        return str(self.part) +  " in " + str(self.product)
     class Meta:
         ordering = ('product','part')
 
@@ -309,4 +309,4 @@ class Contact(models.Model):
         return f'{self.first_name} {self.last_name}'
 
     def get_name(self):
-        return str(self.first_name) + " // " + str(self.last_name) + " // " + str(self.email)
+        return str(self.first_name) + "  " + str(self.last_name) + " : " + str(self.email)

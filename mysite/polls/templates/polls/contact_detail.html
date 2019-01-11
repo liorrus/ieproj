@@ -1,10 +1,9 @@
-{% extends 'polls/base.html' %}
 {% block title %}Product Details{% endblock %}
 {% block body %}
 
+        <h2 align="center">Message:  {{ contact.message }}</h2>
         <h2 align="center">First name: {{ contact.first_name }}</h2>
         <h2 align="center">Last name:  {{ contact.last_name }}</h2>
         <h2 align="center">Email:  {{ contact.email }}</h2>
-        <h2 align="center">Message:  {{ contact.message }}</h2>
 
 {% endblock %}

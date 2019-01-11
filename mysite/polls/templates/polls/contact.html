@@ -1,12 +1,23 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Shushtush{% endblock %}</title>
+
+    {%load staticfiles%}
+   <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+
 <h4 align="left">Contact us:</h4>
-<form method="post">
+
+<form method="post" style="padding-left: 180px">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Send</button>
-    <h4> Or call 04-6276553 </h4>
-    <h4> Shushtush Cafeteria </h4>
-    <h4> Faculty of Industrial Engineering and Management </h4>
-    <h4> Technion Institute of Technology, Haifa 3200003, IL  </h4>
+    <h5> Or call 04-6276553 , Shushtush Cafeteria</h5>
+    <h5> Faculty of Industrial Engineering and Management </h5>
+    <h5> Technion Institute of Technology, Haifa 3200003, IL  </h5>
 </form>
 {{ form.none_field_errors  }}
 {{ form.errors }}
@@ -20,3 +31,106 @@
                 <a href="{% url 'polls:login' %}">logout</a>
             </div>
 {% endblock %}
+
+
+
+    <html>
+            <style>
+
+            html, body {
+                font-family: "Lato", sans-serif;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 170px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+                height: 100%;
+            }
+
+            * {
+                margin: 5;
+                padding: 7;
+            }
+            #wrap {
+                min-height:100%;
+            }
+                 h1 {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size:60px;
+                margin-top: 20px;
+                color: #1f1f47;
+                margin-bottom: 10px;
+            }
+                p{
+                    font-size:30px;
+                margin-top: 20px;
+                color: #1f1f47;
+                margin-bottom: 10px;
+                }
+
+
+
+                p2{
+                    font-size:25px;
+                margin-top: 20px;
+                color: #1f1f47;
+                margin-bottom: 10px;
+                    padding-left:180px;
+                font-weight: bold
+                }
+                box {
+                    color:  #1f1f47;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 15px;}
+            top{
+                color: navajowhite;
+                padding-left:180px;
+                font-family: Arial;
+                font-size: 13px;
+                background: transparent;
+                line-height: 1;
+                 border: 1px;
+
+
+            }
+                sc{
+                    color: darkred;
+                    font-size:12px ;
+                }
+                h4{
+                padding-left:180px;
+                    font-size:22px;
+
+                }     h5{
+                    font-size: 23px;
+
+                }
+            </style>
+    </html>
+</head>

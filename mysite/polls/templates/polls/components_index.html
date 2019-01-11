@@ -3,34 +3,37 @@
 {% block body %}
 
 
-        <h1 align="center">Components:</h1>
-<h4 align="center">Guidelines:  Below you may find a list of all the components in the system.</h4>
-<h4 align="center">Component is a raw material which is being chosen by the user in complex products, e.g salad.</h4>
-<h4 align="center">You may use the search function to search for a component, click the "Add" button to add new or click one to see more details.</h4>
-    <div class="form-group" align="center">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button id="myButton" class="float-left submit-button" >Add</button>
+<h2 align="center" style="font-size: 60px; font-family:Courier "> Components</h2>
+<h4 >Component is a raw material which is being chosen by the user in complex products, e.g salad.</h4>
+<h4 >You may use the search function to search for a component, click the "Add" button to add new or click one to see more details.</h4>
 
-            <script type="text/javascript">
-                document.getElementById("myButton").onclick = function () {
-                    location.href ="{% url 'polls:components-add' %}";
-                };
-            </script>
-            </div>
-    </div>
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+        <a class="example_b" href="{% url 'polls:components-add' %}"  >Add new Component</a>
+
+
+        </div>
+</div>
     <br>
+
     <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:components_search' %}" align="center">
 
                 <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
                        placeholder="Search Components" aria-label="Search">
-                <input type="submit" value="Search"></input>
 
     </form>
-    <ul align="center">
-            {% for components in all_componentss %}
-                    <li class="list-group-item"><a href="{% url 'polls:components_detail' components.pk %}">{{ components.get_name }}</a></li>
+
+
+    <ul style=" padding-left:180px;">
+            {% for components in all_componentss %}<br>
+        <geti style="font-size: 18px;"><b>{{ components.get_name }}</b></geti>
+        <a class="example_a" href="{% url 'polls:components_detail' components.pk %}"  rel="nofollow noopener">more details</a>
+
+                <br>
             {% endfor %}
     </ul>
+
+
     <div class="pagination" align="center">
             <span class="step-links">
                 {% if all_componentss.has_previous %}
