@@ -1,20 +1,67 @@
-{% extends 'polls/base.html' %}
-{% block title %}Product Details{% endblock %}
-{% block body %}
-
-        <h1 align="center"> {{ product.pdes }}</h1>
-<h4 align="center">Guidelines:  Below you may find a specific product details.</h4>
-<h4 align="center">If you would like to make a change in the details, click the "Change" button.</h4>
-<br>
-        <h2 align="center">Price:  {{ product.price }}</h2>
-        <h2 align="center">Preparation Time (minutes):  {{ product.prep }}</h2>
-
-
-<div class="form-group" align="center">
+{% block content %}
+{%load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+{% if request.user.is_superuser %}
+    <div class="sidenav">
+        <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
+        <div class="w3-dropdown-content w3-bar-block">
+            <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
+            <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
+            <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
+            <a href="{% url 'polls:pip_index' %}" class="w3-bar-item w3-button"> Part to Product</a>
+            <a href="{% url 'polls:components_index' %}" class="w3-bar-item w3-button"> Component</a>
+            <a href="{% url 'polls:newextra_index' %}" class="w3-bar-item w3-button"> Extra</a>
+            <a href="{% url 'polls:supplier_index' %}" class="w3-bar-item w3-button"> Supplier</a>
+            <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
+            <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
+            <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
+            <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
+            <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data of Busy Time</a>
+        </div>
+        <a href="{% url 'polls:login' %}">Logout</a>
+    </div>
+{%else%}
+    <div class="sidenav">
+        <a href="{%url 'polls:index'%}">Home Page</a>
+        <a href="{% url 'polls:order_costumer' %}">Order</a>
+        <a href="#contact">Contact</a>
+        <a href="{% url 'polls:login' %}">logout</a>
+    </div>
+{%endif%}
+{% endblock %}
+<div class=main>
+    <html>
+        <head>
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+            <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        </head>
+        <style>
+            html, body { font-family: "Lato", sans-serif;}
+            .form-group {margin-left: 160px; padding: 0px 10px; }
+            .main {margin-left: 160px; padding: 0px 10px; }
+            .sidenav {
+                height: 100%; width: 170px; position: fixed; z-index: 1;
+                top: 0; left: 0; background-color: #111;
+                overflow-x: hidden; padding-top: 20px;
+            }
+            .sidenav a { padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; }
+            .sidenav a:hover { color: #f1f1f1; }
+            h1 { font-family: Arial, Helvetica, sans-serif; font-size:40px; margin-top: 20px;
+            color: #1f1f47; margin-bottom: 10px;
+            }
+        </style>
+    {% block body %}
+        <h1>Product Detail</h1>
+<h4>Guidelines:  Below you may find a specific product details.</h4>
+<h4>If you would like to make a change in the details, click the "Change" button.</h4>
+        <h2>Name: {{ product.pdes }} | Price:  {{ product.price }} | Preparation Time (minutes):  {{ product.prep }}</h2>
+    </html>
+</div>
+<div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button id="myButton" class="float-left submit-button" >Change</button>
 
-        <script type="text/javascript">
+        <script type="text/javascript">script">
             document.getElementById("myButton").onclick = function () {
                 location.href ="{% url 'polls:product_update' product.pk %}";
             };

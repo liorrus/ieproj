@@ -1,7 +1,7 @@
-
-{% block content %}
-
-  <center><h1>Your order has been approved!</h1></center>
+{% extends 'polls/base.html' %}
+{% block body %}
+<ul style=" padding-left:180px;">
+  Your order has been approved!</h1>
             <div class="sidenav">
                 <a href="{%url 'polls:index'%}">Home Page</a>
 
@@ -9,6 +9,7 @@
                 <a href="#contact">Contact</a>
                 <a href="{% url 'polls:login' %}">logout</a>
             </div>
+</ul>
 {% endblock %}
 <html>
     <head>

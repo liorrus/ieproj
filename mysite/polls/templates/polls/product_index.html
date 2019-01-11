@@ -1,49 +1,86 @@
-{% extends 'polls/base.html' %}
-{% block title %}Products{% endblock %}
-{% block body %}
 
-
-        <h1 align="center">Products:</h1>
-<h4 align="center">Guidelines:  Below you may find a list of all the products in the system.</h4>
-<h4 align="center">Product is what we sell to customers, and is shown on our menu. Each product consists of parts.</h4>
-<h4 align="center">You may use the search function to search for a product, click the "Add" button to add new or click one to see more details.</h4>
-    <div class="form-group" align="center">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button id="myButton" class="float-left submit-button" >Add</button>
-
-            <script type="text/javascript">
+{%load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+{% block content %}
+<div class="sidenav">
+    <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
+                         <div class="w3-dropdown-content w3-bar-block">
+                          <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
+                          <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
+                          <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
+                          <a href="{% url 'polls:pip_index' %}" class="w3-bar-item w3-button"> Part to Product</a>
+                          <a href="{% url 'polls:components_index' %}" class="w3-bar-item w3-button"> Component</a>
+                          <a href="{% url 'polls:newextra_index' %}" class="w3-bar-item w3-button"> Extra</a>
+                          <a href="{% url 'polls:supplier_index' %}" class="w3-bar-item w3-button"> Supplier</a>
+                          <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
+                          <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
+                          <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
+                          <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
+                          <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data Of Busy Time</a>
+                          <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
+                          <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
+                        </div>
+    <a href="{% url 'polls:login' %}">Logout</a>
+</div>
+{%endblock%}
+{% block title %}Product{% endblock %}
+<div class=main>
+    <html>
+        <head>
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+            <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        </head>
+        <style>
+            html, body { font-family: "Lato", sans-serif;}
+            .form-group {margin-left: 160px; padding: 0px 10px; }
+            .main {margin-left: 160px; padding: 0px 10px; }
+            .form-inline {margin-left: 160px; padding: 0px 10px; }
+            .pagination {margin-left: 160px; padding: 0px 10px; }
+            .sidenav {
+                height: 100%; width: 170px; position: fixed; z-index: 1;
+                top: 0; left: 0; background-color: #111;
+                overflow-x: hidden; padding-top: 20px;
+            }
+            .sidenav a { padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; }
+            .sidenav a:hover { color: #f1f1f1; }
+            .form-horizontal{margin-left: 160px; padding: 0px 10px; }
+            h1 { font-family: Arial, Helvetica, sans-serif; font-size:40px; margin-top: 20px;
+                color: #1f1f47; margin-bottom: 10px;
+            }
+        </style>
+        <h1>Products:</h1>
+        <h4>Guidelines:  Below you may find a list of all the products in the system.</h4>
+        <h4>Product is what we sell to customers, and is shown on our menu. Each product consists of parts.</h4>
+        <h4>You may use the search function to search for a product, click the "Add" button to add new or click one to see more details.</h4>
+    </html>
+</div>
+<div class="form-group">
+        <button id="myButton" class="float-left submit-button" >Add</button>
+        <script type="text/javascript">
                 document.getElementById("myButton").onclick = function () {
                     location.href ="{% url 'polls:product-add' %}";
                 };
-            </script>
-            </div>
-    </div>
-    <br>
-    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:product_search' %}" align="center">
-
-                <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
-                       placeholder="Search Products" aria-label="Search">
-                <input type="submit" value="Search"></input>
-
-    </form>
-    <ul align="center">
-            {% for product in all_products %}
-                    <li class="list-group-item"><a href="{% url 'polls:product_detail' product.pk %}">{{ product.get_name }}</a></li>
-            {% endfor %}
+        </script>
+</div>
+<form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:product_search' %}" >
+    <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}" placeholder="Search Products" aria-label="Search">
+    <input type="submit" value="Search"></input>
+    <ul>
+    {% for product in all_products %}
+        <b><li class="list-group-item"><a href="{% url 'polls:product_detail' product.pk %}">{{ product.get_name }}</a></li></b>
+    {% endfor %}
     </ul>
-    <div class="pagination" align="center">
-            <span class="step-links">
-                {% if all_products.has_previous %}
-                    <a href="?{{ page_request_var }}={{ all_products.previous_page_number }}&q={{ request.GET.q }}">previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ all_products.number }} of {{ all_products.paginator.num_pages }}.
-                </span>
-
-                {% if all_products.has_next %}
-                    <a href="?{{ page_request_var }}={{ all_products.next_page_number }}&q={{ request.GET.q }}">next</a>
-                {% endif %}
-            </span>
-    </div>
-{% endblock %}
+</form>
+<div class="pagination">
+    <span class="step-links">
+        {% if all_products.has_previous %}
+            <a href="?{{ page_request_var }}={{ all_products.previous_page_number }}&q={{ request.GET.q }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ all_products.number }} of {{ all_products.paginator.num_pages }}.
+        </span>
+        {% if all_products.has_next %}
+            <a href="?{{ page_request_var }}={{ all_products.next_page_number }}&q={{ request.GET.q }}">next</a>
+        {% endif %}
+    </span>
+</div>

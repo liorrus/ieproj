@@ -5,18 +5,22 @@
 
 <div class="sidenav">
     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
-        <div class="w3-dropdown-content w3-bar-block">
-            <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
-            <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
-            <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
-            <a href="{% url 'polls:pip_index' %}" class="w3-bar-item w3-button"> Part to Product</a>
-            <a href="{% url 'polls:components_index' %}" class="w3-bar-item w3-button"> Component</a>
-            <a href="{% url 'polls:newextra_index' %}" class="w3-bar-item w3-button"> Extra</a>
-            <a href="{% url 'polls:supplier_index' %}" class="w3-bar-item w3-button"> Supplier</a>
-            <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
-            <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
-            <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
-        </div>
+                         <div class="w3-dropdown-content w3-bar-block">
+                          <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
+                          <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
+                          <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
+                          <a href="{% url 'polls:pip_index' %}" class="w3-bar-item w3-button"> Part to Product</a>
+                          <a href="{% url 'polls:components_index' %}" class="w3-bar-item w3-button"> Component</a>
+                          <a href="{% url 'polls:newextra_index' %}" class="w3-bar-item w3-button"> Extra</a>
+                          <a href="{% url 'polls:supplier_index' %}" class="w3-bar-item w3-button"> Supplier</a>
+                          <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
+                          <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
+                          <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
+                          <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
+                          <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data Of Busy Time</a>
+                          <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
+                          <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
+                        </div>
      <a href="{% url 'polls:login' %}">Logout</a>
 </div>
 {% endblock %}
