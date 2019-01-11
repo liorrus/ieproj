@@ -3,21 +3,17 @@
 {% block body %}
 
 <h2 align="center" style="font-size: 55px; font-family:Courier ">Orders </h2>
-<h4>Guidelines:  Below you may insert a new order.</h4>
 <h4>Choose the user from the customer list. Order pick is the requested pickup time by customer.</h4>
 <h4>Choose order status from: Waiting/Ready/Take. If the order supplied check the box.</h4>
-<h4>You may choose up to 3 products, 5 components and 5 extras. At least one product is mandatory.</h4>
-<h4>Components and extras are relevant for complex products only, else leave blank.</h4>
-<h4>Type any remarks if necessary.</h4>
 <div class="form-group" align="center">
         <div class="col-sm-offset-2 col-sm-10">
-        <a class="example_b" href="{% url 'polls:order-add' %}"  >Add Order</a>
+        <a class="example_b" href="{% url 'polls:order-add' %}"  >Add new Order</a>
 
 
         </div>
 </div>
     <br>
-    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:queue_search' %}" align="center">
+    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:order_search' %}" align="center">
 
                 <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
                        placeholder="Search Orders" aria-label="Search">
