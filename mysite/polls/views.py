@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.views import generic
 from django.views.generic import View
 from .models import *
-from .forms import UserForm
+from .forms import UserForm, ContactForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login as django_login_view
 from django.views.generic import FormView
@@ -158,6 +158,11 @@ class ProductDetailView(generic.DetailView):
     template_name = 'polls/product_detail.html'
 
 
+class ContactDetailView(generic.DetailView):
+    model = Contact
+    template_name = 'polls/contact_detail.html'
+
+
 class OrderDetailView(generic.DetailView):
     model = Order
     template_name = 'polls/order_detail.html'
@@ -233,6 +238,15 @@ class PartIndexView(generic.ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         return Part.objects.order_by('pdes')
+
+
+class ContactIndexView(generic.ListView):
+    template_name = 'polls/contact_index.html'
+    context_object_name = 'all_contacts'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Contact.objects.order_by('last_name')
 
 
 class PipIndexView(generic.ListView):
@@ -841,10 +855,55 @@ def supprice_index(request):
         return render(request, 'polls/supprice_index.html', context)
 
 
+def contact_index(request):
+    today = timezone.now().date()
+    queryset_list2 = Contact.objects.all()
+    query = request.GET['q']
+    if query:
+        queryset_list2 = queryset_list2.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(message__icontains=query)
+        ).distinct()
+    else:
+        queryset_list2 = Contact.objects.all()
+    paginator = Paginator(queryset_list2, 10)
+    page_request_var = "page"
+    page = request.GET.get(page_request_var)
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    context = {"all_contacts": queryset, "title": "List", "page_request_var": page_request_var, "today": today, }
+
+    return render(request, 'polls/contact_index.html', context)
+
+
 class QueueUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
     model = Order
     fields = ['ifSupplied']
     """template_name = 'polls/generice_form.html'"""
+
+
+def contact(request):
+    if request.method == "POST":
+         form = ContactForm(request.POST)
+
+         if form.is_valid():
+                form.save()
+
+    else:
+         form = ContactForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, "polls/contact.html", context)
+
 
 
 def queue_index(request):
@@ -1063,3 +1122,7 @@ def send_email():
     print('successfully sent the mail')
     #this function works here, but needs to be fixed to be called from the queue update
     #TO field needs to be changed to the user's email probably like this:   form.instance.user.email
+
+
+
+

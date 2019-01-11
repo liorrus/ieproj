@@ -1,0 +1,22 @@
+<h4 align="left">Contact us:</h4>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+    <h4> Or call 04-6276553 </h4>
+    <h4> Shushtush Cafeteria </h4>
+    <h4> Faculty of Industrial Engineering and Management </h4>
+    <h4> Technion Institute of Technology, Haifa 3200003, IL  </h4>
+</form>
+{{ form.none_field_errors  }}
+{{ form.errors }}
+{% block content %}
+
+
+            <div class="sidenav">
+                <a href="{%url 'polls:index'%}">Home Page</a>
+                <a href="{% url 'polls:order_costumer' %}">Order</a>
+                <a href="{% url 'polls:contact' %}">Contact</a>
+                <a href="{% url 'polls:login' %}">logout</a>
+            </div>
+{% endblock %}

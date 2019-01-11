@@ -8,6 +8,7 @@ from django.views.generic.base import RedirectView
 from .views import orders_upload
 
 
+
 app_name = 'polls'
 urlpatterns = [
     path('orders_upload/', orders_upload, name="orders_upload"),
@@ -84,6 +85,10 @@ urlpatterns = [
     url(r'^porderitem_results/$', porderitem_index, name="porderitem_search"),
     url(r'^supprice_results/$', supprice_index, name="supprice_search"),
     url(r'queue/(?P<pk>[0-9]+)/$', views.QueueUpdateAdmin.as_view(), name="queue_update"),
+    path('contact/', contact, name="contact"),
+    url(r'contact_index/$', views.ContactIndexView.as_view(), name="contact_index"),
+    url(r'^contact/details/(?P<pk>[0-9]+)/$', views.ContactDetailView.as_view(), name='contact_detail'),
+    url(r'^contact_results/$', contact_index, name="contact_search"),
 
 
 ]
