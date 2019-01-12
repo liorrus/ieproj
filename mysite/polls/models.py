@@ -132,7 +132,7 @@ class Supplier(models.Model):
         return str(self.name) + " " + str(self.address) + " " + str(self.tel) + " " + str(self.mail)
 
     def get_name(self):
-        return str(self.name) + " // " + str(self.address)
+        return str(self.name) + " from: " + str(self.address)
 
 
 class SupPrice(models.Model):
@@ -151,7 +151,7 @@ class SupPrice(models.Model):
         return reverse('polls:supprice_detail', kwargs={'pk': self.pk})
 
     def get_name(self):
-        return str(self.supplier.name) + " // " + str(self.part.pdes) + " // " + str(self.price)
+        return str(self.supplier.name) + ": " + str(self.part.pdes) + " ,price:  " + str(self.price)
     
 
 class Components(models.Model):
@@ -264,10 +264,11 @@ class POrder(models.Model):
         return reverse('polls:pord_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return str(self.supplier.name) + " " + str(self.orderStatus) + " " + str(self.porderDate)
-
+        return str(self.supplier.name) + " " + str(self.orderStatus) + " " + str(
+            self.porderDate.strftime("%d/%m/%y %H:%M"))
     def get_name(self):
-        return str(self.supplier.name) + " ,status: " + str(self.orderStatus) + " ,date: " + str(self.porderDate) \
+        return str(self.supplier.name) + " ,status: " + str(self.orderStatus) + " ,date: " +str(
+            self.porderDate.strftime("%d/%m/%y %H:%M")) \
                + " ,if supplied: " + str(self.ifSupplied)
 
 

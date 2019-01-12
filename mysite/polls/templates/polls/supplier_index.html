@@ -1,9 +1,11 @@
 
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+
 {% block content %}
-<div class="sidenav">
-    <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
+                <div class="sidenav">
+                     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
                         <div class="w3-dropdown-content w3-bar-block">
                           <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
                           <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
@@ -20,10 +22,10 @@
                             <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
                             <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
                         </div>
-    <a href="{% url 'polls:login' %}">Logout</a>
-</div>
+                    <a href="{% url 'polls:login' %}">Logout</a>
+                    <a></a><a></a>
+                </div>
 {%endblock%}
-{% block title %}Suppliers{% endblock %}
 <div class=main>
     <html>
         <head>
@@ -48,29 +50,35 @@
                 color: #1f1f47; margin-bottom: 10px; 
             }
         </style>
-        <h1>Suppliers:</h1>
-        <h4>Guidelines:  Below you may find a list of all the suppliers in the system.</h4>
-        <h4>Supplier is who we buy our parts from.</h4>
-        <h4>You may use the search function to search for a supplier, click the "Add" button to add new or click one to see more details.</h4>
+<h2 align="center" style="font-size: 55px; font-family:Courier ">Suppliers </h2>
+        <h4 style="font-size: 18px; font-family:Courier ">Supplier is who we buy our parts from.</h4>
+        <h4 style="font-size: 18px; font-family:Courier ">You may use the search function to search for a supplier, click the "Add" button to add new or click one to see more details.</h4>
     </html>
 </div>
-<div class="form-group">
-        <button id="myButton" class="float-left submit-button" >Add</button>
-        <script type="text/javascript">
-                document.getElementById("myButton").onclick = function () {
-                    location.href ="{% url 'polls:supplier-add' %}";
-                 };
-        </script>
-</div>
-<form class="form-inline" method="GET" action="{% url 'polls:supplier_search' %}">
-     <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}" placeholder="Search Suppliers" aria-label="Search">
-     <input type="submit" value="Search"></input>
-    <ul>
-        {% for supplier in all_suppliers %}
-            <b><li class="list-group-item"><a href="{% url 'polls:supplier_detail' supplier.pk %}">{{ supplier.get_name }}</a></li></b>
-         {% endfor %}
+
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+        <a class="example_b" href="{% url 'polls:supplier-add' %}"  >Add new Supplier</a>
+
+
+        </div>
+</div><br>
+
+    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:supplier_search' %}" align="center">
+
+                <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
+                       placeholder="Search Supplier" aria-label="Search">
+
+    </form>
+    <ul style=" padding-left:180px;">
+    {% for supplier in all_suppliers %}<br>
+        <geti style="font-size: 18px;"><b>{{ supplier.get_name }}</b></geti>
+        <a class="example_a" href="{% url 'polls:supplier_detail' supplier.pk %}"  rel="nofollow noopener">more details</a>
+
+                <br>
+            {% endfor %}
     </ul>
-</form>
+
 <div class="pagination" >
     <span class="step-links">
         {% if all_suppliers.has_previous %}
