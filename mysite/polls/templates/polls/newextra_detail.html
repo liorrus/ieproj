@@ -3,24 +3,19 @@
 
 {% block body %}
 
-        <h1 align="center"> {{ newextra.get_name }}</h1>
-<h4 align="center">Guidelines:  Below you may find a specific extra details.</h4>
-<h4 align="center">If you would like to make a change in the details, click the "Change" button.</h4>
+<h2 align="center" style="font-size: 60px; font-family:Courier ">{{ newextra.get_name }}</h2>
+<h4 style="padding-left:180px ">Below you may find a specific extra details.</h4>
+<h4 style="padding-left: 180px">If you would like to make a change in the details, click the "Change" button.</h4>
 <br>
-        <h2 align="center">Part:  {{ newextra.extra_part }}</h2>
-        <h2 align="center">Price:  {{ newextra.extra_price }}</h2>
-        <h2 align="center">Product:  {{ newextra.extra_product }}</h2>
+        <h2 style="padding-left: 180px">Part:  {{ newextra.extra_part }}</h2>
+        <h2  style="padding-left: 180px">Price:  {{ newextra.extra_price }}</h2>
+        <h2  style="padding-left: 180px">Product:  {{ newextra.extra_product }}</h2>
 
 
-<div class="form-group" align="center">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button id="myButton" class="float-left submit-button" >Change</button>
 
-        <script type="text/javascript">
-            document.getElementById("myButton").onclick = function () {
-                location.href ="{% url 'polls:newextra_update' newextra.pk %}";
-            };
-        </script>
-        </div>
-</div>
+   <ul style=" padding-left:180px;">
+
+        <a class="example_b"  href="{% url 'polls:newextra_update' newextra.pk %}"  rel="nofollow noopener">Change</a>
+
+    </ul>
 {% endblock %}
