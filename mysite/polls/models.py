@@ -45,7 +45,7 @@ class Product(models.Model):
         return self.pdes
 
     def get_name(self):
-        return str(self.pdes) + " // " + str(self.price)  + "₪ // " + str(self.prep)
+        return str(self.pdes) + " ,price: " + str(self.price)  + "₪ , preparation: " + str(self.prep)
 
     def get_prep_time(self):
         return self.prep
