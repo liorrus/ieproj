@@ -1,6 +1,8 @@
 
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+
 {% block content %}
 <div class="sidenav">
     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
@@ -20,7 +22,7 @@
                             <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
                             <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
                         </div>
-    <a href="{% url 'polls:login' %}">Logout</a>
+    <a href="{% url 'polls:login' %}">Logout</a><a></a><a></a>
 </div>
 {%endblock%}
 {% block title %}Purchase Order{% endblock %}
@@ -48,31 +50,35 @@
                 color: #1f1f47; margin-bottom: 10px;
             }
         </style>
-        <h1>Purchase Order:</h1>
-        <h4>Guidelines:  Below you may find a list of all the purchase orders in the system.</h4>
-        <h4>Purchase Order is where we order raw materials (parts) from suppliers. The parts selection is created on the purchase order items page.</h4>
-        <h4>You may use the search function to search for a purchase order, click the "Add" button to add new or click one to see more details.</h4>
+<h2 align="center" style="font-size: 55px; font-family:Courier ">Purchase Order </h2>
+        <h4 style="font-size: 18px; font-family:Courier ">Purchase Order is where we order raw materials (parts) from suppliers. The parts selection is created on the purchase order items page.</h4>
+        <h4 style="font-size: 18px; font-family:Courier ">You may use the search function to search for a purchase order, click the "Add" button to add new or click one to see more details.</h4>
    </html>
 </div>
-<div class="form-group">
-        <button id="myButton" class="float-left submit-button" >Add</button>
-        <script type="text/javascript">
-            document.getElementById("myButton").onclick = function () {
-                location.href ="{% url 'polls:pord-add' %}";
-            };
-        </script>
-        </div>
-</div>
-<form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:pord_search' %}">
 
-                <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}" placeholder="Search Purchase Orders" aria-label="Search">
-                <input type="submit" value="Search"></input>
-    <ul>
-            {% for porder in all_porders %}
-                    <li class="list-group-item"><a href="{% url 'polls:pord_detail' porder.pk %}">{{ porder.get_name }}</a></li>
+<div class="form-group" align="center">
+        <div class="col-sm-offset-2 col-sm-10">
+        <a class="example_b" href="{% url 'polls:pord-add' %}"  >Add new Purchase Order</a>
+
+
+        </div>
+</div><br>
+
+
+    <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:pord_search' %}" align="center">
+
+                <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
+                       placeholder="Search Purchase Order" aria-label="Search">
+
+    </form>
+    <ul style=" padding-left:180px;">
+    {% for porder in all_porders %}<br>
+        <geti style="font-size: 18px;"><b>{{ porder.get_name }}</b></geti>
+        <a class="example_a" href="{% url 'polls:pord_detail' porder.pk %}"  rel="nofollow noopener">more details</a>
+
+                <br>
             {% endfor %}
     </ul>
-</form>
 <div class="pagination" align="center">
             <span class="step-links">
                 {% if all_porders.has_previous %}

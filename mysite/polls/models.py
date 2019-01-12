@@ -45,7 +45,7 @@ class Product(models.Model):
         return self.pdes
 
     def get_name(self):
-        return str(self.pdes) + " ,price: " + str(self.price)  + "₪ , preparation: " + str(self.prep)
+        return str(self.pdes) + ": price: " + str(self.price)  + "₪ , preparation: " + str(self.prep)
 
     def get_prep_time(self):
         return self.prep
@@ -77,7 +77,7 @@ class Part(models.Model): # Raw material
         return self.pdes
 
     def get_name(self):
-        return str(self.pdes) + " // " + str(self.stock)
+        return str(self.pdes) + ", stock: " + str(self.stock)
     class Meta:
         ordering = ('pdes',)
 
@@ -97,7 +97,7 @@ class Pip(models.Model):
         return str(self.part) + " " + str(self.quant) + " " + str(self.product)
 
     def get_name(self):
-        return str(self.part) + " // " + str(self.quant) + " // " + str(self.product)
+        return str(self.part) + ", quantity: " + str(self.quant) + " in " + str(self.product)
 
 
 class NewExtra(models.Model):
@@ -267,8 +267,8 @@ class POrder(models.Model):
         return str(self.supplier.name) + " " + str(self.orderStatus) + " " + str(self.porderDate)
 
     def get_name(self):
-        return str(self.supplier.name) + " // " + str(self.orderStatus) + " // " + str(self.porderDate) \
-               + " // " + str(self.ifSupplied)
+        return str(self.supplier.name) + " ,status: " + str(self.orderStatus) + " ,date: " + str(self.porderDate) \
+               + " ,if supplied: " + str(self.ifSupplied)
 
 
 class POrderItem(models.Model):

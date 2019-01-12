@@ -25,7 +25,6 @@
     <a href="{% url 'polls:login' %}">Logout</a>
 </div>
 {%endblock%}
-<h2 align="center" style="font-size: 55px; font-family:Courier ">Products </h2>
 <div class=main>
     <html>
         <head>
@@ -50,8 +49,9 @@
                 color: #1f1f47; margin-bottom: 10px;
             }
         </style>
-        <h4  style="font-size: 18px; font-family:Courier ">
-Product is what we sell to customers, and is shown on our menu. Each product consists of parts.</h4>
+        <h2 align="center" style="font-size: 55px; font-family:Courier ">Products </h2>
+
+        <h4  style="font-size: 18px; font-family:Courier ">Product is what we sell to customers, and is shown on our menu. Each product consists of parts.</h4>
         <h4  style="font-size: 18px; font-family:Courier">You may use the search function to search for a product, click the "Add" button to add new or click one to see more details.</h4>
     </html>
 </div>
@@ -68,7 +68,7 @@ Product is what we sell to customers, and is shown on our menu. Each product con
     <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:product_search' %}" align="center">
 
                 <input type="text" class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}"
-                       placeholder="Search Orders" aria-label="Search">
+                       placeholder="Search Products" aria-label="Search">
 
     </form>
     <ul style=" padding-left:180px;">
