@@ -1,10 +1,60 @@
-{% extends 'polls/base.html' %}
-{% block title %}Orders{% endblock %}
-{% block body %}
 
-<h2 align="center" style="font-size: 55px; font-family:Courier ">Orders </h2>
+{%load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+
+{% block content %}
+<div class="sidenav">
+    <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
+                         <div class="w3-dropdown-content w3-bar-block">
+                          <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
+                          <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
+                          <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
+                          <a href="{% url 'polls:pip_index' %}" class="w3-bar-item w3-button"> Part to Product</a>
+                          <a href="{% url 'polls:components_index' %}" class="w3-bar-item w3-button"> Component</a>
+                          <a href="{% url 'polls:newextra_index' %}" class="w3-bar-item w3-button"> Extra</a>
+                          <a href="{% url 'polls:supplier_index' %}" class="w3-bar-item w3-button"> Supplier</a>
+                          <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
+                          <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
+                          <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
+                          <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
+                          <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data Of Busy Time</a>
+                          <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
+                          <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
+                        </div>
+    <a href="{% url 'polls:login' %}">Logout</a>
+</div>
+{%endblock%}
+<div class=main>
+    <html>
+        <head>
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+            <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        </head>
+        <style>
+            html, body { font-family: "Lato", sans-serif;}
+            .form-group {margin-left: 160px; padding: 0px 10px; }
+            .main {margin-left: 160px; padding: 0px 10px; }
+            .form-inline {margin-left: 160px; padding: 0px 10px; }
+            .pagination {margin-left: 160px; padding: 0px 10px; }
+            .sidenav {
+                height: 100%; width: 170px; position: fixed; z-index: 1;
+                top: 0; left: 0; background-color: #111;
+                overflow-x: hidden; padding-top: 20px;
+            }
+            .sidenav a { padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; }
+            .sidenav a:hover { color: #f1f1f1; }
+            .form-horizontal{margin-left: 160px; padding: 0px 10px; }
+            h1 { font-family: Arial, Helvetica, sans-serif; font-size:40px; margin-top: 20px;
+                color: #1f1f47; margin-bottom: 10px;
+            }
+        </style>
+        <h2 align="center" style="font-size: 55px; font-family:Courier ">Orders </h2>
 <h4>Choose the user from the customer list. Order pick is the requested pickup time by customer.</h4>
 <h4>Choose order status from: Waiting/Ready/Take. If the order supplied check the box.</h4>
+    </html>
+</div>
+
 <div class="form-group" align="center">
         <div class="col-sm-offset-2 col-sm-10">
         <a class="example_b" href="{% url 'polls:order-add' %}"  >Add new Order</a>
@@ -12,6 +62,7 @@
 
         </div>
 </div>
+
     <br>
     <form class="form-inline my-2 my-lg-1" method="GET" action="{% url 'polls:order_search' %}" align="center">
 
@@ -24,14 +75,12 @@
         <geti style="font-size: 18px;"><b>{{ order.get_name }}{{order.get_details}}</b></geti>
 <br>
         <a class="example_a" href="{% url 'polls:order_detail' order.pk %}"  rel="nofollow noopener">more details</a>
-       <a class="example_a" href="{% url 'polls:queue_update' order.pk %}"  rel="nofollow noopener">remove</a>
 
                 <br>
             {% endfor %}
     </ul>
-    {% if is_paginated %}
-    <div class="pagination" align="center">
-            <span class="step-links">
+<div class="pagination">
+    <span class="step-links">
                 {% if page_obj.has_previous %}
                   <li><a href="?page={{ page_obj.previous_page_number }}">previous;</a></li>
                 {% endif %}
@@ -42,7 +91,5 @@
                 {% if page_obj.has_next %}
                   <li><a href="?page={{ page_obj.next_page_number }}">next;</a></li>
                 {% endif %}
-            </span>
-    </div>
-    {% endif %}
-{% endblock %}
+    </span>
+</div>

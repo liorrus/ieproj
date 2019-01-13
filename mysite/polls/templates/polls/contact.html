@@ -9,11 +9,28 @@
    <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
 
-<h4 align="left">Contact us:</h4>
+		<center><h1 style="font-size: 55px; font-family:Courier">Contact us</h1></center>
 
 <form method="post" style="padding-left: 180px">
     {% csrf_token %}
-    {{ form.as_p }}
+{{ form.non_field_errors }}
+<div class="fieldWrapper">
+    <h2>First name:  {{ form.first_name }}</h2>
+</div>
+<div class="fieldWrapper">
+    <h2>Last name:   {{ form.last_name }}</h2>
+</div>
+<div class="fieldWrapper">
+    <h2>Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.email }}</h2>
+</div>
+<div class="fieldWrapper">
+    <h2>Message: &nbsp;&nbsp;&nbsp;{{ form.message }} </h2>
+
+</div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <button type="submit">Send</button>
     <h5> Or call 04-6276553 , Shushtush Cafeteria</h5>
     <h5> Faculty of Industrial Engineering and Management </h5>
@@ -22,8 +39,6 @@
 {{ form.none_field_errors  }}
 {{ form.errors }}
 {% block content %}
-
-
             <div class="sidenav">
                 <a href="{%url 'polls:index'%}">Home Page</a>
                 <a href="{% url 'polls:order_costumer' %}">Order</a>

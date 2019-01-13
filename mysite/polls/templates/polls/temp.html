@@ -1,30 +1,54 @@
-<h4 align="left">Guidelines:  Below you may insert a new order.</h4>
-<h4 align="left">Order pick is the requested pickup time.</h4>
-<h4 align="left">You may choose up to 3 products, 5 components and 5 extras. At least one product is mandatory.</h4>
-<h4 align="left">Components and extras are relevant for complex products only, else leave blank.</h4>
-<h4 align="left">Type any remarks if necessary.</h4>
-<form method="post">
-    
+{%load staticfiles%}
+<link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+{% block content %}
+{%load staticfiles%}
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+    <div class="sidenav">
+        <a href="{%url 'polls:index'%}">Home Page</a>
+        <a href="{% url 'polls:order_costumer' %}">Order</a>
+        <a href="{% url 'polls:contact' %}">Contact</a>
+        <a href="{% url 'polls:login' %}">logout</a>
+    </div>
+{% endblock %}
+<div class=main>
+    <html>
+        <head>
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+            <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        </head>
+        <style>
+            html, body { font-family: "Lato", sans-serif;}
+            .form-group {margin-left: 160px; padding: 0px 10px; }
+            .main {margin-left: 160px; padding: 0px 10px; }
+            /*.form-horizontal {margin-left: 160px; padding: 0px 10px; }*/
+            .sidenav { height: 100%; width: 170px; position: fixed; z-index: 1;
+                    top: 0; left: 0; background-color: #111;
+                    overflow-x: hidden; padding-top: 20px;
+            }
+            .sidenav a { padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; }
+            .sidenav a:hover { color: #f1f1f1; }
+            h1 { font-family: Arial, Helvetica, sans-serif; font-size:40px; margin-top: 20px;
+                color: #1f1f47; margin-bottom: 10px;
+            }
+        </style>
+		<center><h1 style="font-size: 55px; font-family:Courier">Order</h1></center>
+        <h4>Below you may insert a new order.</h4>
+        <h4>Order pick is the requested pickup time.</h4>
+        <h4>You may choose up to 3 products, 5 components and 3 extras. At least one product is mandatory.</h4>
+        <h4>Components and extras are relevant for complex products only, else leave blank.</h4>
+        <h4>Type any remarks if necessary.</h4>
+    </html>
+</div>
+<form class="form-horizontal" action ="" method="POST" style="padding-left: 180px" enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
     {{ form.none_field_errors  }}
-    <p><h5>Product: {{ form.product1 }}Chose time to pick:{{form.orderPick}}</p> 
-    <p>components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}</p>
-    <p>extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}</p>
-    <p>remarks: {{form.remarks}}</p></h5>
-    <input type="submit" value="Save">
+    <p><h2>Product: {{ form.product1 }} &nbsp; &nbsp; Choose time to pick:{{form.orderPick}}
+    <p>Components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}
+    <p>Extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}
+    <p>Remarks: {{form.remarks}}</h2></p>
 </form>
-{{ form.none_field_errors  }}
-{{ form.errors }}
-{% block content %}
-
-
-            <div class="sidenav">
-                <a href="{%url 'polls:index'%}">Home Page</a>
-
-                <a href="{% url 'polls:order_costumer' %}">Order</a>
-                <a href="{% url 'polls:contact' %}">Contact</a>
-                <a href="{% url 'polls:login' %}">logout</a>
-            </div>
-{% endblock %}
+<div class="form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+</div>
 
 
