@@ -22,9 +22,9 @@
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
 {% block content %}
-<div class="sidenav">
-    <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
-                         <div class="w3-dropdown-content w3-bar-block">
+                <div class="sidenav">
+                     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
+                        <div class="w3-dropdown-content w3-bar-block">
                           <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
                           <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
                           <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
@@ -35,13 +35,14 @@
                           <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
                           <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
                           <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
-                          <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
-                          <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data Of Busy Time</a>
-                          <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
-                          <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
+                            <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
+                            <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data Of Busy Time</a>
+                            <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
+                            <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
                         </div>
-    <a href="{% url 'polls:login' %}">Logout</a>
-</div>
+                    <a href="{% url 'polls:login' %}">Logout</a>
+                    <a></a><a></a>
+                </div>
                     <a></a><a></a><a></a>
                     <a href="{% url 'polls:login' %}">Logout</a>
                     <a></a><a></a>
@@ -64,37 +65,39 @@
             font-family: "Lato", sans-serif;
 }
 
-.sidenav {
-    height: 100%;
-    width: 170px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
 
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
+    .sidenav {
+        height: 100%;
+        width: 170px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
 
-.sidenav a:hover {
-    color: #f1f1f1;
-}
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
 
 
 
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-            height: 100%;
-        }
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+                height: 100%;
+            }
+
 
         * {
             margin: 5;

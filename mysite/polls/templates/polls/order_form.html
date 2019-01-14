@@ -1,8 +1,9 @@
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+
+<font color="red">{{ form.none_field_errors  }}</font>
 {% block content %}
-{%load staticfiles%}
-    <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
     <div class="sidenav">
         <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
                              <div class="w3-dropdown-content w3-bar-block">
@@ -66,4 +67,7 @@
         <button type="submit" class="btn btn-success">Submit</button>
 </div>
 
-
+<form method="post" style="padding-left: 180px">
+    {% csrf_token %}
+    <input type="submit" value="Save">
+</form>
