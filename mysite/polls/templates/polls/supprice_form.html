@@ -1,6 +1,8 @@
 
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+
 {% block content %}
                 <div class="sidenav">
                      <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
@@ -53,6 +55,8 @@
 <form class="form-horizontal" action ="" method="POST" enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
     {% include 'polls/form-template.html' %}
-            <button type="submit" class="btn btn-success">Submit</button>           
+            <div class="form-group"><br>
+        <button type="submit" class="example_b">Submit</button>
+</div>
 </form>
 

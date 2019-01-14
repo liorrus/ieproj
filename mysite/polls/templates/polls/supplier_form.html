@@ -1,6 +1,8 @@
 
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+
 {% block content %}
 
 <div class="sidenav">
@@ -45,13 +47,14 @@
                 color: #1f1f47; margin-bottom: 10px; 
             }
         </style>
-        <h4>Guidelines:  Below you may insert a new supplier.</h4>
+        <h4>Below you may insert a new supplier.</h4>
     </html>
 </div>
 <form class="form-horizontal" action ="" method="POST" enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
-    {% include 'polls/form-template.html' %}  
-</form>        
-<div class="form-group">
-        <button type="submit" class="btn btn-success">Submit</button>
+    {% include 'polls/form-template.html' %}
+        <div class="form-group"><br>
+        <button type="submit" class="example_b" >Submit</button>
 </div>
+</form>        
+
