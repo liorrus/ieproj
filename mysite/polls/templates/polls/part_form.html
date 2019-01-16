@@ -50,10 +50,14 @@
         <h4>Choose unit of measure, stock availability, lead time (days), safety stock low and high.</h4>
     </html>
 </div>
-<form class="form-horizontal" action ="" method="POST" enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
+<form class="form-horizontal" style="padding-left" action ="" method="POST" enctype="multipart/form-data"
+      action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
     {% include 'polls/form-template.html' %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
+
+        </div>
+    </div>
 </form>
-<div class="form-group">
-        <button type="submit" class="btn btn-success">Submit</button>
-</div>

@@ -2,23 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19c5d8b4-7c66-4316-8be9-9130b4684f6b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mysite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mysite.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/polls/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/polls/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/components_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/components_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/polls/templates/polls/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/contact_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/contact_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/contact_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/contact_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/newextra_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/newextra_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/newextra_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/newextra_index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/polls/templates/polls/order_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/order_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/order_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/order_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/part_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/part_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/porderitem_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/porderitem_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/product_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/product_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/supprice_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/supprice_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/part_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/part_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/pip_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/pip_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/porder_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/porder_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/porderitem_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/porderitem_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/product_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/product_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/templates/polls/supplier_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/supplier_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/polls/templates/polls/supprice_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/supprice_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polls/templates/polls/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/polls/templates/polls/temp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/polls/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +30,7 @@
     <session id="1824427475">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="2" />
@@ -38,34 +38,35 @@
           <entry key="project.open.time.13" value="4" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="336" />
-          <entry key="py" value="77" />
+          <entry key="html" value="355" />
+          <entry key="py" value="80" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="336" />
-          <entry key="Python" value="77" />
+          <entry key="HTML" value="355" />
+          <entry key="Python" value="80" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="11923" />
-          <entry key="py" value="9754" />
+          <entry key="html" value="11963" />
+          <entry key="py" value="9857" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="11923" />
-          <entry key="Python" value="9754" />
+          <entry key="HTML" value="11963" />
+          <entry key="Python" value="9857" />
         </counts>
       </usages-collector>
     </session>
@@ -127,63 +128,27 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_detail.html">
+        <entry file="file://$PROJECT_DIR$/polls/templates/polls/components_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="64" selection-start-line="64" selection-end-line="64" selection-end-column="86" />
+            <state relative-caret-position="446">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
-                <element signature="n#style#0;n#h2#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="25" selection-end-column="6" />
-              <folding>
-                <element signature="n#style#0;n#h2#0;n#html#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polls/templates/polls/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="38" selection-start-line="38" selection-end-line="38" selection-end-column="98" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#center#0;n#head#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polls/templates/polls/supplier_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polls/templates/polls/temp.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#h1#0;n#center#0;n#html#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h4#0;n#html#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
-                <element signature="e#2286#2292#0" expanded="true" />
-                <element signature="e#2293#2299#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polls/templates/polls/pip_form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#h4#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h4#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -192,39 +157,72 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="58" column="99" selection-start-line="58" selection-start-column="99" selection-end-line="58" selection-end-column="99" />
+            <state relative-caret-position="395">
+              <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#center#0;n#html#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="e#3947#3953#0" expanded="true" />
-                <element signature="e#3958#3964#0" expanded="true" />
                 <element signature="e#3990#3996#0" expanded="true" />
                 <element signature="e#3997#4003#0" expanded="true" />
-                <element signature="e#2274#2280#0" expanded="true" />
-                <element signature="e#2281#2287#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polls/views.py">
+        <entry file="file://$PROJECT_DIR$/polls/templates/polls/porderitem_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="467" column="14" lean-forward="true" selection-start-line="467" selection-start-column="14" selection-end-line="467" selection-end-column="62" />
+            <state relative-caret-position="324">
+              <caret line="51" selection-start-line="51" selection-end-line="61" selection-end-column="7" />
               <folding>
-                <element signature="e#0#44#0" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_costumer.html">
+        <entry file="file://$PROJECT_DIR$/polls/templates/polls/supprice_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" selection-end-column="1" />
+            <state relative-caret-position="528">
+              <caret line="62" column="7" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/polls/templates/polls/adminsite.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polls/templates/polls/part_form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1054">
+              <caret line="62" column="7" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polls/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1569">
+              <caret line="308" lean-forward="true" selection-start-line="308" selection-end-line="308" />
+              <folding>
+                <element signature="e#1#29#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -232,93 +230,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/polls/templates/polls/product_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="49" column="6" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+            <state relative-caret-position="256">
+              <caret line="50" selection-start-line="50" selection-end-line="60" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/polls/templates/polls/contact.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polls/templates/polls/porder_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+            <state relative-caret-position="409">
+              <caret line="57" selection-start-line="57" selection-end-line="59" selection-end-column="14" />
               <folding>
-                <element signature="n#style#0;n#h1#0;n#center#0;n#head#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#head#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#709#715#0" expanded="true" />
-                <element signature="e#715#721#0" expanded="true" />
-                <element signature="e#721#727#0" expanded="true" />
-                <element signature="e#727#733#0" expanded="true" />
-                <element signature="e#733#739#0" expanded="true" />
-                <element signature="e#739#745#0" expanded="true" />
-                <element signature="e#745#751#0" expanded="true" />
-                <element signature="e#751#757#0" expanded="true" />
-                <element signature="e#757#763#0" expanded="true" />
-                <element signature="e#836#842#0" expanded="true" />
-                <element signature="e#842#848#0" expanded="true" />
-                <element signature="e#848#854#0" expanded="true" />
-                <element signature="e#891#897#0" expanded="true" />
-                <element signature="e#897#903#0" expanded="true" />
-                <element signature="e#903#909#0" expanded="true" />
-                <element signature="e#909#915#0" expanded="true" />
-                <element signature="e#915#921#0" expanded="true" />
-                <element signature="e#921#927#0" expanded="true" />
-                <element signature="e#927#933#0" expanded="true" />
-                <element signature="e#933#939#0" expanded="true" />
-                <element signature="e#939#945#0" expanded="true" />
-                <element signature="e#945#951#0" expanded="true" />
-                <element signature="e#951#957#0" expanded="true" />
-                <element signature="e#957#963#0" expanded="true" />
-                <element signature="e#963#969#0" expanded="true" />
-                <element signature="e#969#975#0" expanded="true" />
-                <element signature="e#975#981#0" expanded="true" />
-                <element signature="e#981#987#0" expanded="true" />
-                <element signature="e#987#993#0" expanded="true" />
-                <element signature="e#993#999#0" expanded="true" />
-                <element signature="e#999#1005#0" expanded="true" />
-                <element signature="e#1005#1011#0" expanded="true" />
-                <element signature="e#1011#1017#0" expanded="true" />
-                <element signature="e#1017#1023#0" expanded="true" />
-                <element signature="e#1023#1029#0" expanded="true" />
-                <element signature="e#1029#1035#0" expanded="true" />
-                <element signature="e#1035#1041#0" expanded="true" />
-                <element signature="e#1041#1047#0" expanded="true" />
-                <element signature="e#1047#1053#0" expanded="true" />
-                <element signature="e#1053#1059#0" expanded="true" />
-                <element signature="e#1059#1065#0" expanded="true" />
-                <element signature="e#1065#1071#0" expanded="true" />
-                <element signature="e#1071#1077#0" expanded="true" />
-                <element signature="e#1077#1083#0" expanded="true" />
-                <element signature="e#1083#1089#0" expanded="true" />
-                <element signature="e#1089#1095#0" expanded="true" />
-                <element signature="e#1095#1101#0" expanded="true" />
-                <element signature="e#1101#1107#0" expanded="true" />
-                <element signature="e#1107#1113#0" expanded="true" />
-                <element signature="e#1113#1119#0" expanded="true" />
-                <element signature="e#1119#1125#0" expanded="true" />
-                <element signature="e#1125#1131#0" expanded="true" />
-                <element signature="e#1131#1137#0" expanded="true" />
-                <element signature="e#1137#1143#0" expanded="true" />
-                <element signature="e#1143#1149#0" expanded="true" />
-                <element signature="e#1149#1155#0" expanded="true" />
-                <element signature="e#1155#1161#0" expanded="true" />
-                <element signature="e#1161#1167#0" expanded="true" />
-                <element signature="e#1167#1173#0" expanded="true" />
-                <element signature="e#1173#1179#0" expanded="true" />
-                <element signature="e#1179#1185#0" expanded="true" />
-                <element signature="e#1185#1191#0" expanded="true" />
-                <element signature="e#1191#1197#0" expanded="true" />
-                <element signature="e#1197#1203#0" expanded="true" />
-                <element signature="e#1203#1209#0" expanded="true" />
-                <element signature="e#1209#1215#0" expanded="true" />
-                <element signature="e#1215#1221#0" expanded="true" />
-                <element signature="e#1221#1227#0" expanded="true" />
-                <element signature="e#1227#1233#0" expanded="true" />
-                <element signature="e#1233#1239#0" expanded="true" />
-                <element signature="e#1239#1245#0" expanded="true" />
-                <element signature="e#1245#1251#0" expanded="true" />
-                <element signature="e#1251#1257#0" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -335,21 +262,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>button</find>
-      <find>co</find>
-      <find>more</find>
-      <find>bus</find>
-      <find>form-inline my-2 my-lg-1</find>
-      <find>add</find>
-      <find>sidenav</find>
-      <find>compo</find>
       <find>cont</find>
       <find>inve</find>
       <find>new</find>
       <find>chan</find>
       <find>pro</find>
-      <find>part</find>
-      <find>pip</find>
       <find>pord</find>
       <find>order</find>
       <find>porder</find>
@@ -363,8 +280,18 @@
       <find>Produc</find>
       <find>shu</find>
       <find>contac</find>
-      <find>Order</find>
       <find>Supplied</find>
+      <find>ContactIndexView</find>
+      <find>contact</find>
+      <find>Contact</find>
+      <find>ContactForm</find>
+      <find>Custo</find>
+      <find>OrderIn</find>
+      <find>ContactF</find>
+      <find>pip</find>
+      <find>submit</find>
+      <find>Order</find>
+      <find>part</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -373,38 +300,27 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/polls/templates/polls/order_search.html" />
         <option value="$PROJECT_DIR$/polls/migrations/0032_auto_20190104_2025.py" />
         <option value="$PROJECT_DIR$/polls/templates/polls/orders_upload.html" />
         <option value="$PROJECT_DIR$/mysite/settings.py" />
         <option value="$PROJECT_DIR$/polls/admin.py" />
         <option value="$PROJECT_DIR$/polls/urls.py" />
-        <option value="$PROJECT_DIR$/polls/forms.py" />
-        <option value="$PROJECT_DIR$/polls/views.py" />
         <option value="$PROJECT_DIR$/polls/templates/polls/base.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/busytime.html" />
         <option value="$PROJECT_DIR$/polls/static/polls/button.css" />
         <option value="$PROJECT_DIR$/polls/static/polls/style.css" />
         <option value="$PROJECT_DIR$/polls/templates/polls/form-template.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/adminsite.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/components_form.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/newextra_form.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/inventory.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/newextra_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/product_detail.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/product_form.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/components_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/part_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/pip_detail.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/pord_detail.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/porder_form.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/pip_form.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/pip_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/porderitem_index.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/porderitem_form.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/components_detail.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/newextra_detail.html" />
-        <option value="$PROJECT_DIR$/polls/models.py" />
         <option value="$PROJECT_DIR$/polls/templates/polls/pord_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/supplier_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/supplier_detail.html" />
@@ -412,7 +328,6 @@
         <option value="$PROJECT_DIR$/polls/templates/polls/contact_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/contact_detail.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/porderitem_detail.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/supprice_form.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/order_detail.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/part_detail.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/supprice_detail.html" />
@@ -420,10 +335,22 @@
         <option value="$PROJECT_DIR$/polls/templates/polls/product_index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/index.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/order_costumer.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/supplier_form.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/temp.html" />
-        <option value="$PROJECT_DIR$/polls/templates/polls/order_form.html" />
+        <option value="$PROJECT_DIR$/polls/models.py" />
+        <option value="$PROJECT_DIR$/polls/forms.py" />
+        <option value="$PROJECT_DIR$/polls/views.py" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/pip_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/newextra_index.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/newextra_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/components_form.html" />
         <option value="$PROJECT_DIR$/polls/templates/polls/contact.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/part_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/product_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/porder_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/order_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/porderitem_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/supplier_form.html" />
+        <option value="$PROJECT_DIR$/polls/templates/polls/supprice_form.html" />
       </list>
     </option>
   </component>
@@ -462,6 +389,12 @@
               <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
               <item name="mysite" type="462c0819:PsiDirectoryNode" />
               <item name="polls" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mysite" type="462c0819:PsiDirectoryNode" />
+              <item name="polls" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
@@ -592,43 +525,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/polls/static/polls/images/backgr22.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/static/polls/images/tostbackfinal.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/static/polls/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/adminsite.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="107" selection-start-line="22" selection-start-column="107" selection-end-line="22" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/part_form.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/components_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="45" selection-start-line="15" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/newextra_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/polls/templates/polls/detail.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -653,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/newextra_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_ok.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -677,27 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/porder_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/pip_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="48" column="57" selection-start-line="48" selection-start-column="57" selection-end-line="48" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/porderitem_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -771,9 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,10 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,12 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="65" selection-start-line="65" selection-end-line="69" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#1;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -819,19 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#1;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/supprice_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -839,12 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="58" column="69" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#1;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,9 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -862,11 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="58" selection-start-line="58" selection-end-line="58" selection-end-column="84" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -874,79 +702,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#html#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#html#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#1;n#html#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#geti#0;n#ul#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="307" lean-forward="true" selection-start-line="307" selection-end-line="307" />
-          <folding>
-            <element signature="e#1#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="1088">
           <caret line="64" selection-start-line="64" selection-end-line="64" selection-end-column="86" />
           <folding>
             <element signature="n#style#0;n#h2#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="38" selection-start-line="38" selection-end-line="38" selection-end-column="98" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#center#0;n#head#0;n#html#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_costumer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/product_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="49" column="6" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/temp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#center#0;n#html#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="e#2286#2292#0" expanded="true" />
-            <element signature="e#2293#2299#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/supplier_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -961,37 +725,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" selection-start-line="38" selection-end-line="38" selection-end-column="98" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#center#0;n#head#0;n#html#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/temp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#center#0;n#html#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="88" column="50" lean-forward="true" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/polls/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="467" column="14" lean-forward="true" selection-start-line="467" selection-start-column="14" selection-end-line="467" selection-end-column="62" />
+        <state relative-caret-position="191">
+          <caret line="908" lean-forward="true" selection-start-line="908" selection-end-line="908" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_form.html">
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_costumer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="58" column="99" selection-start-line="58" selection-start-column="99" selection-end-line="58" selection-end-column="99" />
+        <state relative-caret-position="-51">
+          <caret selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/newextra_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/newextra_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
           <folding>
-            <element signature="n#style#0;n#h1#0;n#center#0;n#html#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#html#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="e#3947#3953#0" expanded="true" />
-            <element signature="e#3958#3964#0" expanded="true" />
-            <element signature="e#3990#3996#0" expanded="true" />
-            <element signature="e#3997#4003#0" expanded="true" />
-            <element signature="e#2274#2280#0" expanded="true" />
-            <element signature="e#2281#2287#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/components_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="n#style#0;n#h4#0;n#html#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/polls/templates/polls/contact.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+        <state relative-caret-position="408">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#center#0;n#head#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#form#0;n#head#0;n#html#0;n#!!top" expanded="true" />
@@ -1026,49 +850,119 @@
             <element signature="e#987#993#0" expanded="true" />
             <element signature="e#993#999#0" expanded="true" />
             <element signature="e#999#1005#0" expanded="true" />
-            <element signature="e#1005#1011#0" expanded="true" />
-            <element signature="e#1011#1017#0" expanded="true" />
-            <element signature="e#1017#1023#0" expanded="true" />
-            <element signature="e#1023#1029#0" expanded="true" />
-            <element signature="e#1029#1035#0" expanded="true" />
-            <element signature="e#1035#1041#0" expanded="true" />
-            <element signature="e#1041#1047#0" expanded="true" />
-            <element signature="e#1047#1053#0" expanded="true" />
-            <element signature="e#1053#1059#0" expanded="true" />
-            <element signature="e#1059#1065#0" expanded="true" />
-            <element signature="e#1065#1071#0" expanded="true" />
-            <element signature="e#1071#1077#0" expanded="true" />
-            <element signature="e#1077#1083#0" expanded="true" />
-            <element signature="e#1083#1089#0" expanded="true" />
-            <element signature="e#1089#1095#0" expanded="true" />
-            <element signature="e#1095#1101#0" expanded="true" />
-            <element signature="e#1101#1107#0" expanded="true" />
-            <element signature="e#1107#1113#0" expanded="true" />
-            <element signature="e#1113#1119#0" expanded="true" />
-            <element signature="e#1119#1125#0" expanded="true" />
-            <element signature="e#1125#1131#0" expanded="true" />
-            <element signature="e#1131#1137#0" expanded="true" />
-            <element signature="e#1137#1143#0" expanded="true" />
-            <element signature="e#1143#1149#0" expanded="true" />
-            <element signature="e#1149#1155#0" expanded="true" />
-            <element signature="e#1155#1161#0" expanded="true" />
-            <element signature="e#1161#1167#0" expanded="true" />
-            <element signature="e#1167#1173#0" expanded="true" />
-            <element signature="e#1173#1179#0" expanded="true" />
-            <element signature="e#1179#1185#0" expanded="true" />
-            <element signature="e#1185#1191#0" expanded="true" />
-            <element signature="e#1191#1197#0" expanded="true" />
-            <element signature="e#1197#1203#0" expanded="true" />
-            <element signature="e#1203#1209#0" expanded="true" />
-            <element signature="e#1209#1215#0" expanded="true" />
-            <element signature="e#1215#1221#0" expanded="true" />
-            <element signature="e#1221#1227#0" expanded="true" />
-            <element signature="e#1227#1233#0" expanded="true" />
-            <element signature="e#1233#1239#0" expanded="true" />
-            <element signature="e#1239#1245#0" expanded="true" />
-            <element signature="e#1245#1251#0" expanded="true" />
-            <element signature="e#1251#1257#0" expanded="true" />
+            <element signature="e#1016#1022#0" expanded="true" />
+            <element signature="e#1028#1034#0" expanded="true" />
+            <element signature="e#1040#1046#0" expanded="true" />
+            <element signature="e#1153#1159#0" expanded="true" />
+            <element signature="e#1254#1260#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1569">
+          <caret line="308" lean-forward="true" selection-start-line="308" selection-end-line="308" />
+          <folding>
+            <element signature="e#1#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/part_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="62" column="7" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/porder_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="57" selection-start-line="57" selection-end-line="59" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/order_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#center#0;n#html#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="e#3947#3953#0" expanded="true" />
+            <element signature="e#3990#3996#0" expanded="true" />
+            <element signature="e#3997#4003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/product_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="50" selection-start-line="50" selection-end-line="60" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/registration_form.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/porderitem_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="51" selection-start-line="51" selection-end-line="61" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/supplier_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/pip_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#h4#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/supprice_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="62" column="7" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/adminsite.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
         </state>
       </provider>
     </entry>
