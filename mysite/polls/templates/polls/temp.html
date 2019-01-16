@@ -46,9 +46,13 @@
     <p>Components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}
     <p>Extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}
     <p>Remarks: {{form.remarks}}</h2></p>
+
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
 </form>
-<div class="form-group">
-        <button type="submit" class="btn btn-success">Submit</button>
-</div>
 
 

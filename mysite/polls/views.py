@@ -887,7 +887,7 @@ def contact_index(request):
 class QueueUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
     model = Order
     fields = ['ifSupplied']
-    """template_name = 'polls/generice_form.html'"""
+    template_name = 'polls/generice_form.html'
 
 
 def contact(request):
