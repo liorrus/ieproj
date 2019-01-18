@@ -110,7 +110,7 @@ class Inventory(TemplateView):
                     #nextdate = today + timedelta(days=5)
                     #nextdate = today + timedelta(days=(int((par.lt/30)*(math.sqrt(2*dem[1])))-int(delta))
                     if(dem[1]==0):
-                        nextdate = 'no dmand'
+                        nextdate = 'no demand'
                     else:
                         nextdate = today+timedelta(days=int((par.stock/(dem[1]/30)-par.lt)))
                         nextdate = datetime.strftime(nextdate, '%d/%m/%Y')
@@ -132,7 +132,7 @@ class AdminView(generic.ListView):
     def get_queryset(self):
         return Order.objects.filter(
             Q(ifSupplied=False)
-        ).order_by('-orderPick')
+        ).order_by('orderPick')
 
 
 class IndexView(generic.ListView):
