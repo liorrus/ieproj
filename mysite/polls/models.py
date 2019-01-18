@@ -301,14 +301,13 @@ User.add_to_class("__str__", get_first_name)
 
 
 class Contact(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=13)  # costumer ID
+    title = models.CharField(max_length=48)  # description
     message = models.TextField()
     time = models.DateTimeField(auto_now_add=True)  # the date of order creation
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.title}'
 
     def get_name(self):
-        return str(self.first_name) + "  " + str(self.last_name) + " : " + str(self.email)
+        return str(self.user) + " : " + str(self.title)

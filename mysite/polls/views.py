@@ -893,14 +893,16 @@ class QueueUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
 
 
 def contact(request):
+
     if request.method == "POST":
          form = ContactForm(request.POST)
-
+         form.instance.user = request.user
          if form.is_valid():
                 form.save()
 
     else:
          form = ContactForm()
+
 
     context = {
         'form': form,
