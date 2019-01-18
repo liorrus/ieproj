@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
 
-<font color="red">{{ form.none_field_errors  }}</font>
+
 {% block content %}
     <div class="sidenav">
         <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
@@ -35,7 +35,7 @@
             html, body { font-family: "Lato", sans-serif;}
             .form-group {margin-left: 160px; padding: 0px 10px; }
             .main {margin-left: 160px; padding: 0px 10px; }
-            /*.form-horizontal {margin-left: 160px; padding: 0px 10px; }*/
+            .form-horizontal {margin-left: 160px; padding: 0px 10px; }
             .sidenav { height: 100%; width: 170px; position: fixed; z-index: 1;
                     top: 0; left: 0; background-color: #111;
                     overflow-x: hidden; padding-top: 20px;
@@ -57,11 +57,11 @@
 <form class="form-horizontal" action ="" method="POST"  enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
     {{ form.none_field_errors  }}
-    <p style="padding-left: 180px"><h2>User: {{ form.user }} &nbsp; &nbsp; Status: {{form.orderStatus}} &nbsp; &nbsp; Supplied? {{form.ifSupplied}}
-    <p style="padding-left: 180px">Product: {{ form.product1 }} &nbsp; &nbsp; Choose time to pick:{{form.orderPick}}
-    <p style="padding-left: 180px">Components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}
-    <p style="padding-left: 180px">Extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}
-    <p style="padding-left: 180px">Remarks: {{form.remarks}}</h2></p>
+    <p><h2>User: {{ form.user }} &nbsp; &nbsp; Status: {{form.orderStatus}} &nbsp; &nbsp; Supplied? {{form.ifSupplied}}
+    <p>Product: {{ form.product1 }} &nbsp; &nbsp; Choose time to pick:{{form.orderPick}}
+    <p>Components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}
+    <p>Extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}
+    <p>Remarks: {{form.remarks}}</h2></p>
                     <div class="form-group"><br>
         <button type="submit" class="example_b">Submit</button>
 </div>

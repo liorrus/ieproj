@@ -100,24 +100,26 @@ class Inventory(TemplateView):
             for dem in demands:
                 if(dem[0] == par):
                     today = (datetime.now()).replace(tzinfo=None)
-                    lastOrder = getLatesTakenPorderWithPart(par)
+                    #lastOrder = getLatesTakenPorderWithPart(par)
                     #quantity = order 
-                    if(lastOrder == None):
-                        delta=0
-                    else:  
-                        delta = (today-lastOrder.porderDate.replace(tzinfo=None)).days
+                    #if(lastOrder == None):
+                    #    delta=0
+                    #else:  
+                    #    delta = (today-lastOrder.porderDate.replace(tzinfo=None)).days
                         #delta=0
                     #nextdate = today + timedelta(days=5)
-                    nextdate = today + timedelta(days=int((par.lt/30)*(math.sqrt(2*dem[1])))-int(delta))
-                    nextdate = datetime.strftime(nextdate, '%d/%m/%Y')
+                    #nextdate = today + timedelta(days=(int((par.lt/30)*(math.sqrt(2*dem[1])))-int(delta))
+                    if(dem[1]==0):
+                        nextdate = 'no dmand'
+                    else:
+                        nextdate = today+timedelta(days=int((par.stock/(dem[1]/30)-par.lt)))
+                        nextdate = datetime.strftime(nextdate, '%d/%m/%Y')
 
                   
                      
-                    kaki += "<td>" + par.pdes +"</td><td>" + str(par.stock) + "</td><td>" + str(math.sqrt(2*dem[1])) + "</td><td>" + str(nextdate) + "</td></tr>"  
+                    kaki += "<td>" + par.pdes +"</td><td>" + str(par.stock) + "</td><td>" + str(dem[1]) + "</td><td>" + str(nextdate) + "</td></tr>"  
         context['parts'] = kaki
-        #context['parts'] = Part.objects.all()
-        #context['date_last_order']=POrderItem.objects.filter()
-        #context['parts_demand']=getallPartsDemand()
+       
         
         
         return context
