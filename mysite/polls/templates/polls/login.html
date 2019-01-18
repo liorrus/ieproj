@@ -1,5 +1,7 @@
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+
+
 {% block content %}
         <div class="sidenav">
                  <a href="{% url 'polls:register' %}">register</a>
@@ -10,7 +12,7 @@
   {% csrf_token %}
   {{ form.as_p }}
 
-  <button type="submit">Login</button>
+        <button type="submit" class="example_b">Login</button>
 </form>
 
 <html>
@@ -76,6 +78,27 @@ form{
             color: #1f1f47;
             margin-bottom: 10px;
             }
+            .example_b {
+color: #fff !important;
+text-transform: uppercase;
+    font-size: 15px;
+background: #611d1d;
+padding: 8px;
+border-radius: 50px;
+display: inline-block;
+border: none;
+    display: inline-block;
+    text-decoration:none;
+
+
+}
+
+.example_b:hover {
+text-shadow: 0px 0px 6px rgba(50, 50, 50, 1);
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.4s ease 0s;
+}
         </style>
     </head>
 </html>

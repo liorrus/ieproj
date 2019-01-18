@@ -1,6 +1,7 @@
 
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
 
 
@@ -24,10 +25,13 @@
 
     </div>
 </form>
+=======
+{% block content %}
+>>>>>>> 5a67dcb8ef90a9cfab0ed21c6104d0794223b062
 
 <div class="sidenav">
-                     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
-                        <div class="w3-dropdown-content w3-bar-block">
+    <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
+                         <div class="w3-dropdown-content w3-bar-block">
                           <a href="{%url 'polls:order_index' %}" class="w3-bar-item w3-button"> Order</a>
                           <a href="{% url 'polls:product_index' %}" class="w3-bar-item w3-button"> Product</a>
                           <a href="{% url 'polls:part_index' %}" class="w3-bar-item w3-button"> Part</a>
@@ -38,119 +42,49 @@
                           <a href="{% url 'polls:supprice_index' %}" class="w3-bar-item w3-button"> Supplier Price</a>
                           <a href="{% url 'polls:pord_index' %}" class="w3-bar-item w3-button"> Purchase Orders</a>
                           <a href="{% url 'polls:porderitem_index' %}" class="w3-bar-item w3-button"> Purchase Order Items</a>
-                            <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
-                            <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data Of Busy Time</a>
-                            <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
-                            <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
+                          <a href="{% url 'polls:inventory' %}" class="w3-bar-item w3-button"> Inventory</a>
+                          <a href="{% url 'polls:busytime' %}" class="w3-bar-item w3-button"> Data Of Busy Time</a>
+                          <a href="{% url 'polls:orders_upload' %}" class="w3-bar-item w3-button"> Orders CSV Upload</a>
+                          <a href="{% url 'polls:contact_index' %}" class="w3-bar-item w3-button"> Messages</a>
                         </div>
-                    <a href="{% url 'polls:login' %}">Logout</a>
-                    <a></a><a></a>
-                </div>
-<html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-
-    </head>
-        <body>
-
-        </body>
-
-
-            <style>
-
-            html, body {
-                font-family: "Lato", sans-serif;
-    }
-
-    .sidenav {
-        height: 100%;
-        width: 170px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        padding-top: 20px;
-    }
-
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 20px;
-        color: #818181;
-        display: block;
-    }
-
-    .sidenav a:hover {
-        color: #f1f1f1;
-    }
-
-
-
-    @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-                height: 100%;
+     <a href="{% url 'polls:login' %}">Logout</a>
+</div>
+{% endblock %}
+<div class=main>
+    <html>
+        <head>
+            <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+            <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+        </head>
+        <style>
+            html, body { font-family: "Lato", sans-serif;}
+            .form-group {margin-left: 160px; padding: 0px 10px; }
+            .main {margin-left: 160px; padding: 0px 10px; }
+            /*.form-horizontal {margin-left: 160px; padding: 0px 10px; }*/
+            .sidenav { height: 100%; width: 170px; position: fixed; z-index: 1;
+                    top: 0; left: 0; background-color: #111;
+                    overflow-x: hidden; padding-top: 20px;
             }
-
-            * {
-                margin: 5;
-                padding: 7;
+            .sidenav a { padding: 6px 8px 6px 16px; text-decoration: none; font-size: 20px; color: #818181; display: block; }
+            .sidenav a:hover { color: #f1f1f1; }
+            h1 { font-family: Arial, Helvetica, sans-serif; font-size:40px; margin-top: 20px;
+                color: #1f1f47; margin-bottom: 10px;
             }
-            #wrap {
-                min-height:100%;
-            }
-                 h1 {
-                font-family: Arial, Helvetica, sans-serif;
-                font-size:60px;
-                margin-top: 20px;
-                color: #1f1f47;
-                margin-bottom: 10px;
-            }
-                p{
-                    font-size:30px;
-                margin-top: 20px;
-                color: #1f1f47;
-                margin-bottom: 10px;
-                }
+        </style>
+        <h4 style="font-size: 18px; font-family:Courier ">Below you may change an extra.</h4>
+    </html>
+</div>
+<form class="form-horizontal" style="padding-left" action ="" method="POST" enctype="multipart/form-data"
+      action="{% url 'polls:adminsite'%}">
+    {% csrf_token %}
+    {% include 'polls/form-template.html' %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
+
+        </div>
+    </div>
+</form>
 
 
-
-                p2{
-                    font-size:25px;
-                margin-top: 20px;
-                color: #1f1f47;
-                margin-bottom: 10px;
-                    padding-left:180px;
-                font-weight: bold
-                }
-                box {
-                    color:  #1f1f47;
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 15px;}
-            top{
-                color: navajowhite;
-                padding-left:180px;
-                font-family: Arial;
-                font-size: 13px;
-                background: transparent;
-                line-height: 1;
-                 border: 1px;
-
-
-            }
-                sc{
-                    color: darkred;
-                    font-size:12px ;
-                }
-                h4{
-                padding-left:180px;
-                    font-family:Courier;
-                    font-size: 18px;
-
-                }
-            </style>
-</html>
 

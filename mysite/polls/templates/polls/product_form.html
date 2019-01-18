@@ -1,4 +1,3 @@
-
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
@@ -50,12 +49,16 @@
         <h4>Choose the price it is sold to customers, and the time to prepare it (minutes).</h4>
     </html>
 </div>
-<form class="form-horizontal" action ="" method="POST" enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
+<form class="form-horizontal" style="padding-left" action ="" method="POST" enctype="multipart/form-data"
+      action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
     {% include 'polls/form-template.html' %}
-        <div class="form-group"><br>
-        <button type="submit" class="example_b">Submit</button>
-</div>
-</form>
+<<<<<<< HEAD
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
 
+        </div>
+    </div>
+</form>
 

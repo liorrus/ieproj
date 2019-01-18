@@ -230,7 +230,7 @@ class OrderIndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Order.objects.all()
+        return Order.objects.order_by('-orderPick')
 
 
 class PartIndexView(generic.ListView):
@@ -248,7 +248,7 @@ class ContactIndexView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Contact.objects.order_by('last_name')
+        return Contact.objects.order_by('time')
 
 
 class PipIndexView(generic.ListView):
@@ -887,7 +887,7 @@ def contact_index(request):
 class QueueUpdateAdmin(LoginRequiredMixin, UpdateView):  # LoginRequiredMixin
     model = Order
     fields = ['ifSupplied']
-    """template_name = 'polls/generice_form.html'"""
+    template_name = 'polls/generice_form.html'
 
 
 def contact(request):
@@ -905,7 +905,6 @@ def contact(request):
     }
 
     return render(request, "polls/contact.html", context)
-
 
 
 def queue_index(request):
