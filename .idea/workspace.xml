@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c41b42ca-7260-4229-8c4a-abe2c4751608" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/bulk.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/csvshit.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/dates.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/easycsv.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/templates/polls/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/templates/polls/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/polls/templates/polls/newextra_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/templates/polls/newextra_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,26 +93,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mysite/polls/models.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/order_costumer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="47" column="62" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="62" />
-              <folding>
-                <element signature="e#1#29#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="660">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mysite/polls/views.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="803">
-              <caret line="1023" column="44" selection-start-line="1023" selection-start-column="44" selection-end-line="1023" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="419">
+              <caret line="91" column="14" lean-forward="true" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -127,8 +114,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="260">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -137,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/logout.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -150,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/newextra_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+            <state relative-caret-position="1740">
+              <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -159,8 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/newextra_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+            <state relative-caret-position="980">
+              <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -169,7 +156,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/base.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1800">
-              <caret line="90" column="12" lean-forward="true" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="12" />
+              <caret line="90" column="12" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -187,7 +174,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/polls/tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -251,11 +238,11 @@
         <option value="$PROJECT_DIR$/mysite/polls/urls.py" />
         <option value="$PROJECT_DIR$/mysite/polls/dates.py" />
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/orders_upload.html" />
-        <option value="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" />
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/inventory.html" />
         <option value="$PROJECT_DIR$/mysite/polls/views.py" />
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/login.html" />
         <option value="$PROJECT_DIR$/mysite/polls/templates/polls/newextra_form.html" />
+        <option value="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" />
       </list>
     </option>
   </component>
@@ -420,7 +407,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17803837" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -497,13 +484,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/startbootstrap-business-casual-gh-pages/index.html" />
     <entry file="file://$PROJECT_DIR$/mysite/polls/static/polls/style_slide.css" />
@@ -518,13 +499,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/polls/easycsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/easycsv.py" />
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/order_ok.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1250" />
@@ -551,27 +526,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/polls/csvshit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/polls/bulk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/polls/dates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/polls/csvshit.py" />
+    <entry file="file://$PROJECT_DIR$/mysite/polls/bulk.py" />
+    <entry file="file://$PROJECT_DIR$/mysite/polls/dates.py" />
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/orders_upload.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-140">
@@ -595,8 +552,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/order_costumer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="660">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
@@ -609,8 +566,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="62" column="35" lean-forward="true" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+        <state relative-caret-position="419">
+          <caret line="91" column="14" lean-forward="true" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -638,28 +595,28 @@
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
-          <caret line="90" column="12" lean-forward="true" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="12" />
+          <caret line="90" column="12" selection-start-line="90" selection-start-column="12" selection-end-line="90" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="260">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/logout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -672,8 +629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/newextra_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
+        <state relative-caret-position="980">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -682,8 +639,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/polls/templates/polls/newextra_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        <state relative-caret-position="1740">
+          <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
         </state>
       </provider>
     </entry>

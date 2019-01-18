@@ -37,7 +37,7 @@
     <html>
         <head>
 		<center><h1 style="font-size: 55px; font-family:Courier">Shushtush Home Page</h1></center>
-<center><p><em><h2>Welcome, {{ user.username }}!</h2></em></p></center>
+<p><em><h2>Welcome, {{ user.username }}!</h2></em></p>
 
             <meta http-equiv="Content-type" content="text/html; charset=utf-8">
             <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
@@ -56,36 +56,36 @@
             h1 { font-family: Arial, Helvetica, sans-serif; font-size:40px; margin-top: 20px;
             color: #1f1f47; margin-bottom: 10px;
             }
-
+            r { color: green; }
 			not_r { color: #990000;}
 
     }
         </style>
-        <em><h3>Order Status:</h3>
+        <em><h3>Order Status:</h3></em>
     {% for d in order_list %}
     {% if forloop.first %}
     {% ifequal d.ifSupplied True %}
-       <h3> {{ "Your last order from"}} {{d.orderPick}}{{" is ready"}}</h3>
+            <h3> {{ "Your last order, from"}} {{d.orderPick}} <em><r>{{" is ready"}}</r></em></h3>
     {%else%}
-     <h3> <not_r>{{ "Your last order from"}} {{d.orderPick}}{{" is not ready yet"}}</not_r></h3>
+        <h3> <not_r><em>{{ "Your last order from"}} {{d.orderPick}}{{" is not ready yet"}}</em></not_r></h3>
     {% endifequal  %}
 
     {% endif %}
 {% endfor %}
-</em>
+
 
     <p><em>Here are your recommended orders:</em></p>
 
-<p><p2>
+<p>
         {% for question in order_list %}<br>
     <b>Product:</b> {{ question.product1 }} <b>Components:</b> {{ question.component1.part }} {{ question.component2.part }}
     {{ question.component5.part }} {{ question.component4.part }} {{ question.component5.part }} | <b>Extras:</b> {{ question.extra1.extra_part }} {{ question.extra2.extra_part }}
         {{ question.extra3.extra_part }} {{ question.extra4.extra_part }} {{ question.extra5.extra_part }}
         {% endfor %}
-</p2></p>
+</p>
 
 {% if request.user.is_superuser %}
-<p align="center"><em><a href="{% url 'polls:adminsite' %}">Click here</a> for the business management page </em></p>
+<h2><p><em><a href="{% url 'polls:adminsite' %}">Click here</a> for the business management page </em></p></h2>
 
 {%endif%}
 </html>
