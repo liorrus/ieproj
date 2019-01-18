@@ -63,7 +63,7 @@
         </style>
         <em><h3>Order Status:</h3></em>
     {% for d in order_list %}
-    {% if forloop.first %}
+    {% if forloop.last %}
     {% ifequal d.ifSupplied True %}
             <h3> {{ "Your last order, from"}} {{d.orderPick}} <em><r>{{" is ready"}}</r></em></h3>
     {%else%}

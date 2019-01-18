@@ -72,6 +72,7 @@
         {%endif%}
     </html>
 </div>
+{% if request.user.is_superuser %}
 <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button id="myButton" class="example_b" >Change</button>
@@ -83,5 +84,6 @@
         </script>
         </div>
 </div>
+{%endif%}
 {% endblock %}
 
