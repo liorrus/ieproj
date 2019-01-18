@@ -49,14 +49,13 @@
         <h4>Choose the price it is sold to customers, and the time to prepare it (minutes).</h4>
     </html>
 </div>
-<form class="form-horizontal" style="padding-left" action ="" method="POST" enctype="multipart/form-data"
+<form class="form-horizontal" style="padding-left=180px;" action ="" method="POST" enctype="multipart/form-data"
       action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
     {% include 'polls/form-template.html' %}
-<<<<<<< HEAD
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Submit</button>
+        <div class="col-sm-offset-2 col-sm-10"><br>
+            <button type="submit" class="example_b">Submit</button>
 
         </div>
     </div>

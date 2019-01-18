@@ -47,22 +47,21 @@
             }
         </style>
 		<center><h1 style="font-size: 55px; font-family:Courier">Order</h1></center>
-        <h4>Below you may insert a new order.</h4>
-        <h4>Order pick is the requested pickup time.</h4>
-        <h4>You may choose up to 3 products, 5 components and 3 extras. At least one product is mandatory.</h4>
-        <h4>Components and extras are relevant for complex products only, else leave blank.</h4>
-        <h4>Type any remarks if necessary.</h4>
+        <h4 style="font-family:Courier; font-size: 18px">Below you may insert a new order.</h4>
+        <h4 style="font-family:Courier; font-size: 18px">Order pick is the requested pickup time.</h4>
+        <h4 style="font-family:Courier; font-size: 18px">You may choose up to 3 products, 5 components and 3 extras. At least one product is mandatory.</h4>
+        <h4 style="font-family:Courier; font-size: 18px">Components and extras are relevant for complex products only, else leave blank.</h4>
+        <h4 style="font-family:Courier; font-size: 18px">Type any remarks if necessary.</h4>
     </html>
 </div>
-<form class="form-horizontal" action ="" method="POST" style="padding-left: 180px" enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
+<form class="form-horizontal" action ="" method="POST"  enctype="multipart/form-data" action="{% url 'polls:adminsite'%}">
     {% csrf_token %}
     {{ form.none_field_errors  }}
-    <p><h2>User: {{ form.user }} &nbsp; &nbsp; Status: {{form.orderStatus}} &nbsp; &nbsp; Supplied? {{form.ifSupplied}}
-    <p>Product: {{ form.product1 }} &nbsp; &nbsp; Choose time to pick:{{form.orderPick}}
-    <p>Components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}
-    <p>Extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}
-    <p>Remarks: {{form.remarks}}</h2></p>
-<<<<<<< HEAD
+    <p style="padding-left: 180px"><h2>User: {{ form.user }} &nbsp; &nbsp; Status: {{form.orderStatus}} &nbsp; &nbsp; Supplied? {{form.ifSupplied}}
+    <p style="padding-left: 180px">Product: {{ form.product1 }} &nbsp; &nbsp; Choose time to pick:{{form.orderPick}}
+    <p style="padding-left: 180px">Components:{{form.component1}} {{form.component2}}{{form.component3}}{{form.component4}}{{form.component5}}
+    <p style="padding-left: 180px">Extras: {{form.extra1}}{{form.extra2}}{{form.extra3}}
+    <p style="padding-left: 180px">Remarks: {{form.remarks}}</h2></p>
                     <div class="form-group"><br>
         <button type="submit" class="example_b">Submit</button>
 </div>
@@ -70,13 +69,3 @@
 
 
 
-=======
-
-    {% csrf_token %}
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Submit</button>
-        </div>
-    </div>
-</form>
->>>>>>> 5a67dcb8ef90a9cfab0ed21c6104d0794223b062

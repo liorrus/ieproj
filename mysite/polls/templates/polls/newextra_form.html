@@ -1,33 +1,9 @@
 
 {%load staticfiles%}
 <link rel="stylesheet" type="text/css" href="{%static 'polls/style.css' %}"/>
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{%static 'polls/button.css' %}"/>
 
 
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-{% endif %}
-<h4 style="padding-left: 180px">  Below you may change an extra.</h4 align="center">
-<form class="form-horizontal" style="padding-left: 180" action ="" method="POST" enctype="multipart/form-data"
-      action="{% url 'polls:adminsite'%}">
-    {% csrf_token %}
-    {% include 'polls/form-template.html' %}
-        <div class="form-group"><br>
-        <button type="submit" class="example_b" >Submit</button>
-</div>
-    <div class="form-group">
-
-    </div>
-</form>
-=======
-{% block content %}
->>>>>>> 5a67dcb8ef90a9cfab0ed21c6104d0794223b062
 
 <div class="sidenav">
     <a href="{%url 'polls:adminsite'%}" class="w3-bar-item w3-button">Home Page</a>
@@ -49,7 +25,6 @@
                         </div>
      <a href="{% url 'polls:login' %}">Logout</a>
 </div>
-{% endblock %}
 <div class=main>
     <html>
         <head>
@@ -79,8 +54,8 @@
     {% csrf_token %}
     {% include 'polls/form-template.html' %}
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">Submit</button>
+        <div class="col-sm-offset-2 col-sm-10"><br>
+            <button type="submit" class="example_b">Submit</button>
 
         </div>
     </div>
