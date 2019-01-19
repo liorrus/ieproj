@@ -735,7 +735,8 @@ def order_index(request):
             queryset_list3 = queryset_list3.filter(
                 Q(user__username__icontains=query) |
                 Q(remarks__icontains=query) |
-                Q(orderStatus__icontains=query)
+                Q(orderStatus__icontains=query) |
+                Q(product1__pdes__icontains=query)
             ).distinct()
         else:
             queryset_list3 = Order.objects.all()
