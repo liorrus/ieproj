@@ -132,7 +132,7 @@ class AdminView(generic.ListView):
     def get_queryset(self):
         return Order.objects.filter(
             Q(ifSupplied=False)
-        ).order_by('orderPick')
+        ).order_by('-orderPick')
 
 
 class IndexView(generic.ListView):
@@ -915,18 +915,19 @@ def queue_index(request):
     today = timezone.now().date()
     queryset_list3 = Order.objects.filter(
             Q(ifSupplied=False)
-        )
+        ).order_by('-orderPick')
     query = request.GET['q']
     if query:
         queryset_list3 = queryset_list3.filter(
             Q(user__username__contains=query) |
             Q(remarks__contains=query) |
-            Q(orderStatus__contains=query)
+            Q(orderStatus__contains=query) |
+            Q(product1__pdes__contains=query)
         ).distinct()
     else:
         queryset_list3 = Order.objects.filter(
             Q(ifSupplied=False)
-        )
+        ).order_by('-orderPick')
     paginator = Paginator(queryset_list3, 10)
     page_request_var = "page"
     page = request.GET.get(page_request_var)
