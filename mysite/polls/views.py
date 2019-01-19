@@ -514,6 +514,8 @@ class OrderCreateCustomer(LoginRequiredMixin, CreateView):  # LoginRequiredMixin
     
     def get_initial(self): 
         initial = super(OrderCreateCustomer, self).get_initial()
+        if(Order.objects.filter(user=self.request.user.id).count() == 0):
+            return initial
         lastorder=Order.objects.filter(user=self.request.user.id).order_by("-orderDate")[0]
         initial['product1'] = str(lastorder.product1.pk)
         if(lastorder.product1.pdes=="Salad"):
