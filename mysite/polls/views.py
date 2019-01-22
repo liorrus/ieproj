@@ -1155,11 +1155,24 @@ def recommend(request):
     couples = couples[['comp1', 'comp2']]
     commons = couples.groupby(['comp1', 'comp2']).size().sort_values(ascending=False)
     print('Top 5 component pairs:\n', commons.head())
-    #print(type(commons))
-    print('hi', res)
+    for i in range(0, 5, 1):
+        aids1, aids2 = commons.keys()[i]
+        res1=Components.objects.get(pk=aids1)
+        res2=Components.objects.get(pk=aids2)
+        print(res1.part,res2.part)
+
+
     comp_data = pd.DataFrame(df, columns=columns)
     commons = comp_data.groupby(['comp1', 'comp2', 'comp3', 'comp4', 'comp5']).size().sort_values(ascending=False)
     print('Top 5 Complete Salads:\n', commons.head())
+    for i in range(0, 5, 1):
+        aids1, aids2, aids3, aids4, aids5 = commons.keys()[i]
+        res1=Components.objects.get(pk=aids1)
+        res2=Components.objects.get(pk=aids2)
+        res3=Components.objects.get(pk=aids3)
+        res4=Components.objects.get(pk=aids4)
+        res5=Components.objects.get(pk=aids5)
+        print(res1.part,res2.part,res3.part,res4.part,res5.part)
 
     context = {"title": "List"}
 
