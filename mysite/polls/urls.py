@@ -89,6 +89,6 @@ urlpatterns = [
     url(r'contact_index/$', views.ContactIndexView.as_view(), name="contact_index"),
     url(r'^contact/details/(?P<pk>[0-9]+)/$', views.ContactDetailView.as_view(), name='contact_detail'),
     url(r'^contact_results/$', contact_index, name="contact_search"),
-
+    url(r'^recommend/$', recommend, name="recommend"),
 
 ]

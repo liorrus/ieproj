@@ -1131,7 +1131,39 @@ def send_email():
     print('successfully sent the mail')
     #this function works here, but needs to be fixed to be called from the queue update
     #TO field needs to be changed to the user's email probably like this:   form.instance.user.email
+import pandas as pd
 
+def recommend(request):
+    Salad = 7
+    data = list(Order.objects.filter(product1=Salad).values('component1', 'component2', 'component3', 'component4','component5',))
+    df =[]
+    for entry in data:
+        line=set(entry.values())
+        df.append(line)
 
+    columns = pd.Index(['comp1', 'comp2', 'comp3', 'comp4', 'comp5'], name='cols')
+    components_df = pd.DataFrame(df, columns=columns)
 
+    masterlist = []
 
+    for pair in itertools.combinations(components_df.columns, 2):
+        pairs = list(pair)
+        pairs_data = components_df[pairs]
+        for row in pairs_data.itertuples():
+            masterlist.append(row)
+    couples = pd.DataFrame(masterlist)
+    couples = couples[['comp1', 'comp2']]
+    commons = couples.groupby(['comp1', 'comp2']).size().sort_values(ascending=False)
+    print('Top 5 component pairs:\n', commons.head())
+    #print(type(commons))
+    print('hi', res)
+    comp_data = pd.DataFrame(df, columns=columns)
+    commons = comp_data.groupby(['comp1', 'comp2', 'comp3', 'comp4', 'comp5']).size().sort_values(ascending=False)
+    print('Top 5 Complete Salads:\n', commons.head())
+
+    context = {"title": "List"}
+
+    return render(request, 'polls/recommend.html', context)
+
+    #class Components(models.Model):
+    #    part = models.ForeignKey(Part, on_delete=models.CASCADE)
