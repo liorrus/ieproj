@@ -137,7 +137,26 @@ class AdminView(generic.ListView):
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super(IndexView, self).get_context_data(*args, **kwargs)
+        rec = recommend()
+        context['rectwo0'] = str(rec[0][0][0]) + " and " + str(rec[0][0][1]) 
+        context['rectwo1'] = str(rec[0][1][0]) + " and " + str(rec[0][1][1]) 
+        context['rectwo2'] = str(rec[0][2][0]) + " and " + str(rec[0][2][1]) 
+        context['rectwo3'] = str(rec[0][3][0]) + " and " + str(rec[0][3][1]) 
+        context['rectwo4'] = str(rec[0][4][0]) + " and " + str(rec[0][4][1]) 
+        
+        context['recfive0'] = str(rec[1][0][0]) + ", " + str(rec[1][0][1]) + ", " + str(rec[1][0][2]) + ", " + str(rec[1][0][3])+ ", " + str(rec[1][0][4])     
+        context['recfive1'] = str(rec[1][1][0]) + ", " + str(rec[1][1][1]) + ", " + str(rec[1][1][2]) + ", " + str(rec[1][1][3])+ ", " + str(rec[1][1][4])
+        context['recfive2'] = str(rec[1][2][0]) + ", " + str(rec[1][2][1]) + ", " + str(rec[1][2][2]) + ", " + str(rec[1][2][3])+ ", " + str(rec[1][2][4])
+        context['recfive3'] = str(rec[1][3][0]) + ", " + str(rec[1][3][1]) + ", " + str(rec[1][3][2]) + ", " + str(rec[1][3][3])+ ", " + str(rec[1][3][4])
+        context['recfive4'] = str(rec[1][4][0]) + ", " + str(rec[1][4][1]) + ", " + str(rec[1][4][2]) + ", " + str(rec[1][4][3])+ ", " + str(rec[1][4][4]) 
+        
 
+        return context
+
+
+    
     def get_queryset(self):
         request = self.request
         user_id = request.user.id
@@ -1133,7 +1152,7 @@ def send_email():
     #TO field needs to be changed to the user's email probably like this:   form.instance.user.email
 import pandas as pd
 
-def recommend(request):
+def recommend():
     Salad = 7
     data = list(Order.objects.filter(product1=Salad).values('component1', 'component2', 'component3', 'component4','component5',))
     df =[]
@@ -1155,7 +1174,7 @@ def recommend(request):
     couples = couples[['comp1', 'comp2']]
     commons = couples.groupby(['comp1', 'comp2']).size().sort_values(ascending=False)
     #print('Top 5 component pairs:\n', commons.head())
-    print('Top 5 Component Pairs:\n')
+   
     pair_list=[]
     for i in range(0, 5, 1):
         aids1, aids2 = commons.keys()[i]
@@ -1163,12 +1182,12 @@ def recommend(request):
         res2=Components.objects.get(pk=aids2)
         pair=(res1.part,res2.part)
         pair_list.append(pair)
-    print(pair_list)
+    
 
     comp_data = pd.DataFrame(df, columns=columns)
     commons = comp_data.groupby(['comp1', 'comp2', 'comp3', 'comp4', 'comp5']).size().sort_values(ascending=False)
    # print('Top 5 Complete Salads:\n', commons.head())
-    print('Top 5 Complete Salads:\n')
+
     complete_list=[]
     for i in range(0, 5, 1):
         aids1, aids2, aids3, aids4, aids5 = commons.keys()[i]
@@ -1180,11 +1199,10 @@ def recommend(request):
 
         complete=(res1.part,res2.part,res3.part,res4.part,res5.part)
         complete_list.append(complete)
-    print(complete_list)
+ 
 
+    lists=[pair_list,complete_list]
     context = {"title": "List"}
 
-    return render(request, 'polls/recommend.html', context)
+    return lists
 
-    #class Components(models.Model):
-    #    part = models.ForeignKey(Part, on_delete=models.CASCADE)

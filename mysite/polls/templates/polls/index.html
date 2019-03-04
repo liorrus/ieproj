@@ -75,7 +75,26 @@
 
 
     <p><em>Here are your recommended orders:</em></p>
+     <pre style="font-size: 16px">
+        bellow you can find our top five salat tupples:
+        
+        {{rectwo0|safe}}
+        {{rectwo1|safe}}
+        {{rectwo2|safe}}
+        {{rectwo3|safe}}
+        {{rectwo4|safe}}
 
+
+        bellow you can find our top five salad picks:
+        
+        {{recfive0|safe}}
+        {{recfive1|safe}}
+        {{recfive2|safe}}
+        {{recfive3|safe}}
+        {{recfive4|safe}} 
+
+    
+    </pre>
 <p>
         {% for question in order_list %}<br>
     <b>Product:</b> {{ question.product1 }} <b>Components:</b> {{ question.component1.part }} {{ question.component2.part }}
