@@ -74,28 +74,29 @@
 {% endfor %}
 
 
-    <p><em>Here are your recommended orders:</em></p>
-     <pre style="font-size: 16px">
-        bellow you can find our top five salat tupples:
-        
-        {{rectwo0|safe}}
-        {{rectwo1|safe}}
-        {{rectwo2|safe}}
-        {{rectwo3|safe}}
-        {{rectwo4|safe}}
+        <p><em><b>Here are your recommended orders:</b></em></p>
+     <pre style="font-size: 16px; font-family:sans-serif;">
+
+<b>Our top five salad toppings pairs:</b>
+
+{{rectwo0|safe}}
+{{rectwo1|safe}}
+{{rectwo2|safe}}
+{{rectwo3|safe}}
+{{rectwo4|safe}}
 
 
-        bellow you can find our top five salad picks:
-        
-        {{recfive0|safe}}
-        {{recfive1|safe}}
-        {{recfive2|safe}}
-        {{recfive3|safe}}
-        {{recfive4|safe}} 
+<b>Our top five salad picks:</b>
 
-    
+{{recfive0|safe}}
+{{recfive1|safe}}
+{{recfive2|safe}}
+{{recfive3|safe}}
+{{recfive4|safe}}
     </pre>
 <p>
+    <b>Recently purchased:</b>
+    <br>
         {% for question in order_list %}<br>
     <b>Product:</b> {{ question.product1 }} <b>Components:</b> {{ question.component1.part }} {{ question.component2.part }}
     {{ question.component5.part }} {{ question.component4.part }} {{ question.component5.part }} | <b>Extras:</b> {{ question.extra1.extra_part }} {{ question.extra2.extra_part }}
